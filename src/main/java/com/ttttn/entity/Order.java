@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -43,10 +45,13 @@ public class Order {
   @ManyToOne
   @JoinColumn(name = "cart_id")
   private Cart cart;
+  @JsonIgnore
   @OneToMany(mappedBy = "order")
   private List<Pay> pays;
+  @JsonIgnore
   @OneToMany(mappedBy = "order")
   private List<DeliveryMothod> transports;
+  @JsonIgnore
   @OneToMany(mappedBy = "order")
   private List<OrderItems> orderItems;
   

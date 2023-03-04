@@ -3,6 +3,8 @@ package com.ttttn.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,16 +32,23 @@ public class User {
   private String email;
   private String name;
   private String phone;
-  private boolean role;
+
+  @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Comment> comments;
+  @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Cart> carts;
+  @JsonIgnore
   @OneToMany(mappedBy = "user")
    private List<Order> orders;
+  @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Authorities> authorities;
   
+  @JsonIgnore
+  @OneToMany(mappedBy = "user")
+  private List<Discount> discounts;
   
   @ManyToMany
   @JoinTable(name = "authorities",

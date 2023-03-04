@@ -24,9 +24,11 @@ public class Discount {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer discountid;
-  private Date startday;
-  private Date enddate;
+  private String codevourcher;
+  private  int quantity;
+  private boolean active;
   @ManyToOne
-  @JoinColumn(name="product_id")
-  private Product product;
+  @JoinColumn(name="user_id")
+  private User user;
 }
+  

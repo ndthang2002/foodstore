@@ -1,0 +1,316 @@
+.ttitem1{
+  width: 100%;
+  height: 200px;
+  background-color: rgb(206, 222, 222);
+  /* text-align: center; */
+  /* line-height: 100px; */
+  position: relative;
+}
+.ttitem1 a{
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 10px;
+}
+html{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(245,245,245);
+}
+.tttieudethanhtoan{
+  font-size: 50px;
+  color: rgb(68, 64, 64);
+  margin-top: 100px;
+  position: absolute;
+  transform: translateX(50%);
+  text-decoration: dotted;
+ 
+}
+.ttitem2{
+   padding: 30px 100px 0px 100px ;
+
+}
+.ttdiachi{
+  height: 50px;
+  background-color: rgb(229, 226, 226);
+  padding: 20px;
+  overflow: auto;
+}
+.ttthaydoi{
+  border: none;
+  color: rgb(250, 129, 0);
+}
+.ttdiachinhanhang{
+  color: rgb(255, 90, 14);
+}
+.ttdiachicuthe{
+  font-weight: bold;
+  text-transform: capitalize;
+    
+}
+
+.ttsanpham{
+  display:grid;
+  grid-template-rows: 20% 60% 20%;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.tttieude{
+  width: 100%;
+  height: 100px;
+  background-color: #E7E7E4;
+  display:grid;
+  grid-template-columns: 60% 10% 10% 20%;
+  line-height: 50px;
+  justify-content: center;
+}
+.tttieude span{ 
+  /* margin-left: 30px; */
+}
+.ttthanhtien{
+  margin-left: 40px;
+}
+.ttsanphammua{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(231, 231, 228);
+  display: grid;
+  grid-template-columns: 60% 40%;
+  justify-content: space-between;
+}
+.ttsolieusanpham{
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  align-items: center;
+  justify-content: center;
+}
+.ttsolieusanpham span{
+  margin-left: 13px;
+}
+.ttvanchuyen{
+  width: 100%;
+  height:100px;
+  background-color: #E7E7E4;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  position: relative;
+  line-height: 50px;
+  
+}
+
+.tthinhsanpham{
+ width: 100px;
+ height: 100px;
+}
+.ttanh{
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+.tttensanpham{
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.ttnhavanchuyen{
+  display: grid;
+  grid-template-columns: 40% 20% 20% 20%;
+  
+}
+.tttienship{
+  margin-left: 60px;
+}
+.ttphantongtien{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.ttthaydoi{
+  text-decoration: none;
+  color: rgb(255, 85, 0);
+}
+.ttghichuship{
+  width: 250px;
+  height: 30px;
+}
+.ttloinhan{
+  margin-left: 30px;  
+}
+.ttphuongthucthanhtoan{
+  margin-top: 20px;
+  display: grid;
+  /* grid-template-rows: repeat(3,auto); */
+  grid-template-rows: 15% 20% 30% 25%;
+  height: 80vh;
+  background-color: rgb(220, 216, 216);
+  
+}
+.ttvoucher span{
+  margin-top: 50px;
+  margin-left: 50px;  
+  font-size: 20px;
+}
+.ttvoucher input{
+  margin-left: 100px;
+  margin-top: 30px;
+  width: 300px;
+  height: 30px;
+}
+.ttvoucher{
+  border-bottom: 1px solid rgb(230, 227, 227);
+ 
+}
+.ttphuongthuc{
+  
+  border-bottom: 1px solid rgb(230, 227, 227);
+  display: grid;
+  grid-template-columns: repeat(3,auto);
+  align-items: center;
+
+}
+.ttphuongthuc button{
+  margin-left: 50px;
+  background-color: rgb(252, 76, 0);
+  width: 200px; 
+  height: 50px;
+  text-decoration: none;
+  border: 1px solid rgb(252,76,0);
+}
+.ttphuongthuc button:hover{
+  border: 1px solid rgb(255, 255, 255);
+}
+.ttphuongthuc span{
+  margin-top: 50px;
+  margin-left: 50px;  
+  font-size: 20px;
+}
+.tttinhtong{
+  position: relative;
+
+  border-bottom: 1px solid rgb(230, 227, 227);
+}
+.tttinhtongchild{
+position: absolute;
+right: 10px;
+bottom: 10px;
+}
+.tttinhtongchild label{
+ font-weight: bold;
+}
+.tttinhtongchild span{
+    margin-right: 0;
+    color: grey;
+    text-shadow: 1px 1px 1px rgb(214, 209, 209);
+  }
+  .ttdathang{
+   display: grid;
+   grid-template-columns: repeat(2,auto);
+   text-align: center;
+   align-items: center;
+  }
+  .ttdathang button{
+    width: 300px;
+    height: 50px; 
+    text-align: center;
+    font-size: 20px;
+     background-color: rgb(252, 76, 0);
+    border: 1px solid rgb(225, 85, 25);
+  } 
+
+  /* modal thay doi */
+  .ttmodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.ttmodal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.cl {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+.formmodal label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formmodal input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.formmodal input[type="submit"],
+button[type="submit"] {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #428bca;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.formmodal input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background-color: #3071a9;
+}
+.formmodal{
+  padding: 50px;
+}
+#hinhthucvanchuyen{
+  display: none;
+  margin-left: 600px;
+  width: 20%;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  z-index: 1;
+  
+}
+
+  @media only screen and (max-width: 768px){
+    .thetindung{
+      margin-top: -101px;
+    }
+  }

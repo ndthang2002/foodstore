@@ -26,7 +26,7 @@ public class Authorities {
   @ManyToOne
   @JoinColumn(name = "userid")
   private User user;
-  
+    
   @ManyToOne
   @JoinColumn(name = "roleid")
   private Role role;

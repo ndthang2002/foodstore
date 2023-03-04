@@ -23,6 +23,7 @@ public class DeliveryMothod {
   private Integer transportid ;
   private int transportfee;
   private String name;
+  private double price;
   @ ManyToOne
   @JoinColumn(name="order_id")
   private Order order;

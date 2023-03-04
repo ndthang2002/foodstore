@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<link
+    href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+    rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+</head>
+<body>
+    <header class="header-area header-sticky" id="than">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">Food Store</a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+                <li><a href="index.html" class="active">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
+                  
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="about.html">Tin Tức</a>
+                        <a class="dropdown-item" href="blog.html">Kiến Thức</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Liên Hệ</a></li> 
+               
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <svg id="i-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <circle cx="14" cy="14" r="12" />
+                            <path d="M23 23 L30 30"  />
+                        </svg>
+                    </button>
+                  </form>
+                  <li><a href="checkout.html">
+                    <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
+                        <circle cx="25" cy="27" r="2" />
+                        <circle cx="12" cy="27" r="2" />
+                    </svg>
+                </a></li>
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+<path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
+                        </svg>
+                    </a>
+                  
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="about.html">Đăng Nhập</a>
+                        <a class="dropdown-item" href="blog.html">Đăng Xuất</a>
+                    </div>
+                </li>
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+        </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="item1">
+      <div class="logogiohang">
+      
+      <span id="giohang"> giỏ hàng</span>
+      </div>
+      <div class="timkiem">
+        <input type="text" id="timkiemIP" placeholder="bạn muốn tìm gì ?">
+        <button id="timkiemBT"><i class="fas fa-search"></i></button>
+      </div>
+
+    </section>
+   <section class="item2">
+ 
+ <div class="phanthan">
+  <div id="goiyvanchuyen"><span id="noidunggoiy"><i class="fas fa-truck"></i> Nhấp vào mã voucher ở phía dưới để nhận free ship nhé !</span></div>
+ 
+ <div id="tieudegiohang">
+  <div class="tieudetrai">
+        <input id="check" type="checkbox">  
+     <div class="ttsanphamtrai">Sản Phẩm </div>
+  </div>
+    <div class="tieudephai">
+      <span id="ttsanhamphai">Đơn Giá</span>
+      <span id="ttsanhamphai">Số Lượng</span>
+      <span id="ttsanhamphai">Số Tiền</span>
+      <span id="ttsanhamphai">Thao Tác</span>
+    </div>
+ </div>
+
+ <div class="hienthisanpham">
+
+  <div class="tenloaisanpham">
+    ca root hihidad
+  </div>
+  <div class="chitietsanpham">
+    <div class="tieudetrai">
+        <input id="check" type="checkbox">  
+     <div class="sanphamtrai"> 
+      <div class="anh"><img class="anhsanpham" src="assets/images/khi2.png" alt=""></div>
+     <div class="motasanpham"><p>Có màu da và rất là ngon luôn nha đây là quả củ cà rốt như meo keu haha tap danh đàn ba</p> 
+</div>
+     </div>
+  </div>
+    <div class="tieudephai">
+      <span id="ttsanhamphai">100</span>
+      <span id="ttsanhamphai"><a href="#" class="tru">-</a><input class="nhapsoluong" type="text"><a href="#" class="cong">+</span>
+      <span id="ttsanhamphai">500</span>
+      <span id="ttsanhamphai"><a href="#">xóa</a></span>
+    </div>
+  </div>
+  <div class="voucher">
+    <span class="dropdown"> <i class="fas fa-water"></i> Shop Voucher giảm đến ₫100k
+Mới
+Xem thêm voucher <i class="fas fa-caret-down dropbtn">
+ <div class="dropdown-content">
+    <a href="#">voucher freeship</a>
+    <a href="#">Giảm 10% </a>
+    <a href="#">Giảm 50% (zalopay)</a>
+  </div>
+  
+</i>
+
+</span>
+  </div>
+  
+ </div>
+ </div>
+
+ <div class="item3">
+  <div class="themvaodonhang">
+  <input id="chontatca" type="checkbox" >
+  <button class="chontatca">Chọn Tất Cả (11)</button>
+  <button class="xoa">xóa </button>
+  <button class="luumucthanhtoan">lưu vào mục đã thanh toán </button>
+ <div class="tongthanhtoan">Tổng thanh toán (0 sản phẩm ):S 0 </div>
+ <button class="muahang">Mua Hàng </button>
+ </div>
+ </div>
+   </section>
+  </main>
+
+
+  <script src="assets/js/jquery-2.1.0.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="assets/js/popper.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <!-- Plugins -->
+  <script src="assets/js/scrollreveal.min.js"></script>
+  <script src="assets/js/waypoints.min.js"></script>
+  <script src="assets/js/jquery.counterup.min.js"></script>
+  <script src="assets/js/imgfix.min.js"></script>
+  <script src="assets/js/mixitup.js"></script>
+  <script src="assets/js/accordions.js"></script>
+  <!-- Global Init -->
+  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

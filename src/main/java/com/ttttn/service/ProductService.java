@@ -1,5 +1,12 @@
 package com.ttttn.service;
 
-public interface ProductService {
+import java.util.List;
 
+import com.ttttn.entity.Product;
+
+public interface ProductService {
+ List<Product> fillAll();
+ 
+List<Product> findByCategoryId(String id);
+Product findById(Integer id);
 }

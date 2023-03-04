@@ -3,6 +3,8 @@ package com.ttttn.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,9 +39,11 @@ Category  category;
 @OneToMany(mappedBy = "product")
 private List<Comment> comments;
 
-@OneToMany(mappedBy = "product")
-private List<Discount> discounts;
+//@JsonIgnore
+//@OneToMany(mappedBy = "product")
+//private List<Discount> discounts;
 
+@JsonIgnore
 @OneToMany(mappedBy = "product")
 private List<Review> reviews;
 
@@ -49,6 +53,7 @@ private List<Review> reviews;
 //inverseJoinColumns = @JoinColumn(name="order_id"))
 //private List<Order> orders = new ArrayList<>();
 
+@JsonIgnore
 @OneToMany(mappedBy = "product")
 private List<OrderItems> orderItems;
 

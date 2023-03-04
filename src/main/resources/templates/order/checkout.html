@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/css/thanhtoan.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+</head>
+<body>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky" id="than">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">Food Store</a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+                <li><a href="index.html" class="active">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
+                  
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="about.html">Tin Tức</a>
+                        <a class="dropdown-item" href="blog.html">Kiến Thức</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Liên Hệ</a></li> 
+               
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <svg id="i-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <circle cx="14" cy="14" r="12" />
+                            <path d="M23 23 L30 30"  />
+                        </svg>
+                    </button>
+                  </form>
+                  <li><a href="checkout.html">
+                    <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
+                        <circle cx="25" cy="27" r="2" />
+                        <circle cx="12" cy="27" r="2" />
+                    </svg>
+                </a></li>
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+<path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
+                        </svg>
+                    </a>
+                  
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="about.html">Đăng Nhập</a>
+                        <a class="dropdown-item" href="blog.html">Đăng Xuất</a>
+                    </div>
+                </li>
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+        </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+  <div class="ttitem1">
+    
+    <span class="tttieudethanhtoan">Thanh Toán</span>
+  </div>
+
+   <!-- mỗi sản phẩm của khách hàng mua  -->
+  <div class="ttitem2">
+    <div class="tttoanitem2">
+    <div class="ttdiachi">
+      <span class="ttdiachinhanhang"><i class="fas fa-map-marker-alt"></i> Địa chỉ nhận hàng </span>
+      <br><br>
+      <span class="ttdiachicuthe">nguyễn đình thắng (0359780733) hội trường thôn sơn nam xã cẩm thịnh huyện cẩm xuyên ,tỉnh hà tĩnh </span><a class="ttthaydoi" id="openModalBtn" href="#">Thay đổi</a>
+    </div>
+
+<div id="myModal" class="ttmodal">
+  <div class="ttmodal-content">
+    <span class="close">&times;</span>
+    <form class="formmodal">
+  <div class="form-group">
+    <label for="address">Địa chỉ</label>
+    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn" required>
+  </div>
+  <div class="form-group">
+    <label for="phone">Số điện thoại</label>
+    <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn" pattern="[0-9]{10}" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+  </div>
+  <button type="submit">Gửi</button>
+</form>
+
+  </div>
+</div>
+
+    <div class="ttsanpham">
+        <div class="tttieude">
+
+          <span style="margin-left: 50px;">Sản Phẩm </span>
+
+          <span>Đơn Giá </span>
+          <span>Số Lượng</span>
+          <span class="ttthanhtien">Thành Tiền</span>
+
+        </div>
+        <div class="ttsanphammua">
+          <div class="ttanh">
+            <img class="tthinhsanpham" src="assets/images/khi2.png" alt=""> 
+            <span class="tttensanpham">con khi kho haha</span>
+          </div> 
+          <div class="ttsolieusanpham">
+            <span>$56</span>
+            <span>2</span>    
+            <span>đ444.0</span>
+          </div>
+        </div>  
+        <div class="ttvanchuyen">
+          <div class="ttnhavanchuyen">
+            <div class="ttloinhan">
+              <label for="">Lời Nhắn:</label>
+            <input class="ttghichuship" type="text" placeholder="lưu ý cho người bán ">
+            </div>
+            <label for="">Đơn vị vận chuyển :</label> 
+            <span><span class="pthuc">nhanh</span>  <a class="thaydoi" id="thaydoivanchuyen" href="#" >Thay Đổi</a> </span>
+            <span class="tienship">đ38.00</span>
+
+  <div id="hinhthucvanchuyen">
+     <span class="cl">&times;</span>
+    <button id="nhanh">Nhanh</button>
+    <button id="binhthuong">Bình Thường</button>
+  </div>
+
+          </div>
+          <div class="tongtiensanpham">
+            <div class="phantongtien">  
+                 <label for="">Tổng số tiền (1 sản phẩm ): </label>
+            <span>đ78.800</span>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="ttitem2">
+   <div class="ttphuongthucthanhtoan">
+
+   <div class="ttvoucher">
+    <span for="">Voucher</span>
+    <input type="text" placeholder="Nhập vourcher tài khoản của bạn .">
+   </div>
+
+   <div class="ttphuongthuc">
+    <span for="" class="ttghichuthanhtoan">Phương thức thanh toán </span> 
+    <button class="ttthetindung">Thẻ tín dụng</but>
+    <button class="ttthanhtoankhinhanhang">Thanh toán khi nhận hàng</button>
+   </div>
+
+   <div class="tttinhtong"><div class="tttinhtongchild">
+    <label for="">Tổng tiền hàng:</label>
+    <span>đ1.572.001</span><br><br>
+    <label for=" ">Phí Vận Chuyển:</label>
+    <span>đ156.700</span><br> <br>
+    <label for="">Tổng Thanh Toán :</label>
+    <span>đ131394</span>
+      </div>
+     </div>
+     
+     <div class="ttdathang">
+      <span>Nhấn đặt hàng đồng nghĩa với việc bạn đồng ý tuân theo Điều Khoản củ chúng tôi</span>
+      <button class="ttdathangbtn">Đặt hàng</button>
+     </div>
+     </div>
+    </div>
+  
+  <script src="assets/js/thanhtoan.js"></script>  
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Plugins -->
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/mixitup.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/index.js"></script>  
+  </body>
+  </html>

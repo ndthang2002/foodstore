@@ -1,0 +1,421 @@
+/* css dropdown */
+.dropbtn {
+  
+ 
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(17, 4, 4, 0.2);
+    z-index: 1;
+   left: 250px;
+   top: 50px;
+  
+   animation: dropdown 0.5s ease alternate;
+  }
+  @keyframes dropdown {
+    
+    from{
+      top: 30px;
+  
+    }to{
+      top: 50px;
+    }
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+  
+  body{
+    background-color: rgb(56,21,0);
+  }
+  header{
+    background-color: rgb(12, 9, 7);
+  }
+  html{
+    background-color: rgb(233, 187, 187);
+  }
+  .item1{ 
+    background-color: rgb(181, 61, 17);
+    width: 100%;
+    height:200px;
+    display: grid;  
+    grid-template-columns: repeat(2,50%);
+    align-items: center;
+    border: 1px solid rgb(204, 197, 197);
+    
+  }
+  .logogiohang{
+  
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+  }
+  #logo{
+    font-size: 40px;
+  }
+  #giohang{
+    font-size: 40px;
+    text-transform: uppercase;
+    color: rgb(229, 225, 225);
+    margin-top: 10px;
+  }
+  .timkiem{
+    display: flex;
+    justify-content: center;
+  }
+  #timkiemIP{
+    width: 300px;
+    height: 30px;
+    border: none;
+    opacity: 50%;
+  }
+  #timkiemBT{
+    width: 50px;
+    height: 30px;
+    border: none;
+    background-color: rgb(235, 227, 227);
+    -webkit-tap-highlight-color: aliceblue;
+    
+  }
+  .item2{
+   padding: 30px 100px 0px 100px ;
+   background-color: rgb(245,245,245);
+  }
+  .phanthan{
+   
+    height: 80vh;
+  }
+  #goiyvanchuyen{
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgb(219, 211, 211);
+    background-color: rgb(255, 255, 255);
+  }
+  #goiyvanchuyen span{
+    align-items: center;
+    line-height: 50px;
+    margin-left:4rem;
+  }
+  .fa-truck{
+    color: aquamarine;
+  }
+  #tieudegiohang{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    width: 100%;
+    line-height: 50px;
+   background-color: aliceblue;
+   margin: 10px 0 10px 0;
+  }
+  #chontoanbo{
+    width: 20px;
+  }
+  .tieudetrai{
+    display: grid;
+    grid-template-columns: 20% 80%;
+  }
+  #check{
+    width:20px;
+    margin-left: 50px;
+  }
+  .tieudephai{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4,auto);
+    align-items: center;
+  }
+  .hienthisanpham{
+  display: grid;
+  grid-template-rows: 20% 60% 20%;
+  
+  }
+  .tenloaisanpham{
+   background-color: #FFFFFF;
+   width: 100%;
+   min-height: 50px;
+   display: flex;
+   align-items: center;
+   padding-left: 20px;
+   color:black;
+   font-weight: bold;
+   text-transform: uppercase;
+  }
+  .chitietsanpham{
+      display: grid;
+    grid-template-columns: 45% 55%;
+    width: 100%;
+    line-height: 50px;
+   min-height: 200px;
+    background-color: #e7e5e5;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+   
+  }
+  .voucher{
+    width: 100%;
+    min-height: 50px;
+    background-color:#FFFFFF;
+    line-height: 50px;
+  }
+  .voucher span{
+    margin-left: 30px;font-size: 11px;
+}
+.sanphamtrai{
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+.anhsanpham{
+  width: 100%;
+  height:70%;
+}
+.anh{
+  display: flex;
+  align-items: center;
+}
+.motasanpham{
+  padding: 10px;
+  font-size: 13px;
+    display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+  
+}
+.motasanpham p{
+  color: rgb(20,10,50);
+}
+.item3{
+   position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #FFFFFF;
+padding: 20px;
+
+}
+.item3 button{
+  border: none;
+}
+.item3 input{
+ width: 50px;
+ height: 30px;
+}
+.themvaodonhang{
+display: flex;
+align-items: center;
+justify-content: space-between;
+line-height: 50px;
+}
+.muahang{
+  background-color: rgb(253, 83, 4);
+  width: 200px;
+}
+header{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+.tru{
+  height: 10px;
+}
+.nhapsoluong{
+width: 30px;
+height: 30px;
+margin-left: 5px;
+margin-right: 5px;
+border: none;
+}
+
+
+@media only screen and (max-width: 1024px){
+    
+    .chontatca{
+      font-size: 13px;
+      width: 150px;
+      height: 40px;
+      margin-right: 1rem;
+    }
+    .xoa{
+      font-size: 13px;
+      width: 50px;
+      height: 40px;
+       margin-right: 1rem;
+    }
+    .luumucthanhtoan{
+       width: 250px;
+      height: 40px;
+       margin-right: 1rem;
+       font-size: 13px;
+    }
+    .tongthanhtoan{
+      font-size: 7px;
+    }
+    .muahang{
+     width: 100px;
+     height: 50px;
+     font-size: 11px;
+    }
+    .ttsanphamtrai{
+      margin-left: 10px;
+    }
+  .logogiohang{
+    margin-top: 100px;
+  }
+  .timkiem{
+    margin-top: 100px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .chontatca{
+    height: 50px;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .xoa{
+    height: 50px;
+  }
+
+  .luumucthanhtoan{
+    height: 50px;
+  }
+  .tongthanhtoan{
+    font-size: 11px;
+  }
+
+  #chontatca{
+    height: 30px;
+    width: 40px;
+  }
+  
+
+}
+@media only screen and (max-width: 768px){
+#noidunggoiy{
+    font-size: 13px;
+  }
+.ttsanphamtrai{
+  font-size: 13px;
+
+}
+#ttsanhamphai{
+  font-size: 13px;  
+}
+.tieudetrai{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+}
+.anh{
+  height: 100px;
+  width: 50px;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.motasanpham p{
+  font-size: 11px;
+  overflow: scroll;
+ 
+}
+}
+
+
+ @media only screen and (max-width: 736px){
+     .chontatca{
+    height: 50px;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .xoa{
+    height: 50px;
+  }
+
+  .luumucthanhtoan{
+    height: 50px;
+  }
+  .tongthanhtoan{
+    font-size: 11px;
+  }
+
+  #chontatca{
+    height: 30px;
+    width: 40px;
+  }
+  
+
+}
+@media only screen and (max-width: 768px){
+  #giohang{
+    font-size: 25px;
+  }
+#noidunggoiy{
+    font-size: 13px;
+  }
+.ttsanphamtrai{
+  font-size: 13px;
+
+}
+#ttsanhamphai{
+  font-size: 13px;  
+}
+.tieudetrai{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+}
+.anh{
+  height: 100px;
+  width: 50px;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.motasanpham p{
+  font-size: 11px;overflow: scroll;
+ 
+}
+ }
+
+ @media only screen and (max-width: 375px){
+  #giohang{
+    font-size: 20px;
+  }
+   #timkiemIP{
+    width: 100px;
+   }
+   #timkiemBT{
+    width: 30px;
+   }
+   #goiyvanchuyen{
+    width: 200px;
+    height: 50px;
+    display: grid;
+    justify-content: center;
+    
+   }
+   .item2{
+    padding: 0;
+    display: grid;
+    grid-template-rows: repeat(7,auto);
+   }
+ }
