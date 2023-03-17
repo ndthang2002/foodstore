@@ -1,86 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<!--<head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="assets/css/thanhtoan.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+ <!-- <link rel="stylesheet" href="assets/css/thanhtoan.css">-->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">-->
 
-</head>
+</head>-->
 <body>
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky" id="than">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">Food Store</a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-                <li><a href="index.html" class="active">Trang Chủ</a></li>
-                <li><a href="products.html">Sản Phẩm</a></li>
-                
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
-                  
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="about.html">Tin Tức</a>
-                        <a class="dropdown-item" href="blog.html">Kiến Thức</a>
-                    </div>
-                </li>
-                <li><a href="contact.html">Liên Hệ</a></li> 
-               
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                        <svg id="i-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                            <circle cx="14" cy="14" r="12" />
-                            <path d="M23 23 L30 30"  />
-                        </svg>
-                    </button>
-                  </form>
-                  <li><a href="checkout.html">
-                    <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                        <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
-                        <circle cx="25" cy="27" r="2" />
-                        <circle cx="12" cy="27" r="2" />
-                    </svg>
-                </a></li>
-                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-<path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
-                        </svg>
-                    </a>
-                  
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="about.html">Đăng Nhập</a>
-                        <a class="dropdown-item" href="blog.html">Đăng Xuất</a>
-                    </div>
-                </li>
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-        </nav>
-        </div>
-      </div>
-    </div>
-  </header>
+  <main>
   <!-- ***** Header Area End ***** -->
-  <div class="ttitem1">
+  
+ <!-- <div class="ttitem1">
     
     <span class="tttieudethanhtoan">Thanh Toán</span>
   </div>
-
+-->
+   <!-- ***** Call to Action Start ***** -->
+    <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2><em>Sản Phẩm Của Chúng Tôi</em></h2>
+                        <p>Food cung cấp nhiều gói ăn và thực phẩm dùng kèm đa dạng phù hợp với mọi nhu cầu của bạn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
    <!-- mỗi sản phẩm của khách hàng mua  -->
   <div class="ttitem2">
     <div class="tttoanitem2">
@@ -191,7 +147,7 @@
      </div>
      </div>
     </div>
-  
+  </main>
   <script src="assets/js/thanhtoan.js"></script>  
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>

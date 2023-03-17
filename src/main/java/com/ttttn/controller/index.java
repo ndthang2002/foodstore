@@ -27,10 +27,10 @@ public class index {
   CategoryService categoryService;
 
   @RequestMapping("/index")
-  public String index(Model model)  {
+  public String index(Model model)  { 
      List<Category> list = categoryService.findAll();
      model.addAttribute("listcategory", list);
-    return "layout/index";
+    return "layout/home";
   }
   
 }

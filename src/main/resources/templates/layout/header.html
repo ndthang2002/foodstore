@@ -5,22 +5,21 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">Food Store</a>
+                        <a th:href="@{/index}" class="logo">Food Store</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="index.html" class="active">Trang Chủ</a></li>
+                            <li><a th:href="@{/index}" class="active">Trang Chủ</a></li>
                             <li><a th:href="@{/product}">Sản Phẩm</a></li>
                             
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
-                              
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item text-dark" href="about.html">Tin Tức</a>
-                                    <a class="dropdown-item text-dark" href="blog.html">Kiến Thức</a>
+                                    <a class="dropdown-item text-dark" th:href="@{/tintuc}">Tin Tức</a>
+                                    <a class="dropdown-item text-dark" th:href="@{/kienthuc}">Kiến Thức</a>
                                 </div>
                             </li>
-                            <li><a href="contact.html">Liên Hệ</a></li> 
+                            <li><a th:href="@{/lienhe}">Liên Hệ</a></li> 
                            
                             <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
@@ -31,25 +30,26 @@
                                     </svg>
                                 </button>
                               </form>
-                              <li class="cart_icons"><a href="cart.html">
+                              <li class="cart_icons"><a th:href="@{cart}">
                                 <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                     <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
                                     <circle cx="25" cy="27" r="2" />
                                     <circle cx="12" cy="27" r="2" />
                                 </svg>
+                                <span class="thongbao " >{{cart.getCount}}</span>
                             </a>  
                             <!-- itrm icons -->
-                            <div class="itemcart">
-                              <div class="item">
+                            <div class="itemcart" >
+                              <div class="item"  ng-repeat="item in cart.items">
                                 <img src="assets/images/product-3-720x480.jpg" alt="">
-                                <div class="name">salad rau trộn cho chó</div>
-                                <div class="price">đ233</div>
+                                <div class="name" style="text-transform: uppercase;font-size: 13px;"> {{item.name}}</div>
+                                <div class="price">{{item.price}}$</div>
                               </div>
-                               <div class="item">
+                             <!--  <div class="item">
                                 <img src="assets/images/product-3-720x480.jpg" alt="">
                                 <div class="name">salad rau trộn cho chó</div>
                                 <div class="price">233</div>
-                              </div>
+                              </div>-->
                             </div>
                             </li>
 

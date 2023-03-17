@@ -36,6 +36,8 @@ private String name;
 @ManyToOne
 @JoinColumn(name="categoryid")
 Category  category;
+
+@JsonIgnore
 @OneToMany(mappedBy = "product")
 private List<Comment> comments;
 
@@ -47,6 +49,13 @@ private List<Comment> comments;
 @OneToMany(mappedBy = "product")
 private List<Review> reviews;
 
+@JsonIgnore
+@OneToMany(mappedBy = "product")
+private List<ImageProduct> imageProducts;
+
+@JsonIgnore
+@OneToMany(mappedBy = "product")
+private List<CartProduct> cartProducts;
 //@ManyToMany
 //@JoinTable(name = "order_items",
 //joinColumns = @JoinColumn(name="product_id"),

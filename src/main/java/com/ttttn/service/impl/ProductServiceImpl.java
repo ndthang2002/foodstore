@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService{
   @Override
   public Product findById(Integer id) {
     // TODO Auto-generated method stub
-    return productJparepository.getById(id);
+    return productJparepository.findById(id).get();
   }
 
   

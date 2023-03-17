@@ -21,7 +21,7 @@ public class DeliveryMothod {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer transportid ;
-  private int transportfee;
+
   private String name;
   private double price;
   @ ManyToOne

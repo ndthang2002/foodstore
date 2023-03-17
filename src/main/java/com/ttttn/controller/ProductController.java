@@ -25,9 +25,10 @@ public class ProductController {
   
   @RequestMapping("/product")
   public String product(Model model) {
-  List<Product> listProduct = productService.fillAll();
-  model.addAttribute("listProduct", listProduct);
-  
+    
+      List<Product> listProduct = productService.fillAll();
+      model.addAttribute("listProduct", listProduct);
+     
   List<Category> listCategory = categoryService.findAll();
   model.addAttribute("listCategory", listCategory);
     return "product/products";

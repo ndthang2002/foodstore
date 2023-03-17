@@ -48,6 +48,10 @@ public class User {
   
   @JsonIgnore
   @OneToMany(mappedBy = "user")
+  private List<ImageProduct> imageProducts;
+  
+  @JsonIgnore
+  @OneToMany(mappedBy = "user")
   private List<Discount> discounts;
   
   @ManyToMany

@@ -1,109 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-
-    <title>PHPJabbers.com | Free Food Store Website Template</title>
-
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    </head>
+  
+    <main>
     
-    <body>
-    
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-    
-    
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">Food Store</a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="index.html" class="active">Trang Chủ</a></li>
-                            <li><a href="products.html">Sản Phẩm</a></li>
-                            
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
-                              
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">Tin Tức</a>
-                                    <a class="dropdown-item" href="blog.html">Kiến Thức</a>
-                                </div>
-                            </li>
-                            <li><a href="contact.html">Liên Hệ</a></li> 
-                           
-                            <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                    <svg id="i-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                        <circle cx="14" cy="14" r="12" />
-                                        <path d="M23 23 L30 30"  />
-                                    </svg>
-                                </button>
-                              </form>
-                              <li><a href="checkout.html">
-                                <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                    <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
-                                    <circle cx="25" cy="27" r="2" />
-                                    <circle cx="12" cy="27" r="2" />
-                                </svg>
-                            </a></li>
-                              <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-<path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
-                                    </svg>
-                                </a>
-                              
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">Đăng Nhập</a>
-                                    <a class="dropdown-item" href="blog.html">Đăng Xuất</a>
-                                </div>
-                            </li>
-                        </ul>        
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
-
-   
-
     <!-- ***** Call to Action Start ***** -->
     <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
         <div class="container">
@@ -122,42 +22,41 @@
     <!-- ***** Call to Action End ***** -->
 
     <!-- ***** Fleet Starts ***** -->
-    <section class="section" id="trainers">
+    <section class="section bodyproduct" id="trainers">
         
-        
+       
         <div class="container">
            <div class="row">
-                <div class="offset-lg-3">
-                    <div class="section-heading">
-                        <h2 style="text-shadow: 1px 2px 5px  gray;"> loại sản phẩm </h2>
+         
+                <!--   <div class="section-heading">
+                        <h2 style="text-shadow: 1px 2px 5px  rgb(65, 65, 65);"> loại sản phẩm </h2>
+                    </div>-->
+                    <div class="loaisanpham">
+                    <a class="imgloaisanpham" th:href="@{|/categoryid?cid=10|}"><span class="tenloaisp">Thịt Cá</span><br><img src="assets/images/category1.webp" alt=""></a>
+                     <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=13|}"><span class="tenloaisp">Rau Củ</span><br><img src="assets/images/category2.webp" alt=""></a>
+                    <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=14|}"><span class="tenloaisp">Tinh Bột</span><br><img src="assets/images/category3.png" alt=""></a>
                     </div>
-                    <div >
-                    <a class="imgloaisanpham" th:href="@{|/categoryid?cid=10|}"><img src="assets/images/category1.webp" alt=""></a>
-                     <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=13|}"><img src="assets/images/category2.webp" alt=""></a>
-                    <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=14|}"><img src="assets/images/category3.png" alt=""></a>
-                    </div>
-                </div>
+              
                 <div class="slider-container">
-  <input type="range" min="500" max="10000" value="100" class="slider" id="myRange" >
+  <input type="range" min="50" max="2000" value="50" step="50" class="slider" id="myRange"  ng-model="priceFilter">
   <p>Giá: <span id="demo"></span></p>
 </div>    
             </div>
 
+
+  
+        
             <hr style="height:5px;background-color: rgb(191, 188, 188);">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2 style="font-size: 20px;">  tất cả sản phẩm </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+           
+            <div class="row mt-5" >
                 <div class="col-lg-3 mt-3 " th:each="product:${listProduct}">
-                  <a th:href="@{|/detail?pid=${product.productid}|}">
+                
                     <div class="trainer-item  m-2 m-sm-1">
+                        <a th:href="@{|/detail?pid=${product.productid}|}">
                         <div class="image-thumb h-50">
                             <img class="h-50" src="assets/images/hinh-thit-kho-tau.jpg" alt="">
                         </div>
+                          </a>
                         <div class="down-content">
                             <br>
                             <h4>[[${product.name}]]</h4>
@@ -166,17 +65,16 @@
 
                             <ul class="social-icons">
                                 <li>
-                                <a href="#addOrder" id="add-to-cart-btn" class="ml-1"> <i class="fas fa-cart-plus"></i></a>
-                                <a href="#addOrder" id="add-to-cart-btn">Mua</a>
+                                <a href="" th:attr="ng-click=@{|cart.add(${product.productid})|}" id="add-to-cart-btn" class="ml-1"> <i class="fas fa-cart-plus"></i></a>
+                                <a href="#addOrder" id="add-to-cart-btn">Mua</a>  
                                 </li>
-                                
                                 <span>
                                     [[${product.price}]]đ
                                 </span>
                             </ul>
                         </div>
                     </div>
-                    </a>
+                  
                 </div>
                 <div id="success-modal">
   <div class="modal-content">
@@ -184,6 +82,8 @@
     <button id="close-modal-btn">Đóng</button>
   </div>
 </div>
+    
+        
                 <!--<div class="col-lg-3">
                     <div class="trainer-item">
                         <div class="image-thumb">
@@ -355,38 +255,8 @@
     <!-- ***** Fleet Ends ***** -->
 
     
-    <!-- ***** Footer Start ***** -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>
-                        Copyright © 2020 Company Name
-                        - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-   <!-- add order-->
-    <script src="assets/js/addcart.js"></script>
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+ </main>
+ 
 
-    <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/mixitup.js"></script> 
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/range.js"></script>
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
-
-  </body>
+  
 </html>

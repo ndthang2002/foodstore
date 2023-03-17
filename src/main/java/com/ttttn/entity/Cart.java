@@ -1,5 +1,6 @@
 package com.ttttn.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,22 +26,26 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "cart")
 public class Cart {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer cartid;
-  private int quantity;
-  
+  private int quantityproduct;
+  private double totalall;  
+  private Date datecreated;
+
   @JsonIgnore
    @OneToMany(mappedBy = "cart")
    private List<Order> orders;
-   
-  @ManyToMany(cascade = {CascadeType.ALL})
-  @JoinTable(
-      name="cart_product",
-      joinColumns = {@JoinColumn(name ="cart_id")},
-      inverseJoinColumns = {@JoinColumn(name="product_id")})
-  private List<Product>products;
+   /*
+    * @ManyToMany(cascade = {CascadeType.ALL})
+    * 
+    * @JoinTable( name="cart_product", joinColumns = {@JoinColumn(name
+    * ="cart_id")}, inverseJoinColumns = {@JoinColumn(name="product_id")}) private
+    * List<Product>products;
+    */
+  @JsonIgnore
+ @OneToMany(mappedBy = "cart")
+ private List<CartProduct> cartProducts;
  
   @ManyToOne
   @JoinColumn(name = "user_id")

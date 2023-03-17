@@ -1,0 +1,300 @@
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+  <main>
+<!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <video autoplay muted loop id="bg-video">
+            <source src="assets/images/video.mp4" type="video/mp4" />
+        </video>
+
+        <div class="video-overlay header-text">
+            <div class="caption">
+                <h6>CỬA HÀNG THỰC PHẨM DUY TÚ</h6>
+                <h2>Thế Giới <em>thực phẩm</em> </h2>
+                <div class="main-button">
+                    <a href="contact.html">Liên hệ chúng tôi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+   <!-- ***** Cars Starts ***** -->
+    <section class="section" id="trainers" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Menu <em>Thực Phẩm</em></h2>
+                        <img src="assets/images/line-dec.png" alt="">
+                        <p> Tất cả sản phẩm của cửa hàng chúng tôi : bao gồm  thực phẩm sống, thực phẩm chín, thực phẩm đông lạnh.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-lg-4" th:each="list :${listcategory}">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="assets/images/product-4-720x480.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h3>[[${list.name}]]</h3>
+  
+                            <p>[[${list.categorydescription}]]</p>
+
+                            <ul class="social-icons">
+                                <li><a th:href="@{|/categoryid?cid=${list.categoryid}|}">+ View More</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="assets/images/product-5-720x480.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h3>Thực phẩm tươi</h3>
+                            <p>Rau, củ, quả, hoa</p>
+                            <ul class="social-icons">
+                                <li><a href="products.html">+ View More</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="assets/images/product-6-720x480.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h3>Thực phẩm đông lạnh</h3>
+                            <p>Cá đông lạnh, mực đông lạnh, tôm đông lạnh, thit bo , thit ga , thit cho  thit meo thit lon thit me </p>
+                            <ul class="social-icons">
+                                <li><a hre  f="products.html">+ View More</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+            <br>
+
+            <div class="main-button text-center">
+                <a href="/product">Xem tất cả sản phẩm.</a>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Cars Ends ***** -->
+    
+    <section class="section section-bg" id="schedule" style="background-image: url(assets/images/about-fullscreen-1-1920x700.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <div class="box_service clearfix text-center" id="box">
+                        <div class="image_service">
+                            <img class="lazyload" width="70" height="70" src="assets/images/service_1.webp"  data-src="//bizweb.dktcdn.net/100/068/166/themes/880372/assets/service_1.png?1676015225050" alt="Miễn phí vận chuyển "/>
+                        </div>
+                        <div class="content_service">
+                            <h3 class="title_service text-while">Miễn phí vận chuyển </h3>
+                            <span class="des_service">Chúng tôi vận chuyển miễn phí với đơn hàng trị giá trên 1.000.000đ</span>
+                        </div>
+                    </div>
+                </div>
+                              
+                <div class="col-lg-4 col-12">
+                    <div class="box_service clearfix text-center" id="box">
+                        <div class="image_service">
+                            <img class="lazyload" width="70" height="70" src="assets/images/service_2.webp"  data-src="//bizweb.dktcdn.net/100/068/166/themes/880372/assets/service_2.png?1676015225050" alt="Hỗ trợ Online 24/24"/>
+                        </div>
+                        <div class="content_service">
+                            <h3 class="title_service">Hỗ trợ Online 24/24</h3>
+                            <span class="des_service">Đội tư vấn của chúng tôi luôn sẵn sàng hỗ trợ khi bạn gặp khó khăn</span>
+                        </div>
+                    </div>
+                </div>
+                
+               <div class="col-lg-4 col-12">
+                    <div class="box_service clearfix text-center" id="box">
+                        <div class="image_service">
+                            <img class="lazyload" width="70" height="70" src="assets/images/service_3.webp"  data-src="//bizweb.dktcdn.net/100/068/166/themes/880372/assets/service_3.png?1676015225050" alt="Quà tặng cuối tuần"/>
+                        </div>
+                        <div class="content_service">
+                            <h3 class="title_service">Quà tặng cuối tuần</h3>
+                            <span class="des_service">Khuyến mại lớn, rinh quà tặng với mỗi thứ 7 và chủ nhật hàng tuần</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- <div class="row">
+                <div class="col-lg-12">
+                    <div class="cta-content text-center">
+                        <p>Thuận tự nhiên là tôn chỉ của chúng tôi trong quá trình chăn nuôi, trồng cấy các sản phẩm để cung cấp đến người tiêu dung tại hệ thống chuỗi thực phẩm sạch.</p>
+                        <p>Bộ phận kỹ sư thực địa luôn giám sát nghiêm ngặt đối với các Hợp tác xã , đối tác tham gia trong chuỗi cung ứng tiêu chuẩn của chúng tôi.</p>
+                        <p>Sản phẩm thuận tự nhiên phải có thông tin nguồn gốc, quá trình nuôi trồng, sản phẩm được công khai minh bạch theo thời gian thực trên từng sản phẩm.</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ***** Blog Start ***** -->
+    <section class="section" id="our-classes">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Tin <em>Tức</em></h2>
+                        <img src="assets/images/line-dec.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="tabs">
+              <div class="col-lg-4">
+                <ul>
+                  <li><a href='#tabs-1'>NƠI BÁN CÁ HỒI TƯƠI SIÊU NGON, ĐẢM BẢO CHẤT LƯỢNG MÀ GIÁ CỰC RẺ.</a></li>
+                  <li><a href='#tabs-2'>NHỮNG LOẠI THỊT BÒ NHẬP KHẨU NGON NHẤT.</a></li>
+                  <li><a href='#tabs-3'>Bạn có biết thực phẩm sạch và thực phẩm organic là hai loại khác nhau.</a></li>
+                  <div class="main-rounded-button"><a href="blog.html">XEM THÊM</a></div>
+                </ul>
+              </div>
+              <div class="col-lg-8">
+                <section class='tabs-content'>
+                  <article id='tabs-1'>
+                    <img src="assets/images/blog-image-1-940x460.jpg" alt="">
+                    <h4>NƠI BÁN CÁ HỒI TƯƠI SIÊU NGON, ĐẢM BẢO CHẤT LƯỢNG MÀ GIÁ CỰC RẺ</h4>
+
+                    <p><i class="fa fa-user"></i> By: admin &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+
+                    <p>Cá hồi tươi là loại thực phẩm cung cấp giá trị dinh dưỡng vô cùng, nhất là hàm lượng chất đạm protein. Không những thế, cá hồi tươi còn có thể chế biến ra rất nhiều món ăn với hương vị độc đáo, thơm ngon, làm cho bữa ăn thêm đậm đà, bổ dưỡng. Bạn đang loay hoay tìm mãi một nơi bán cá hồi tươi sống đảm bảo chất lượng, giá cả phải chăng? Thế thì hãy cùng Thực Phẩm Sạch HD tìm hiểu qua thông tin trong bài viết sau bạn nhé.</p>
+                    <div class="main-button">
+                        <a href="blog-details.html">XEM THÊM....</a>
+                    </div>
+                  </article>
+                  <article id='tabs-2'>
+                    <img src="assets/images/blog-image-2-940x460.jpg" alt="">
+                    <h4>NHỮNG LOẠI THỊT BÒ NHẬP KHẨU NGON NHẤT.</h4>
+                    <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+                    <p>Thịt bò nhập khẩu hiện nay đã không quá xa lạ đối với người Việt. Những miếng thịt bò đến từ Mỹ, Úc hay Nhật đang dần chiếm được sự ưa chuộng của các khách hàng. Với hương vị thơm sữa, mêm thịt, dễ dàng chế biến nhiều món ăn ngon khác nhau, thịt bò nhập khẩu đã giúp các bà nội trợ có thêm sự lựa chọn phong phú cho bữa ăn của gia đình mình.</p>
+                    <div class="main-button">
+                        <a href="blog-details.html">XEM THÊM....</a>
+                    </div>
+                  </article>
+                  <article id='tabs-3'>
+                    <img src="assets/images/blog-image-3-940x460.jpg" alt="">
+                    <h4>Bạn có biết thực phẩm sạch và thực phẩm organic là hai loại khác nhau.</h4>
+                    <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+                    <p>Không ít người nghĩ rằng thực phẩm sạch và thực phẩm hữu cơ là một. Tuy nhiên thực phẩm sạch vẫn sử dụng các chất hóa học trong quá trình nuôi trồng, còn thực phẩm hữu cơ thì hoàn toàn không. Hãy cùng Prudential tìm hiểu sự khác nhau cũng như tác dụng của hai loại thực phẩm này với sức khỏe để lựa chọn loại thực phẩm phù hợp cho bữa cơm gia đình nhé!.</p>
+                    <div class="main-button">
+                        <a href="blog-details.html">XEM THÊM....</a>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Blog End ***** -->
+
+    <!-- ***** Call to Action Start ***** -->
+    <section class="section section-bg" id="call-to-action">
+        <div class="container">
+            <div class="panel panel-primary">
+                <!-- <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <div class="section-heading">
+                            <h2>GÓP <em>Ý</em></h2>
+                            <img src="assets/images/line-dec.png" alt="">
+                        </div>
+                    </div>
+                </div> -->
+                      <h2>GÓP <em>Ý</em></h2>
+                            <img src="assets/images/line-dec.png" alt="">
+                <div class="panel-body">
+                    <div class="form-group">
+                      <label for="usr">Họ Tên:</label>
+                      <input required="true" type="text" class="form-control" id="usr" placeholder="Nhập họ và tên...">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input required="true" type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email...">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Số điện thoại:</label>
+                      <input required="true" type="number" class="form-control" id="sdt" placeholder="Nhập số điện thoại...">
+                    </div>
+                    <div class="form-group">
+                      <label for="confirmation_pwd">Nội dung:</label>
+                      <textarea id="story" name="story"
+                            rows="5" cols="100">
+                            </textarea>
+                    </div>
+                    <button class="btn btn-success">GỬI</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
+
+    <!-- ***** Testimonials Item Start ***** -->
+ 
+                    </div><!-- /.row -->
+                </div>
+                
+                <!-- <div class="col-lg-6">
+                    <ul class="features-items">
+                        <li class="feature-item">
+                            <!-- <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="First One">
+                            </div> 
+                            <div class="right-content">
+                                <h4>KHÔNG CÓ PHÂN BÓN HÓA HỌC</h4>
+                                <p><em>"Lương tháng hơn 1000$ trong năm 2024!"</em></p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="second one">
+                            </div>
+                            <div class="right-content">
+                                <h4>KHÔNG CHỨA CÁC HÓA CHẤT BẢO VỆ THỰC VẬT ĐỘC HẠI</h4>
+                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="fourth muscle">
+                            </div>
+                            <div class="right-content">
+                                <h4>KHÔNG CHỨA CÁC CHẤT KÍCH THÍCH TĂNG TRƯỞNG</h4>
+                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="training fifth">
+                            </div>
+                            <div class="right-content">
+                                <h4>KHÔNG CHỨA CÁC HÓA CHẤT GÂY BIẾN ĐỔI GEN</h4>
+                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>  -->
+            </div>
+
+            <br>
+
+            <!-- <div class="main-button text-center">
+                <a href="testimonials.html">Read More</a>
+            </div> -->
+        </div>
+    </section>
+    <!-- ***** Testimonials Item End ***** -->
+    </main>
+    </html>

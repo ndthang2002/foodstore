@@ -45,12 +45,15 @@ public class Order {
   @ManyToOne
   @JoinColumn(name = "cart_id")
   private Cart cart;
+  
   @JsonIgnore
   @OneToMany(mappedBy = "order")
   private List<Pay> pays;
+  
   @JsonIgnore
   @OneToMany(mappedBy = "order")
-  private List<DeliveryMothod> transports;
+  private List<DeliveryMothod> deliveryMothods;
+  
   @JsonIgnore
   @OneToMany(mappedBy = "order")
   private List<OrderItems> orderItems;

@@ -95,6 +95,11 @@ Cars Ends
 }
 .down-content h4{
   text-transform: capitalize;
+  font-weight: bold;
+  color: black;
+}
+.down-content h3{
+  text-transform: uppercase;
 }
 /* 
 
@@ -151,6 +156,7 @@ body {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
 .section-heading p {
   font-size: 20px;
 }
@@ -1378,13 +1384,13 @@ justify-content: center;
   display: none;
   background-color: white;
   position: absolute;
-  top: 50px;
+  margin-top: 5rem;
   width: 300px;
-  height: auto;  
-  z-index: -2;
-   
+  height: 500px;  
+  z-index: -2; 
    transition: transform 5s ease-in-out;
   padding: 10px;
+  overflow: scroll;
  }
 
  .item{
@@ -1392,6 +1398,7 @@ justify-content: center;
   grid-template-columns: 20% 50% 30%;
   gap: 1rem;
   margin-bottom: 1rem;
+  
  }
  .item img{
   width: 100%;
@@ -1486,3 +1493,37 @@ input[type="range"]{
 #close-modal-btn {
   margin-top: 10px;
 }
+.bodyproduct{
+  width: auto;
+  margin-top: 20px;
+}
+.loaisanpham{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.imgloaisanpham{
+  position: relative;
+  color: black;
+}
+.tenloaisp{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 20%;
+}
+.thongbao{
+ display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(233, 101, 65);
+  color: #ffff;
+  text-align: center;
+  line-height: 15px;
+  font-size: 8px;
+  position: absolute;
+  top: 0;
+  }

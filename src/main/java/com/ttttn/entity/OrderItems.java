@@ -22,6 +22,7 @@ public class OrderItems {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
  private Integer orderitemid;
+
 @ManyToOne(fetch =FetchType.LAZY)
 @JoinColumn(name = "order_id")
 private Order order;
