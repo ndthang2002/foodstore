@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ttttn.SecurityConfig;
+import com.ttttn.entity.Account;
 import com.ttttn.entity.Category;
 import com.ttttn.entity.Comment;
 import com.ttttn.entity.Product;
@@ -25,12 +27,14 @@ public class index {
 
   @Autowired
   CategoryService categoryService;
-
+  
+  SecurityConfig acc;
   @RequestMapping("/index")
-  public String index(Model model)  { 
+  public String index(Model model)  {
      List<Category> list = categoryService.findAll();
      model.addAttribute("listcategory", list);
+//         System.out.println(acc.nameAccount);
+//     model.addAttribute("account",acc.nameAccount);
     return "layout/home";
   }
-  
 }

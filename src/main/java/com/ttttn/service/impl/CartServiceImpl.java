@@ -27,10 +27,18 @@ public class CartServiceImpl implements CartService {
     return cartJparepository.getById(id);
   }
 
-  public Cart insert(Cart obj) {
+  @Override
+  public Cart insert(Cart cart) {
     // TODO Auto-generated method stub
-    cartJparepository.save(obj);
-    return null;
-  } 
+    return cartJparepository.save(cart);
+  }
+
+  @Override
+  public Cart findById(Integer id) {
+    // TODO Auto-generated method stub
+    return cartJparepository.findById(id).get();
+  }
+
+
 
 }

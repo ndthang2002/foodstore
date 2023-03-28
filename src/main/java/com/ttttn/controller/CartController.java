@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ttttn.SecurityConfig;
 import com.ttttn.entity.Cart;
 import com.ttttn.entity.CartProduct;
 import com.ttttn.entity.Product;
@@ -19,27 +20,31 @@ import com.ttttn.service.ProductService;
 @Controller
 public class CartController {
 
-  @Autowired
-  CartProductService cartProductService;
+    @Autowired
+    CartProductService cartProductService;
    
     @Autowired 
     ProductService productService;
     
     @Autowired 
     CartService cartService;
-   
+    
+    SecurityConfig config;
 
   @RequestMapping("/cart")
  public String showAll( Model model) {
 
     List<CartProduct> list = cartProductService.fillAllCart();
-    CartProduct cartProduct = list.get(0);
-    Product product = cartProduct.getProduct();
-    model.addAttribute("product", product);
+    /*
+     * CartProduct cartProduct = list.get(0); Product product =
+     * cartProduct.getProduct(); model.addAttribute("product", product);
+     */
     return "order/cart";
   }
   @RequestMapping("/payments")
-  public String payment() {
+  public String payment(Model model) {
+//    model.addAttribute("account", config.accountLogedIn);
+//    System.out.println(config.accountLogedIn.getAddress());
     return "order/checkout";
   }
   

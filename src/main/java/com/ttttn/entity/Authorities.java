@@ -1,23 +1,26 @@
 package com.ttttn.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+@SuppressWarnings("serial")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "authorities")
+@Table(name = "authorities", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"userid", "roleid"})
+})
 public class Authorities {
-
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +28,10 @@ public class Authorities {
   
   @ManyToOne
   @JoinColumn(name = "userid")
-  private User user;
+  private Account user;
     
   @ManyToOne
   @JoinColumn(name = "roleid")
   private Role role;
+  
 }

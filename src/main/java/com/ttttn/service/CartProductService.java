@@ -7,5 +7,5 @@ import com.ttttn.entity.CartProduct;
 public interface CartProductService {
 
   List<CartProduct> fillAllCart();
-  
+  CartProduct insert(CartProduct cartProduct);
 }

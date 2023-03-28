@@ -32,6 +32,12 @@ public class ProductServiceImpl implements ProductService{
     return productJparepository.findById(id).get();
   }
 
+  @Override
+  public List<Product> findProductByName(String name) {
+    // TODO Auto-generated method stub
+    return productJparepository.findByKeyword(name);
+  }
+
   
   
   

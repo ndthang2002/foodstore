@@ -42,7 +42,7 @@
     <div class="tttoanitem2">
     <div class="ttdiachi">
       <span class="ttdiachinhanhang"><i class="fas fa-map-marker-alt"></i> Địa chỉ nhận hàng </span>
-      <br><br>
+      
       <span class="ttdiachicuthe">nguyễn đình thắng (0359780733) hội trường thôn sơn nam xã cẩm thịnh huyện cẩm xuyên ,tỉnh hà tĩnh </span><a class="ttthaydoi" id="openModalBtn" href="#">Thay đổi</a>
     </div>
 
@@ -58,60 +58,69 @@
     <label for="phone">Số điện thoại</label>
     <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn" pattern="[0-9]{10}" required>
   </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
-  </div>
+
   <button type="submit">Gửi</button>
 </form>
 
   </div>
 </div>
 
-    <div class="ttsanpham">
+    <div class="ttsanpham" >
         <div class="tttieude">
-
           <span style="margin-left: 50px;">Sản Phẩm </span>
-
           <span>Đơn Giá </span>
           <span>Số Lượng</span>
           <span class="ttthanhtien">Thành Tiền</span>
-
         </div>
-        <div class="ttsanphammua">
+        
+       <div class="ttsanphammuaform">
+        <div class="ttsanphammua" ng-repeat="item in cart.items">
           <div class="ttanh">
-            <img class="tthinhsanpham" src="assets/images/khi2.png" alt=""> 
-            <span class="tttensanpham">con khi kho haha</span>
+            <img class="tthinhsanpham" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.image}}" alt=""> 
+            <span class="tttensanpham">{{item.name}}</span>
           </div> 
           <div class="ttsolieusanpham">
-            <span>$56</span>
-            <span>2</span>    
-            <span>đ444.0</span>
+            <span>{{item.price}}</span>
+            <span>{{item.quantity}}</span>    
+            <span>{{item.price*item.quantity}}.000vnd</span>
           </div>
         </div>  
-        <div class="ttvanchuyen">
+        
+        </div>
+    <!--    <div class="ttvanchuyen">
           <div class="ttnhavanchuyen">
             <div class="ttloinhan">
-              <label for="">Lời Nhắn:</label>
+            <label for="">Lời Nhắn:</label>
             <input class="ttghichuship" type="text" placeholder="lưu ý cho người bán ">
             </div>
             <label for="">Đơn vị vận chuyển :</label> 
-            <span><span class="pthuc">nhanh</span>  <a class="thaydoi" id="thaydoivanchuyen" href="#" >Thay Đổi</a> </span>
+            <span><span class="pthuc">nhanh</span>  
+            
+            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+   Thay Đổi
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item text-dark" href="#">Nhanh</a></li>
+    <li><a class="dropdown-item text-dark" href="#">Siêu Tốc </a></li>
+    <li><a class="dropdown-item text-dark" href="#">Siêu rẻ </a></li>
+  </ul>
+</div>
+            </span> 
             <span class="tienship">đ38.00</span>
 
-  <div id="hinhthucvanchuyen">
-     <span class="cl">&times;</span>
-    <button id="nhanh">Nhanh</button>
-    <button id="binhthuong">Bình Thường</button>
+
+    
+    
   </div>
 
-          </div>
-          <div class="tongtiensanpham">
+          </div>-->
+         <!-- <div class="tongtiensanpham">
             <div class="phantongtien">  
                  <label for="">Tổng số tiền (1 sản phẩm ): </label>
             <span>đ78.800</span>
             </div>
-          </div>
+          </div>-->
         </div>
     </div>
   </div>
@@ -120,10 +129,7 @@
   <div class="ttitem2">
    <div class="ttphuongthucthanhtoan">
 
-   <div class="ttvoucher">
-    <span for="">Voucher</span>
-    <input type="text" placeholder="Nhập vourcher tài khoản của bạn .">
-   </div>
+   
 
    <div class="ttphuongthuc">
     <span for="" class="ttghichuthanhtoan">Phương thức thanh toán </span> 
@@ -131,9 +137,35 @@
     <button class="ttthanhtoankhinhanhang">Thanh toán khi nhận hàng</button>
    </div>
 
-   <div class="tttinhtong"><div class="tttinhtongchild">
+   <div class="tttinhtong">
+     
+     <div class="ttvoucher">
+    <span for="">Voucher</span>
+    <input type="text" placeholder="Nhập vourcher tài khoản của bạn .">
+   </div>
+   
+    <div class="ttvanchuyen">
+          <div class="ttnhavanchuyen">
+            <label for="">Đơn vị vận chuyển :</label> 
+            <span><span class="pthuc">nhanh</span>  
+            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+   Thay Đổi
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item text-dark" href="#">Nhanh</a></li>
+    <li><a class="dropdown-item text-dark" href="#">Siêu Tốc </a></li>
+    <li><a class="dropdown-item text-dark" href="#">Siêu rẻ </a></li>
+  </ul>
+</div>
+            </span> 
+            <span class="tienship">đ38.00</span>
+  </div>
+  </div>
+  
+     <div class="tttinhtongchild">
     <label for="">Tổng tiền hàng:</label>
-    <span>đ1.572.001</span><br><br>
+    <span>{{cart.totalAll}}.000vnd</span><br><br>
     <label for=" ">Phí Vận Chuyển:</label>
     <span>đ156.700</span><br> <br>
     <label for="">Tổng Thanh Toán :</label>

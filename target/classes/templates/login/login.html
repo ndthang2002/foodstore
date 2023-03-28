@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/css/login.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js" > </script>
+  <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <h2 ng-show="show">Đăng nhập để trải nghiệm nhiều hơn</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="/signup" method="post" name="userform">
+			<h2>Đăng ký tài khoản</h2>
+		<!--	<div class="social-container">
+				<a href="#"  class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>-->
+			<span th:text="${errorsignup}"></span>
+			<input type="text" placeholder="Tên tài khoản" name="username" ng-minlength="4" ng-maxlength="10"  ng-required=true  ng-model="username"/>
+			<i class="error" ng-show="userform.username.$error.minlength">Vui lòng nhập nhiều hơn 4 !</i>
+			<input type="email" name="email" placeholder="Email" ng-model="email" ng-pattern="/^.+@gmail\.com$/" ng-required=true />
+		  
+			<i class="error" ng-show="!userform.email.$error.required&&userform.email.$error.pattern">Vui lòng nhập đúng email</i>
+			<input type="text" name="password" placeholder="Password" ng-model="password" ng-minlength="4" ng-maxlength="10" ng-required=true />
+	       <i class="error" ng-show="userform.username.$error.minlength">Mật khẩu phải lớn hơn 4 ký tự</i>
+      
+			<button >Đăng Ký </button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+    <!-- thay thee -->  
+<!--    quen mat khau 
+--><div class="container" ng-show="dangnhap">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="text-center">
+                          <h6 style="text-align: center;"><i class="fa fa-lock fa-4x"></i></h6>
+                          <h3 style="text-align: center;" class="text-center" >Quên mật khẩu?</h3>
+                         
+                            <div class="panel-body">
+                              <form class="form"  action="/forgotpassword">
+                                <fieldset class="w-100" style="background-color:rgb(255, 255, 255);box-shadow: 0px 0px 5px 5px rgb(215, 207, 207);">
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                      <input name="username" style="width: 250px;" id="emailInput" placeholder="hãy nhập tên tài khoản" class="form-control w-50" type="text" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="">
+                                      <input name="email" style="width: 250px;" id="emailInput" placeholder="hãy nhập email liên kết với tài khoản" class="form-control w-50" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                   <input style="background-color: rgb(112, 112, 206) ;" class="btn btn-lg btn-primary btn-block " value="Gửi mật khẩu về Email" type="submit">
+                                    <span>nếu đã nhớ mật khẩu</span> <a href="" style="font-weight: bold;" 
+                                    ng-click="quaylaidangnhap()">Đăng nhập</a>
+                                  </div>
+                                </fieldset>
+                              </form>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- thay thế bằng quên passs -->
+		<form th:action="@{/security/login}" method="post" >
+			<h1>Đăng Nhập</h1>
+			<div class="social-container">
+				<a th:href="@{/security2/authrization/facebook}" class="social" onclick="FB.login()"><i class="fab fa-facebook-f"></i></a>
+				<a th:href="@{/security2/authrization/google}"class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>hoặc dùng tài khoản khác</span>
+			<input type="text" placeholder="nhập tài khoản" name="username"  required/>
+			<input type="password" placeholder="Mật khẩu"   name="password"  required/>
+			<a href="#"ng-click="thaydoimatkhau()">Quên mật khẩu?</a>
+			<button type="submit">Đăng nhập</button>
+		</form>
+
+
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Chào mừng!</h1>
+				<p>Hãy đăng nhập nếu đã có tài khoản</p>
+				<button class="ghost" id="signIn">Đăng Nhập</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h3>[[${message}]]</h3>
+				<p>Hãy đăng ký nếu bạn chưa có tài khoản </p>
+				<button class="ghost" id="signUp">Đăng Ký</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+   <script src="assets/js/login.js"></script>
+</body>
+</html>

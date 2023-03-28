@@ -32,9 +32,9 @@
                         <h2 style="text-shadow: 1px 2px 5px  rgb(65, 65, 65);"> loại sản phẩm </h2>
                     </div>-->
                     <div class="loaisanpham">
-                    <a class="imgloaisanpham" th:href="@{|/categoryid?cid=10|}"><span class="tenloaisp">Thịt Cá</span><br><img src="assets/images/category1.webp" alt=""></a>
-                     <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=13|}"><span class="tenloaisp">Rau Củ</span><br><img src="assets/images/category2.webp" alt=""></a>
-                    <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=14|}"><span class="tenloaisp">Tinh Bột</span><br><img src="assets/images/category3.png" alt=""></a>
+                    <a class="imgloaisanpham" th:href="@{|/categoryid?cid=15|}"><span class="tenloaisp">Thịt Cá</span><br><img src="assets/images/category1.webp" alt=""></a>
+                     <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=16|}"><span class="tenloaisp">Rau Củ</span><br><img src="assets/images/category2.webp" alt=""></a>
+                    <a class="imgloaisanpham"  th:href="@{|/categoryid?cid=17|}"><span class="tenloaisp">Tinh Bột</span><br><img src="assets/images/category3.png" alt=""></a>
                     </div>
               
                 <div class="slider-container">
@@ -54,7 +54,7 @@
                     <div class="trainer-item  m-2 m-sm-1">
                         <a th:href="@{|/detail?pid=${product.productid}|}">
                         <div class="image-thumb h-50">
-                            <img class="h-50" src="assets/images/hinh-thit-kho-tau.jpg" alt="">
+                            <img class=""  th:src="@{|https://res.cloudinary.com/dpbixmrep/image/upload/${product.image}|}" alt="[[${product.image}]]">
                         </div>
                           </a>
                         <div class="down-content">
@@ -69,7 +69,7 @@
                                 <a href="#addOrder" id="add-to-cart-btn">Mua</a>  
                                 </li>
                                 <span>
-                                    [[${product.price}]]đ
+                                    [[${product.price}]].000vnđ
                                 </span>
                             </ul>
                         </div>

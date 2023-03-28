@@ -5,15 +5,15 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,15 +26,13 @@ import lombok.NoArgsConstructor;
 public class Role {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @JoinColumn(name = "id")
   private Integer roleid;
-  @JoinColumn(name = "name")
   private String name;
+  
   @JsonIgnore
   @OneToMany(mappedBy = "role")
   private List<Authorities> authorities;
   
   
   
-
 }

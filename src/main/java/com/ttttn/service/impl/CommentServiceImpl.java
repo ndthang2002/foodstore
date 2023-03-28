@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ttttn.entity.Category;
 import com.ttttn.entity.Comment;
 import com.ttttn.entity.Product;
-import com.ttttn.entity.User;
+import com.ttttn.entity.Account;
 import com.ttttn.repository.CommentJparepository;
 import com.ttttn.service.CommentService;
 @Service
@@ -42,7 +42,7 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
-  public List<User> findByUserId(String uid) {
+  public List<Account> findByUserId(String uid) {
     // TODO Auto-generated method stub
     return null;
   }

@@ -1,17 +1,19 @@
  angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
            $scope.all='Tổng thanh toán (0 sản phẩm ):S 0';
            let payArr=[];
-           let idproduct ;
+           let idProduct ;
   $scope.cart ={
     
      items :[],
     /*them san pham vo*/
      add(id) {
+            
           var item = this.items.find(item => item.productid == id);
           console.log(item);
           if (item) {
             item.quantity++;    
             this.saveToLocalStorage();
+
           } else {
             $http.get(`/rest/products/${id}`).then(resp => {        
             resp.data.quantity = 1;
@@ -21,7 +23,27 @@
               console.log("K tìm dc", error);
             });
           }
+          
+          /*đã ok nhưng bị lỗi do cors */
+          /*  $http.post(`localhost:8080/rest/addtocart/${id}`).then(resp => {
+            alert("thành công");
+            console.log("phu", resp.data);
+          }).catch(error => {
+            console.log("Lỗi-", error);
+          });*/
+            
      },
+     
+        chonsanpham(id){
+          
+           this.idProduct=id;
+           if($scope.ischecked){
+             console.log("checkbox is ok ");
+           }else {
+             console.log("checkbox is not ");
+           }
+          
+        },
      remove(id){
        var index =this.items.findIndex(item => item.productid ==id);
        this.items.splice(index,1);
@@ -41,23 +63,15 @@
        return count;
      },
      get getAmount(){
-       
+       $scope.ischecked= false;
        if($scope.all==true){
          console.log("aaa");
           return this.items
        .map(item => item.quantity * item.price)
        .reduce((total,price) => total +=price,0);
        }else{
-         console.log(idproduct);
-         console.log("vo day ni");
-         console.log($scope.productid);
-         $scope.all=false;
-         if($scope.ischecked==true){
-           return this.items.find(item => item.productid==this.idproduct)
-           console.log('day la ',this.idproduct);
-         }
+          $scope.all=false;
        }
-     
        }
      , saveToLocalStorage() {
           var json = JSON.stringify(angular.copy(this.items));
@@ -85,13 +99,6 @@
              }
              this.saveToLocalStorage();
         },
-        chonsanpham(id){
-        
-           this.idproduct=id;
-          
-           
-            
-        },
         gettt(){
           let amount = 0;
           $scope.items.forEach(element=>{ 
@@ -100,6 +107,11 @@
             }
           });
           return amount;
+        },
+        get totalAll(){
+           return this.items
+       .map(item => item.quantity * item.price)
+       .reduce((total,price) => total +=price,0);
         }
         
         

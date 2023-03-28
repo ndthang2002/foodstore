@@ -6,7 +6,7 @@ import java.util.List;
 import com.ttttn.entity.Category;
 import com.ttttn.entity.Comment;
 import com.ttttn.entity.Product;
-import com.ttttn.entity.User;
+import com.ttttn.entity.Account;
 
 public interface CommentService {
   List<Comment> finAll();
@@ -17,7 +17,7 @@ public interface CommentService {
   
   List<Product> findByProductId(String pid);
   
-  List<User> findByUserId(String uid);
+  List<Account> findByUserId(String uid);
   
   void deleteid(Integer id);
 

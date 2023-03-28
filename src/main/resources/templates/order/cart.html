@@ -10,7 +10,6 @@
         <input type="text" id="timkiemIP" placeholder="bạn muốn tìm gì ?">
         <button id="timkiemBT"><i class="fas fa-search"></i></button>
       </div>
-
     </section>-->
        <!-- ***** Call to Action Start ***** -->
     <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
@@ -62,14 +61,15 @@
   <div class="chitietsanpham">
     <div class="tieudetrai">
       
-    <input ng-checked="all" id="check" type="checkbox" ng-model="ischecked" ng-click="cart.chonsanpham(item.productid)">
+<!--  <input ng-checked="all" id="check" type="checkbox" ng-model="ischecked" ng-init="ischecked=false" ng-change="cart.chonsanpham(item.productid)">-->
     
      <div class="sanphamtrai"> 
-      <div class="anh"><img class="anhsanpham" src="assets/images/thit-chuot-5.jpg" alt=""></div>
-     <div class="motasanpham"><p>{{item.name}}</p> 
+      <div class="anh"><img class="anhsanpham" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.image}}" alt="{{item.image}}"></div>
+     <div class="motasanpham"><p class="tensanpham">{{item.name}}</p> 
 </div>
      </div>
   </div>
+  
     <div class="tieudephai">
       <span id="ttsanhamphai">{{item.price}}</span> 
       <span id="ttsanhamphai"><a href=""  ng-click="cart.tru(item.productid)" class="tru">-</a>
@@ -81,7 +81,8 @@
   </div>
   
   <div class="voucher">
-    <span class="dropdown"> <i class="fas fa-water"></i> Shop Voucher giảm đến ₫100k
+     <span >Ghi Chú: {{item.model}}</span>
+<!--    <span class="dropdown"> <i class="fas fa-water"></i> Shop Voucher giảm đến ₫100k
 Mới
 Xem thêm voucher <i class="fas fa-caret-down dropbtn">
  <div class="dropdown-content">
@@ -90,7 +91,7 @@ Xem thêm voucher <i class="fas fa-caret-down dropbtn">
     <a href="#">Giảm 50% (zalopay)</a>
   </div>
 </i>
-</span>
+</span>-->
   </div>
   
  </div>

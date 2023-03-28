@@ -5,15 +5,18 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="user")
-public class User {
+public class Account {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +35,9 @@ public class User {
   private String email;
   private String name;
   private String phone;
-
+  @NotEmpty(message = "Username is required")
+  private String username;
+  private String password;
   @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Comment> comments;
@@ -43,20 +48,18 @@ public class User {
   @OneToMany(mappedBy = "user")
    private List<Order> orders;
   @JsonIgnore
-  @OneToMany(mappedBy = "user")
+  @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
   private List<Authorities> authorities;
-  
   @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<ImageProduct> imageProducts;
-  
   @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Discount> discounts;
   
-  @ManyToMany
-  @JoinTable(name = "authorities",
-  joinColumns = @JoinColumn(name="userid"),
-  inverseJoinColumns = @JoinColumn(name="roleid"))
-  private List<Role> roles = new ArrayList<>();
+//  @ManyToMany
+//  @JoinTable(name = "authorities",
+//  joinColumns = @JoinColumn(name="userid"),
+//  inverseJoinColumns = @JoinColumn(name="roleid"))
+//  private List<Role> roles = new ArrayList<>();
 }
