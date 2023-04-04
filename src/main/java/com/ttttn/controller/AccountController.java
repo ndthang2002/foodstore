@@ -27,7 +27,6 @@ SecurityConfig acc;
   @Autowired
   JavaMailSender mailer;
   
-  
   @Autowired
   AuthoritiesService authoritiesService;
   @Autowired
@@ -37,7 +36,7 @@ SecurityConfig acc;
   
   
  @PostMapping("/signup")
- public String dangky(Model model,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("password") String password ) {
+ public String dangky(Model model,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("password") String password ,@RequestParam("fullname") String fullname ){
    if(userService.findAccountByUserName(username)!=null) {
      model.addAttribute("errorsignup", "Tài Khoản đã tồn tại");
      return "login/login";
@@ -51,6 +50,7 @@ SecurityConfig acc;
      account.setUsername(username);
      account.setPassword(password);
      account.setEmail(email);
+     account.setName(fullname);
      userService.insert(account);
      Authorities authorities = new Authorities();
      Role role = roleService.findbyname("user");

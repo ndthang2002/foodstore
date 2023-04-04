@@ -22,9 +22,7 @@ public class CartController {
 
     @Autowired
     CartProductService cartProductService;
-   
-    @Autowired 
-    ProductService productService;
+    
     
     @Autowired 
     CartService cartService;

@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        
         Account user = accountService.findAccountByUserName(Username);
         nameAccount = user.getName();
+        accountLogedIn = user;
         // Kiểm tra pass  
         String password = pe.encode(user.getPassword());
 
@@ -61,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //cookie.add("username", Username, 720);
 //      cookie.add("password", password, 720);
       isLogedIn=true;
-      accountLogedIn = user;
+      
         return User.withUsername(Username).password(password).roles(roles).build();
         //luu tai vaoo cookie 
         
@@ -94,7 +95,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     // tắt CSRF, CORS
-    http.csrf().disable().cors().disable().authorizeRequests().antMatchers("/index", "/categoryid", "/product",
+    http.cors().disable().authorizeRequests().antMatchers("/index", "/categoryid", "/product",
         "/detail", "/search", "/assets/css/**", "/assets/js/**", "/assets/images/**", "/assets/fonts/**","/categoryid**").permitAll()
         .antMatchers("/cart","/payments").hasRole("user").and();
 
@@ -114,10 +115,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     .baseUri("/security2/authrization");
   }
 
-  @Override
-  public void configure(WebSecurity web) throws Exception {
-    web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-  }
+  
   
   public void loginFromOAuth2(OAuth2AuthenticationToken oauth2) { 
     String fullname = oauth2.getPrincipal().getAttribute("name");
@@ -130,4 +128,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     Authentication auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
     SecurityContextHolder.getContext().setAuthentication(auth);
   }
+  
+  
+//Cho phép truy xuất REST API từ domain khác
+ @Override
+   public void configure(WebSecurity web) throws Exception {
+       web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+   }
 }

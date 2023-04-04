@@ -1,8 +1,15 @@
 package com.ttttn.service.impl;
 
+
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ttttn.entity.Product;
@@ -21,9 +28,10 @@ public class ProductServiceImpl implements ProductService{
   }
 
   @Override
-  public List<Product> findByCategoryId(String id) {
+  public Page<Product> findByCategoryId(String id) {
     // TODO Auto-generated method stub
-    return productJparepository.findByCategoryId(id);
+    Page<Product> pageProduct = new PageImpl<Product>(productJparepository.findByCategoryId(id) );
+    return  pageProduct;
   }
 
   @Override
@@ -33,10 +41,37 @@ public class ProductServiceImpl implements ProductService{
   }
 
   @Override
-  public List<Product> findProductByName(String name) {
+  public Page<Product> findProductByName(String name) {
     // TODO Auto-generated method stub
-    return productJparepository.findByKeyword(name);
+    Page<Product> pageProduct = new PageImpl<Product>(productJparepository.findByKeyword(name) );
+    return pageProduct;
   }
+
+  @Override
+  public Page<Product> findPaginated(Pageable pageable) {
+    // TODO Auto-generated method stub
+    // TODO Auto-generated method stub
+    int pageSize = pageable.getPageSize();
+    int currentPage = pageable.getPageNumber();
+    int startItem = currentPage * pageSize;
+    List<Product> list;
+    List<Product> listprodList = productJparepository.findAll();
+    if(listprodList.size() < startItem) {
+      list = Collections.emptyList();
+    }else {
+      int toIndex = Math.min(startItem + pageSize,listprodList.size());
+      list = listprodList.subList(startItem, toIndex);
+    }
+    Page<Product> coursePage = new PageImpl<Product>(list,PageRequest.of(currentPage, pageSize),listprodList.size());
+    
+    return coursePage;
+   
+  }
+
+
+
+
+
 
   
   

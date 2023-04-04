@@ -50,9 +50,8 @@ public class Account {
   @JsonIgnore
   @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
   private List<Authorities> authorities;
-  @JsonIgnore
-  @OneToMany(mappedBy = "user")
-  private List<ImageProduct> imageProducts;
+
+
   @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Discount> discounts;

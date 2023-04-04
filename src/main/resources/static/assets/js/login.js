@@ -11,6 +11,7 @@ signInButton.addEventListener('click', () => {
 });
 
 
+
   var app =  angular.module("myApp", []);
   app.controller("myCtrl", function($scope, $http) {
   $scope.quaylaidangnhap = function(){
@@ -21,25 +22,18 @@ signInButton.addEventListener('click', () => {
   $scope.thaydoimatkhau = function(){
     console.log("thagn");
     $scope.dangnhap=true;
-  }
-  })
-
-  
-  angular.module('myApp').directive('compareTo', function() {
-  return {
-    require: 'ngModel',
-    scope: {
-      otherModelValue: '=compareTo'
-    },
-    link: function(scope, element, attributes, ngModel) {
-
-      ngModel.$validators.compareTo = function(modelValue) {
-        return modelValue == scope.otherModelValue;
-      };
-
-      scope.$watch('otherModelValue', function() {
-        ngModel.$validate();
-      });
-    }
   };
+  
+  $scope.checkpassword = function(){
+    let checkConfirmPass;
+     if($scope.passwordSingup === $scope.passwordConfirm){
+        checkConfirmPass = false;
+     }else{
+       checkConfirmPass=true;
+     }
+  }
+  
+
 });
+
+
