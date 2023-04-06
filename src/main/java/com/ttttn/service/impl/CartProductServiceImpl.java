@@ -27,6 +27,21 @@ public class CartProductServiceImpl  implements CartProductService{
     // TODO Auto-generated method stub
     return cartProductJparepository.save(cartProduct);
   }
+//  @Override
+//  public List<Integer> ListProduct() {
+//    // TODO Auto-generated method stub
+//    return cartProductJparepository.listProduct();
+//  }
+  @Override
+  public CartProduct productInCartP(Integer id) {
+    // TODO Auto-generated method stub
+    return cartProductJparepository.productInCartP(id);
+  }
+  @Override
+  public Integer findIdCart(Integer idP) {
+    // TODO Auto-generated method stub
+    return cartProductJparepository.findIdCart(idP);
+  }
   
   
 

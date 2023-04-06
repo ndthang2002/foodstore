@@ -10,4 +10,6 @@ public interface CartService {
   
   Cart insert(Cart cart);
   Cart findById(Integer id);
+  
+  Integer findIdCartByUserid (Integer id);
 }

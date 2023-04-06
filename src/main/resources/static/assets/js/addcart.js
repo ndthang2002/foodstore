@@ -6,15 +6,13 @@ angular.module("myApp", []).controller("myCtrl", function($scope, $http) {
   $scope.all = 'Tổng thanh toán (0 sản phẩm ):S 0';
   let payArr = [];
   let idProduct;
- 
+  
   $scope.cart = {
 
     items: [],
     /*them san pham vo*/
     add(id) {
-
-      var item = this.items.find(item => item.productid == id);
-
+      /*var item = this.items.find(item => item.productid == id);
       if (item) {
         item.quantity++;
         this.saveToLocalStorage();
@@ -26,9 +24,9 @@ angular.module("myApp", []).controller("myCtrl", function($scope, $http) {
         }).catch(error => {
           console.log("K tìm dc", error);
         });
-      }
+      }*/
       /*đã ok nhưng bị lỗi do cors */
-      $http.post(`localhost:8080/rest/addtocart/${id}`);
+      $http.get(`/rest/addtocart/${id}`);
     },
 
     chonsanpham(id) {
@@ -119,40 +117,7 @@ angular.module("myApp", []).controller("myCtrl", function($scope, $http) {
     $scope.disabledFlag = true;
   }
 
-  //phân trang 
-  var ttt = 5;
-  $scope.pager = {
-
-    page: 0,
-    size: 10,
-    get items() {
-      var start = this.page * this.size;
-      return $this.items.slice(start, start + this.size);
-    },
-    get count() {
-      return Math.ceil(1.0 * $scope.items.length / this.size);
-    },
-    first() {
-      this.page = 0;
-    },
-    previos() {
-      this.page--;
-      if (this.page < 0) {
-        this.first();
-
-      }
-    },
-    next() {
-      this.page++;
-      if (this.page >= this.count) {
-        this.first();
-      };
-    },
-    last() {
-      this.page = this.count - 1;
-    }
-  }
-
+  
 
 });
 

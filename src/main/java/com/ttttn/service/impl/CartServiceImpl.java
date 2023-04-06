@@ -39,6 +39,12 @@ public class CartServiceImpl implements CartService {
     return cartJparepository.findById(id).get();
   }
 
+  @Override
+  public Integer findIdCartByUserid(Integer id) {
+    // TODO Auto-generated method stub
+    return cartJparepository.findIdCartByUserid(id);
+  }
+
 
 
 }

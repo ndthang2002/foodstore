@@ -33,7 +33,7 @@ SecurityConfig acc;
   RoleService roleService;
   
   SecurityConfig config;
-  
+
   
  @PostMapping("/signup")
  public String dangky(Model model,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("password") String password ,@RequestParam("fullname") String fullname ){
@@ -65,10 +65,7 @@ SecurityConfig acc;
  }
   @RequestMapping("/login")
   public String loginsucess(Model model) {
-   if(config.isLogedIn==true) {
-     System.out.println("co vo day rou");
-     return "redirect:/index";
-   }
+//  model.addAttribute("disable", "false");
     model.addAttribute("message", "Đăng nhập để trải nghiệm nhiều hơn");
     return "login/login";
   }
