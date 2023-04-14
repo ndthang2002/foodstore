@@ -1,4 +1,4 @@
-function updatediachi(){
+/*function updatediachi(){
  let openModal= document.getElementById('openModalBtn');
 let close = document.getElementsByClassName('close')[0];
  let myModal = document.getElementById('myModal');
@@ -23,3 +23,4 @@ function giaohang(){
 
 }
 giaohang();
+*/

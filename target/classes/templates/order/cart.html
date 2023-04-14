@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
-  <main>
+  <main >
+    
+      
+     
+    
   <!--<section class="item1">
       <div class="logogiohang">
       
@@ -30,41 +34,40 @@
     
     
    <section class="item2">
-     
+    
  <div  ng-if="cart.items.length == 0">
-   <h3> gio hang trong </h3>
+
  </div>
  
  
- 
- <div class="phanthan" ng-if="!cart.items.length == 0" >
+ <div class="phanthan"  >
   <div id="goiyvanchuyen"><span id="noidunggoiy"><i class="fas fa-truck"></i> Nhấp vào mã voucher ở phía dưới để nhận free ship nhé !</span></div>
- 
+  
  <div id="tieudegiohang">
   <div class="tieudetrai">
-        <input disabled id="check" type="checkbox">  
-     <div class="ttsanphamtrai">Sản Phẩm </div>
+     <input disabled id="check" type="checkbox">  
+     <div class="ttsanphamtrai">Sản Phẩm  </div>
   </div>
     <div class="tieudephai">
-      <span id="ttsanhamphai">Đơn Giá</span>
+      <span id="ttsanhamphai">Đơn Giá </span>
       <span id="ttsanhamphai">Số Lượng</span>
       <span id="ttsanhamphai">Số Tiền</span>
       <span id="ttsanhamphai">Thao Tác</span>
     </div>
  </div>
   <div class="sanpham">
- <div class="hienthisanpham" ng-repeat="item in cart.items">
+ <div class="hienthisanpham" ng-repeat="item in cartdb" >
 
   <div class="tenloaisanpham">
-    {{item.name}}
+    {{item.nameproduct}}
   </div>
   <div class="chitietsanpham">
     <div class="tieudetrai">
       
 <!--  <input ng-checked="all" id="check" type="checkbox" ng-model="ischecked" ng-init="ischecked=false" ng-change="cart.chonsanpham(item.productid)">-->
-    
-     <div class="sanphamtrai"> 
-      <div class="anh"><img class="anhsanpham" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.image}}" alt="{{item.image}}"></div>
+      
+     <div class="sanphamtrai">
+      <div class="anh"><img class="anhsanpham" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.imageproduct}}" alt="{{item.imageproduct}}"></div>
      <div class="motasanpham"><p class="tensanpham">{{item.name}}</p> 
 </div>
      </div>
@@ -72,16 +75,22 @@
   
     <div class="tieudephai">
       <span id="ttsanhamphai">{{item.price}}</span> 
-      <span id="ttsanhamphai"><a href=""  ng-click="cart.tru(item.productid)" class="tru">-</a>
-      <input style="text-align: center; border-radius: 50%; font-size: 13px;"  class="nhapsoluong p-1" ng-model="item.quantity" type="number">
-      <a href=""  ng-click="cart.cong(item.productid)"  class="cong">+</a></span>
-      <span id="ttsanhamphai" ng-model="sotien">${{item.quantity * item.price}}</span>
-      <span id="ttsanhamphai" > <a href="" ng-click="cart.remove(item.productid)">xóa</a> </span>
+      <span id="ttsanhamphai">
+        <a href=""   ng-click="cart.tru(item.cartid)" ng-if="item.quantity==1?false:true" class="tru">-</a>
+        
+      <input style="text-align: center; border-radius: 5%;height: 30px; font-size: 13px;" id="nhapsoluong"  class="nhapsoluong p-1"  ng-model="item.quantity" type="number" ng-disabled="item.quantity>=20" 
+      ng-if="item.quantity<=20?item.quantity=item.quantity:item.quantity=20" >
+      
+      <a href="" ng-if="item.quantity==20?false:true"   ng-click="cart.cong(item.cartid)"  class="cong">+</a>
+      
+      </span>
+      <span id="ttsanhamphai" ng-model="sotien">$({{item.price * item.quantity}})</span>
+      <span id="ttsanhamphai" > <a href="" id="liveToastBtn"  ng-click="cart.remove(item.cartid,$index)">xóa</a> </span>
     </div>
   </div>
-  
+    
   <div class="voucher">
-     <span >Ghi Chú: {{item.model}}</span>
+     <span >Ghi Chú: {{item.desciption}}</span>
 <!--    <span class="dropdown"> <i class="fas fa-water"></i> Shop Voucher giảm đến ₫100k
 Mới
 Xem thêm voucher <i class="fas fa-caret-down dropbtn">
@@ -100,16 +109,23 @@ Xem thêm voucher <i class="fas fa-caret-down dropbtn">
  </div>
 
  <div class="item3">
+   
   <div class="themvaodonhang">
-  <input ng-model="all" id="chontatca" type="checkbox"  >
-  <button style="background-color: #ffff;" class="chontatca">Chọn Tất Cả ({{cart.getCount}})</button>
+  <input ng-model="all" id="chontatca" ng-init="all=false" type="checkbox"  >
+  <button style="background-color: #ffff;" class="chontatca">Chọn Tất Cả ({{cartLength}})</button>
   <button style="background-color: #ffff;"   ng-disabled="!all" ng-click="cart.cleartCart()" class="xoa">xóa </button>
  <!-- <button style="background-color: #ffff;" class="luumucthanhtoan">lưu vào mục đã thanh toán </button>-->
- <div class="tongthanhtoan" >Tổng <span ng-if="ischecked">3</span> <span  ng-if="all">({{cart.getCount}})</span> </span>sản phẩm : $<span ng-if="all">{{cart.getAmount}}</span></div>
+<!-- <div class="tongthanhtoan" >Tổng <span ng-if="ischecked">3</span> <span  ng-if="all">({{cart.getCount}})</span> </span>sản phẩm : $<span ng-if="all">{{cart.getAmount}}</span></div>-->
  <a style="text-align: center;" class="muahang" href="/payments">Mua Hàng </a>
  </div>
  </div>
+ 
   </section>
+  
+<did id="toast">
+    
+</did>
+
   </main>
 
 

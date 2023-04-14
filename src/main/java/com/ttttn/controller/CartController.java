@@ -23,7 +23,6 @@ public class CartController {
     @Autowired
     CartProductService cartProductService;
     
-    
     @Autowired 
     CartService cartService;
     
@@ -33,6 +32,7 @@ public class CartController {
  public String showAll( Model model) {
 
     List<CartProduct> list = cartProductService.fillAllCart();
+    
     /*
      * CartProduct cartProduct = list.get(0); Product product =
      * cartProduct.getProduct(); model.addAttribute("product", product);

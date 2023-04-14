@@ -42,13 +42,13 @@
                   <circle cx="25" cy="27" r="2" />
                   <circle cx="12" cy="27" r="2" />
                 </svg>
-                <span class="thongbao ">{{cart.getCount}}</span>
+                <span class="thongbao " id="ProductToCart" ng-model="cartLength">{{cartLength}}</span>
               </a>
               <!-- itrm icons -->
               <div class="itemcart">
-                <div class="item" ng-repeat="item in cart.items">
-                  <img src="assets/images/product-3-720x480.jpg" alt="">
-                  <div class="name" style="text-transform: uppercase;font-size: 13px;"> {{item.name}}</div>
+                <div class="item" ng-repeat="item in cartdb">
+                  <img ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.imageproduct}}" alt="{{item.imageproduct}}">
+                  <div class="name" style="text-transform: uppercase;font-size: 13px;"> {{item.nameproduct}}</div>
                   <div class="price">{{item.price}}$</div>
                 </div>
                 <!--  <div class="item">

@@ -12,6 +12,9 @@ import com.ttttn.repository.CartProductJparepository;
 import com.ttttn.service.CartProductService;
 import com.ttttn.service.CartService;
 
+
+
+
 @Service
 public class CartProductServiceImpl  implements CartProductService{
 
@@ -42,6 +45,31 @@ public class CartProductServiceImpl  implements CartProductService{
     // TODO Auto-generated method stub
     return cartProductJparepository.findIdCart(idP);
   }
+  @Override
+  public CartProduct findCartPbyCartid(Integer id) {
+    // TODO Auto-generated method stub
+    return cartProductJparepository.findCartPbyCartid(id);
+  }
+  @Override
+  public Integer findIdProductByCartid(Integer id) {
+    // TODO Auto-generated method stub
+    return cartProductJparepository.findIdProductByCartid(id);
+  }
+  @Override
+  public boolean delete(CartProduct cartProduct) {
+    // TODO Auto-generated method stub
+    try {
+      
+      cartProductJparepository.delete(cartProduct);
+    } catch (Exception e) {
+      return false;
+      // TODO: handle exception
+    }
+    return true;
+  }
+
+  
+ 
   
   
 

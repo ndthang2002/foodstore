@@ -1,10 +1,14 @@
+
 package com.ttttn.controller;
 
 import javax.mail.internet.MimeMessage;
 
+import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +38,6 @@ SecurityConfig acc;
   
   SecurityConfig config;
 
-  
  @PostMapping("/signup")
  public String dangky(Model model,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("password") String password ,@RequestParam("fullname") String fullname ){
    if(userService.findAccountByUserName(username)!=null) {
@@ -69,6 +72,7 @@ SecurityConfig acc;
     model.addAttribute("message", "Đăng nhập để trải nghiệm nhiều hơn");
     return "login/login";
   }
+  
   @RequestMapping("failureLogin")
   public String loginErorr(Model model) {
     model.addAttribute("message", "Tài khoản hoặc mật khẩu không chính xác");
@@ -79,9 +83,9 @@ SecurityConfig acc;
   public String logoff(Model model) {
     model.addAttribute("message", "Đăng xuất thành công");
     this.acc.nameAccount = null;
+    this.config.accountLogedIn=null;
     return "login/login";
   }
-  
   @RequestMapping("/forgotpassword")
   public String forgotpassword(Model model,@RequestParam("username") String username,@RequestParam("email") String email) {
     Account account = userService.findAccountByUserName(username);

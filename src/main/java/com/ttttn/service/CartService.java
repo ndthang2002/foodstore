@@ -11,5 +11,8 @@ public interface CartService {
   Cart insert(Cart cart);
   Cart findById(Integer id);
   
-  Integer findIdCartByUserid (Integer id);
+  List<Cart> findIdCartByUserid (Integer id);
+  Integer getCountCart(Integer id);
+  boolean delete(Cart cart);
+//  void deletecartbyuser(Integer userid);
 }

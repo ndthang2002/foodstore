@@ -40,10 +40,44 @@ public class CartServiceImpl implements CartService {
   }
 
   @Override
-  public Integer findIdCartByUserid(Integer id) {
+  public List<Cart> findIdCartByUserid(Integer id) {
     // TODO Auto-generated method stub
     return cartJparepository.findIdCartByUserid(id);
   }
+
+  @Override
+  public Integer getCountCart(Integer id) {
+    // TODO Auto-generated method stub
+    return cartJparepository.getCountCart(id);
+  }
+
+  @Override
+  public boolean delete(Cart cart) {
+    // TODO Auto-generated method stub
+    try {
+      cartJparepository.delete(cart);
+    } catch (Exception e) {
+      // TODO: handle exception
+      return false;
+    }
+    
+    return true;
+  }
+
+//  @Override
+//  public void deletecartbyuser(Integer userid) {
+//    // TODO Auto-generated method stub
+//    try {
+//      cartJparepository.deletecartbyuser(userid);
+//    } catch (Exception e) {
+//      // TODO: handle exception
+//      e.printStackTrace();
+//    }
+//  }
+
+
+
+
 
 
 

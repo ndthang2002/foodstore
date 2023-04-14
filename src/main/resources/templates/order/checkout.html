@@ -42,8 +42,7 @@
     <div class="tttoanitem2">
     <div class="ttdiachi">
       <span class="ttdiachinhanhang"><i class="fas fa-map-marker-alt"></i> Địa chỉ nhận hàng </span>
-      
-      <span class="ttdiachicuthe">nguyễn đình thắng (0359780733) hội trường thôn sơn nam xã cẩm thịnh huyện cẩm xuyên ,tỉnh hà tĩnh </span><a class="ttthaydoi" id="openModalBtn" href="#">Thay đổi</a>
+      <span class="ttdiachicuthe">nguyễn đình thắng (0359780733) hội trường thôn sơn nam xã cẩm thịnh huyện cẩm xuyên ,tỉnh hà tĩnh </span><a class="ttthaydoi"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat" id="openModalBtn" href="#">Thay đổi</a>
     </div>
 
 <div id="myModal" class="ttmodal">
@@ -74,9 +73,9 @@
         </div>
         
        <div class="ttsanphammuaform">
-        <div class="ttsanphammua" ng-repeat="item in cart.items">
+        <div class="ttsanphammua" ng-repeat="item in cartdb">
           <div class="ttanh">
-            <img class="tthinhsanpham" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.image}}" alt=""> 
+            <img class="tthinhsanpham" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.imageproduct}}" alt=""> 
             <span class="tttensanpham">{{item.name}}</span>
           </div> 
           <div class="ttsolieusanpham">
@@ -179,7 +178,36 @@
      </div>
      </div>
     </div>
-  </main>
+    
+<!--    model thay doi dia chi 
+-->  
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
   <script src="assets/js/thanhtoan.js"></script>  
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>

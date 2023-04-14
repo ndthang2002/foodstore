@@ -64,70 +64,67 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       accountLogedIn = user;
         return User.withUsername(Username).password(password).roles(roles).build();
         //luu tai vaoo cookie 
-        
-      
       } catch (Exception e) {
         e.printStackTrace();
         throw new UsernameNotFoundException(Username + "not found!");
       }
     });
   }
+//@Bean
+//public InMemoryUserDetailsManager userDetailsService() {
+//  UserDetails user = User.withUsername("tan@11")
+//      .password(passwordEncoder().encode("123456tan"))
+//      .roles("user")
+//      .build();
+//  UserDetails admin = User.withUsername("admin")
+//      .password(passwordEncoder().encode("123456admin"))
+//      .roles("admin")
+//      .build();
+//  return new InMemoryUserDetailsManager(user,admin);
+//}
 
-//  @Bean
-//  public InMemoryUserDetailsManager userDetailsService() {
-//    UserDetails user = User.withUsername("tan@11")
-//        .password(passwordEncoder().encode("123456tan"))
-//        .roles("user")
-//        .build();
-//    UserDetails admin = User.withUsername("admin")
-//        .password(passwordEncoder().encode("123456admin"))
-//        .roles("admin")
-//        .build();
-//    return new InMemoryUserDetailsManager(user,admin);
-//  }
+@Bean
+public PasswordEncoder passwordEncoder() {
+  return new BCryptPasswordEncoder();
+}
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+  // tắt CSRF, COR
+  http.csrf().disable().cors().disable().authorizeRequests().antMatchers("/index", "/categoryid", "/product",
+      "/detail", "/search", "/assets/css/**", "/assets/js/**", "/assets/images/**", "/assets/fonts/**","/categoryid**").permitAll()
+      .antMatchers("/cart","/payments").hasRole("user").and();
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    // tắt CSRF, CORS
-    http.csrf().disable().cors().disable().authorizeRequests().antMatchers("/index", "/categoryid", "/product",
-        "/detail", "/search", "/assets/css/**", "/assets/js/**", "/assets/images/**", "/assets/fonts/**","/categoryid**").permitAll()
-        .antMatchers("/cart","/payments").hasRole("user").and();
-
-    // dang nhap
-    http.formLogin().loginPage("/login").loginProcessingUrl("/security/login").defaultSuccessUrl("/index")
-        .failureUrl("/failureLogin");
-    http.rememberMe().tokenValiditySeconds(86400);
-    http.exceptionHandling().accessDeniedPage("/security/aunauthoried");
-    
-    // dang xuat
-    http.logout().logoutUrl("/security/logoff").logoutSuccessUrl("/logout");
-    //dang nhap bang fa gg
-    http.oauth2Login().loginPage("/login")
-    .defaultSuccessUrl("/index",true)
-    .failureUrl("/login")
-    .authorizationEndpoint()
-    .baseUri("/security2/authrization");
-  }
-
-  @Override
-  public void configure(WebSecurity web) throws Exception {
-    web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-  }
+  // dang nhap
+  http.formLogin().loginPage("/login").loginProcessingUrl("/security/login").defaultSuccessUrl("/index")
+      .failureUrl("/failureLogin");
+  http.rememberMe().tokenValiditySeconds(86400);
+  http.exceptionHandling().accessDeniedPage("/security/aunauthoried");
   
-  public void loginFromOAuth2(OAuth2AuthenticationToken oauth2) { 
-    String fullname = oauth2.getPrincipal().getAttribute("name");
-    String name = oauth2.getName();
-    System.out.println(name);
-    nameAccount =fullname;
-    //String email = oauth2.getPrincipal().getAttribute("email");
-    String password = Long.toHexString(System.currentTimeMillis());
-    UserDetails user = User.withUsername(name).password(pe.encode(password)).roles("GUEST").build();
-    Authentication auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-    SecurityContextHolder.getContext().setAuthentication(auth);
-  }
+  // dang xuat
+  http.logout().logoutUrl("/security/logoff").logoutSuccessUrl("/logout");
+  //dang nhap bang fa gg
+  http.oauth2Login().loginPage("/login")
+  .defaultSuccessUrl("/index",true)
+  .failureUrl("/login")
+  .authorizationEndpoint()
+  .baseUri("/security2/authrization");
+}
+
+@Override
+public void configure(WebSecurity web) throws Exception {
+  web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+}
+
+public void loginFromOAuth2(OAuth2AuthenticationToken oauth2) { 
+  String fullname = oauth2.getPrincipal().getAttribute("name");
+  String name = oauth2.getName();
+  System.out.println(name);
+  nameAccount =fullname;
+  //String email = oauth2.getPrincipal().getAttribute("email");
+  String password = Long.toHexString(System.currentTimeMillis());
+  UserDetails user = User.withUsername(name).password(pe.encode(password)).roles("GUEST").build();
+  Authentication auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+  SecurityContextHolder.getContext().setAuthentication(auth);
+}
 }

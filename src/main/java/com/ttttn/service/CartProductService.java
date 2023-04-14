@@ -13,4 +13,8 @@ public interface CartProductService {
   
   CartProduct productInCartP(Integer id);
   Integer findIdCart(Integer idP);
+  CartProduct findCartPbyCartid(Integer id);
+  Integer findIdProductByCartid(Integer id);
+  boolean delete(CartProduct cartProduct);
+
 }
