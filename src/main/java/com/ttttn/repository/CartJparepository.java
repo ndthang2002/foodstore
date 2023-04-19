@@ -17,5 +17,6 @@ public interface CartJparepository extends JpaRepository<Cart, Integer>{
   Integer getCountCart (Integer id);
 //  @Query(value="DELETE  FROM  cart  WHERE user_id=?1 " , nativeQuery =true)
 //  void deletecartbyuser (Integer id);
-  
+
+
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,9 +19,13 @@ import com.ttttn.entity.Account;
 import com.ttttn.entity.Category;
 import com.ttttn.entity.Comment;
 import com.ttttn.entity.Product;
+import com.ttttn.entity.Role;
 import com.ttttn.repository.CategoryJparepository;
 import com.ttttn.repository.ProductJparepository;
+import com.ttttn.service.AccountService;
+import com.ttttn.service.AuthoritiesService;
 import com.ttttn.service.CategoryService;
+import com.ttttn.service.RoleService;
 
 @Controller
 public class index {
@@ -28,9 +33,31 @@ public class index {
   @Autowired
   CategoryService categoryService;
   
+  @Autowired
+  AccountService accService;
+  @Autowired
+  JavaMailSender mailer;
+  
+  @Autowired
+  AuthoritiesService authoritiesService;
+  @Autowired
+  RoleService roleService;
+  
+  SecurityConfig config;
   SecurityConfig acc;
   @RequestMapping("/index")
   public String index(Model model)  {
+    
+    if(config.accountLogedIn==null) {
+      return "layout/home";
+    }
+    int roleid = authoritiesService.findIdRoleByUser(config.accountLogedIn.getUserid());
+    Role role = roleService.findById(roleid);
+    if(role.getName().equalsIgnoreCase("admin")) {
+      System.out.println("vao trang admin");
+      return "/admin";
+    }
+    
      List<Category> list = categoryService.findAll();
      model.addAttribute("listcategory", list);
 //         System.out.println(acc.nameAccount);

@@ -33,9 +33,9 @@ public class Cart {
   private double totalall;  
   private Date datecreated;
 
-  @JsonIgnore
-   @OneToMany(mappedBy = "cart")
-   private List<Order> orders;
+   @ManyToOne
+   @JoinColumn(name="order_id")
+   private Order order;
    /*
     * @ManyToMany(cascade = {CascadeType.ALL})
     * 

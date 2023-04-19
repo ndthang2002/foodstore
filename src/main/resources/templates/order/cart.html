@@ -2,12 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
   <main >
     
-      
-     
-    
   <!--<section class="item1">
       <div class="logogiohang">
-      
       <span id="giohang"> giỏ hàng</span>
       </div>
       <div class="timkiem">
@@ -40,7 +36,7 @@
  </div>
  
  
- <div class="phanthan"  >
+ <div class="phanthan">
   <div id="goiyvanchuyen"><span id="noidunggoiy"><i class="fas fa-truck"></i> Nhấp vào mã voucher ở phía dưới để nhận free ship nhé !</span></div>
   
  <div id="tieudegiohang">
@@ -63,7 +59,6 @@
   </div>
   <div class="chitietsanpham">
     <div class="tieudetrai">
-      
 <!--  <input ng-checked="all" id="check" type="checkbox" ng-model="ischecked" ng-init="ischecked=false" ng-change="cart.chonsanpham(item.productid)">-->
       
      <div class="sanphamtrai">
@@ -78,7 +73,7 @@
       <span id="ttsanhamphai">
         <a href=""   ng-click="cart.tru(item.cartid)" ng-if="item.quantity==1?false:true" class="tru">-</a>
         
-      <input style="text-align: center; border-radius: 5%;height: 30px; font-size: 13px;" id="nhapsoluong"  class="nhapsoluong p-1"  ng-model="item.quantity" type="number" ng-disabled="item.quantity>=20" 
+      <input style="text-align: center; border-radius: 5%;height: 30px; font-size: 13px;" id="nhapsoluong"  class="nhapsoluong p-1"  ng-model="item.quantity" type="number" disabled
       ng-if="item.quantity<=20?item.quantity=item.quantity:item.quantity=20" >
       
       <a href="" ng-if="item.quantity==20?false:true"   ng-click="cart.cong(item.cartid)"  class="cong">+</a>

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,7 +58,7 @@ public class CartRestController {
     //sau khi them vao gio hang se tra ve mot cartdto
     CartDto cartDto = new CartDto();
     try {
-      System.out.println(config.accountLogedIn.getUserid());
+      
       int quantity = 1;
       if (cartProductService.productInCartP(id) == null) {
         
@@ -66,6 +69,7 @@ public class CartRestController {
         cart.setUser(user);
         cart.setTotalall(quantity * product.getPrice());
         cart.setDatecreated(new Date());
+        /* cart.setOrder(null); */
         cartService.insert(cart);
         // them vao bang cartproduct
         CartProduct cartProduct = new CartProduct();
@@ -109,20 +113,17 @@ public class CartRestController {
   @GetMapping("/rest/getCartByUserLoged")
   public List<CartDto> getCartDB() {
 // Cart cart =cartService.findById( cartService.findIdCartByUserid(id));
-    
 //     lay userid cua tai khoan dang dang nhap vao
-    if(config.accountLogedIn.getUserid()==null) {
-      
+    if(config.accountLogedIn==null) {
+     
       List<CartDto> CartNull= new ArrayList<>();
-      return CartNull;
+      return null;
     }
+   
     Integer id = config.accountLogedIn.getUserid();
     List<CartDto> listCartDTO = new ArrayList<CartDto>();
       
-      
     List<Cart> listcart = cartService.findIdCartByUserid(id);
-   
-    
     for (Cart listCart : listcart) {
       CartDto cartDto = new CartDto();
       CartProduct cartProduct = cartProductService.findCartPbyCartid(listCart.getCartid());
@@ -135,7 +136,12 @@ public class CartRestController {
       cartDto.setQuantity(listCart.getQuantityproduct());
       cartDto.setTotal(listCart.getTotalall());
       cartDto.setDesciption(product.getModel());
+      /*
+       * cartDto.setOrderid(null);
+       */      
       listCartDTO.add(cartDto);
+      
+    
     }
    
 
@@ -186,14 +192,23 @@ public class CartRestController {
     }
     else {
       List<Cart> listCart = cartService.findIdCartByUserid(config.accountLogedIn.getUserid());
-      System.out.println(listCart.size());
       for(Cart cart: listCart) {
         CartProduct cartProduct = cartProductService.findCartPbyCartid(cart.getCartid());
         cartProductService.delete(cartProduct);
         cartService.delete(cart);
       }
     }
-   
     return true;
   }
+  
+  // update soluong cart
+  @PutMapping(value = "updatecart/{id}")
+  public String updateQuantityCart(@PathVariable("id") Integer id,@RequestBody int quantityNow) {
+    //TODO: process PUT request
+    Cart cart = cartService.findById(id);
+    cart.setQuantityproduct(quantityNow);
+    cartService.insert(cart);
+    return "thanh cong";
+  }
+
 }

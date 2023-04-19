@@ -1,5 +1,7 @@
 package com.ttttn.service;
 
-public interface OrderService {
+import com.ttttn.entity.Order;
 
+public interface OrderService {
+  Order insert(Order order);
 }

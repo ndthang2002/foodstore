@@ -18,5 +18,10 @@ public class RoleServiceImpl implements RoleService{
     // TODO Auto-generated method stub
     return roleJparepository.findByKeyword(role);
   }
+  @Override
+  public Role findById(Integer id) {
+    // TODO Auto-generated method stub
+    return roleJparepository.findById(id).get();
+  }
 
 }

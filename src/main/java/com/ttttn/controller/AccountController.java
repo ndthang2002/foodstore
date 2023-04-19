@@ -3,12 +3,9 @@ package com.ttttn.controller;
 
 import javax.mail.internet.MimeMessage;
 
-import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +24,7 @@ import com.ttttn.service.RoleService;
 public class AccountController {
 SecurityConfig acc;
   @Autowired
-  AccountService userService;
+  AccountService accService;
   @Autowired
   JavaMailSender mailer;
   
@@ -40,7 +37,7 @@ SecurityConfig acc;
 
  @PostMapping("/signup")
  public String dangky(Model model,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("password") String password ,@RequestParam("fullname") String fullname ){
-   if(userService.findAccountByUserName(username)!=null) {
+   if(accService.findAccountByUserName(username)!=null) {
      model.addAttribute("errorsignup", "Tài Khoản đã tồn tại");
      return "login/login";
    }
@@ -54,20 +51,20 @@ SecurityConfig acc;
      account.setPassword(password);
      account.setEmail(email);
      account.setName(fullname);
-     userService.insert(account);
+     accService.insert(account);
      Authorities authorities = new Authorities();
      Role role = roleService.findbyname("user");
      authorities.setRole(role);
      authorities.setUser(account);
      authoritiesService.insert(authorities);
      System.out.println("vo day va thanh cong");
-   }
+        }
    return "login/login";
-   
    
  }
   @RequestMapping("/login")
   public String loginsucess(Model model) {
+   
 //  model.addAttribute("disable", "false");
     model.addAttribute("message", "Đăng nhập để trải nghiệm nhiều hơn");
     return "login/login";
@@ -88,7 +85,7 @@ SecurityConfig acc;
   }
   @RequestMapping("/forgotpassword")
   public String forgotpassword(Model model,@RequestParam("username") String username,@RequestParam("email") String email) {
-    Account account = userService.findAccountByUserName(username);
+    Account account = accService.findAccountByUserName(username);
     if(account==null) {
       model.addAttribute("message", "Tài khoản không tồn tại");
     }else if(!account.getEmail().equals(email)) {
@@ -116,6 +113,19 @@ SecurityConfig acc;
     return "login/login";
   }
   
-
+  // thay doi dia chi 
+//  @PostMapping("/changeadress")
+//  public String changeAdress(@RequestParam("city") String city,@RequestParam("district") String district,@RequestParam("ward") String ward
+//      ) {
+//    if(config.accountLogedIn==null) {
+//      return null;
+//    }
+//    Account account = accService.findbyid(config.accountLogedIn.getUserid());
+//    String address= ward+district+city;
+//    account.setAddress(address);
+//  
+//    accService.insert(account);
+//    return "redirect:/payments";
+//  }
   
 }

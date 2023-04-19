@@ -6,10 +6,14 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
   let idProduct;
   $scope.cartdb = [];
   $scope.cartLength = 0;
+  const token='d6e3dccb-6289-11ea-8b85-c60e4edfe802';
+
   
   //tương tác với các thẻ html 
   let thongbaoaddtocart = document.getElementById(`thongbaoaddtocart`);
   
+  //update so luong khi nguoi dung nhap vao input
+
   this.getdata = function() {
     return $http.get('/rest/getCartByUserLoged');
   };
@@ -25,7 +29,9 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
   }
   
   this.getdata().then(function(response) {
+    //kiem tra san pham sau khi mua se không hiển thị trong giỏ hàng
     $scope.cartdb = response.data;
+    console.log(response.data);
     $scope.cartLength = $scope.cartdb.length;
     addAllDatatoList($scope.cartdb);
     
@@ -34,7 +40,6 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
       items: [],
       /*them san pham vo*/
       add(id) {
-         
         $http.get(`/rest/checklogin`).then(resp =>{
           console.log(resp.data);
           if(resp.data === true){
@@ -56,8 +61,8 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
           console.log("them so luong");
         } else {
           $http.get(`/rest/addtocart/${id}`).then(resp => {
-            $scope.cartdb.push(resp.data);
-            $scope.cartLength = $scope.cartLength + 1;
+           $scope.cartdb.push(resp.data);
+           $scope.cartLength = $scope.cartLength + 1;
           }).catch(error => {
             console.log(error.data);
           });
@@ -128,15 +133,24 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
            console.log("loi");
          })
        },*/
+       
       cong(id) {
         var item = $scope.cartdb.find(item => item.cartid == id);
           item.quantity++;
-
+          $http.put(`updatecart/${id}`,item.quantity).then(rest =>{
+          }).catch(error=>{
+           
+          });
+          
       }, tru(id) {
         var item = $scope.cartdb.find(item => item.cartid == id);
           item.quantity--;
-        
+           $http.put(`updatecart/${id}`,item.quantity).then(rest =>{
+          }).catch(error=>{
+           
+          });
       },
+      
       gettt() {
         let amount = 0;
         $scope.items.forEach(element => {
@@ -229,17 +243,29 @@ function toast({ title = "", message = "", type = "", duration = "" }) {
   }
 }
 
-//hien thi so luong san pham trong gio hang
-/*$.ajax({
-  url: `rest/z`, // URL của API
-  method: `GET`, // Phương thức HTTP (GET, POST, PUT, DELETE...)
-  success: function(response) {
-    // Hàm này được gọi khi yêu cầu thành công
-    console.log(response);
-    $('#ProductToCart').html(response.data); // Cập nhật nội dung của thẻ div
-  },
-  error: function() {
-    // Hàm này được gọi khi yêu cầu thất bại
-    alert('Đã xảy ra lỗi khi tải dữ liệu!');
-  }
-});*/
+//cấu hình token api
+/*app.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.interceptors.push(['$injector', function ($injector) {
+        return $injector.get('AuthInterceptor');
+    }]);
+}]);
+
+app.factory('AuthInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
+    return {
+        request: function (config) {
+            config.headers = config.headers || {};
+            var token = 'e1eab2eb-daac-11ed-9eaf-eac62dba9bd9';
+            if (token) {
+                config.headers.Authorization = 'Bearer ' + token;
+            }
+            return config;
+        }
+    };
+}]);
+app.factory('User', ['$resource', function ($resource) {
+    return $resource('/api/users/:id', { id: '@id' }, {
+        update: {
+            method: 'GET'
+        }
+    });
+}]);*/

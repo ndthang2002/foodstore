@@ -15,4 +15,5 @@ public interface CartService {
   Integer getCountCart(Integer id);
   boolean delete(Cart cart);
 //  void deletecartbyuser(Integer userid);
+
 }

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Table(name="delivery_method")
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeliveryMothod {
+public class DeliveryMethod {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

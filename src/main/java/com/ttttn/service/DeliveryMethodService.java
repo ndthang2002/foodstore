@@ -1,5 +1,7 @@
 package com.ttttn.service;
 
-public interface DeliveryMethodService {
+import com.ttttn.entity.DeliveryMethod;
 
+public interface DeliveryMethodService {
+  DeliveryMethod insert(DeliveryMethod deliveryMethod); 
 }

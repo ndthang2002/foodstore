@@ -10,7 +10,7 @@
 
   </head>-->
 
-<main>
+<main >
 
   <!-- ***** Call to Action Start ***** -->
   <section class="section section-bg" id="call-to-action"
@@ -57,12 +57,14 @@
             <h3 style="color: black;">[[${product.price}]].000vnd</h3>
             <div class="ratings d-flex flex-row align-items-center">
               <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i
-                  class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441
-                reviews</span>
+                  class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> 
+                <!--  <span>441
+                reviews</span>-->
             </div>
           
-            <div class="buttons d-flex flex-row mt-5 gap-3"> <button class="btn btn-outline-dark">Buy Now</button>
-              <button class="btn btn-dark">Add to Basket</button> </div>
+            <div class="buttons d-flex flex-row mt-5 gap-3"> 
+              <a class="btn btn-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    th:attr="ng-click=@{|cart.add(${product.productid})|}">Add to Cart</a> </div>
           <!--  <div class="search-option"> <i class='bx bx-search-alt-2 first-search'></i>
               <div class="inputs"> <input type="text" name=""> </div> <i class='bx bx-share-alt share'></i>
             </div>-->
@@ -80,6 +82,42 @@
 
     }
   </script>
+  
+   <!-- Modal  thong bao-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Thông Báo </h4>
+         
+          <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4 id="thongbaoaddtocart">Vui lòng đăng nhập</h4>
+          <!--      thong bao  thanh cong -->
+          <div ng-if="iconsthongbao" class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+            <span class="swal2-success-line-tip"></span>
+            <span class="swal2-success-line-long"></span>
+            <div class="swal2-success-ring"></div>
+            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+          </div>
+          <!--  thong bao that bai-->
+
+          <div ng-if="!iconsthongbao" class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span
+              class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span
+                class="swal2-x-mark-line-right"></span></span></div>
+
+        </div>
+        <div ng-if="!checklogin" class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát </button>
+          <button type="button" class="btn btn-primary" onclick="location.href='/login'" >Đăng Nhập</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </main>
 
 </html>

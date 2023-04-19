@@ -31,7 +31,7 @@ public class Account {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer userid;
-  private String address;
+
   private String email;
   private String name;
   private String phone;
@@ -55,6 +55,10 @@ public class Account {
   @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Discount> discounts;
+  
+  @JsonIgnore
+  @OneToMany(mappedBy = "user")
+  private List<Address> address;
   
 //  @ManyToMany
 //  @JoinTable(name = "authorities",

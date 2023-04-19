@@ -35,16 +35,16 @@ public class Order {
   private Date bookingdate;
   private Date deliverydate;  
   private String orderstatus;
-  private int totalmoney;
+  private double totalmoney;
 
   
   @ManyToOne
   @JoinColumn(name="user_id")
   private Account user;
   
-  @ManyToOne
-  @JoinColumn(name = "cart_id")
-  private Cart cart;
+  @JsonIgnore
+  @OneToMany(mappedBy = "order")
+  private List<Cart> listCarts;
   
   @JsonIgnore
   @OneToMany(mappedBy = "order")
@@ -52,7 +52,7 @@ public class Order {
   
   @JsonIgnore
   @OneToMany(mappedBy = "order")
-  private List<DeliveryMothod> deliveryMothods;
+  private List<DeliveryMethod> deliveryMothods;
   
   @JsonIgnore
   @OneToMany(mappedBy = "order")
