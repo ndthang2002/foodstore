@@ -19,6 +19,7 @@ import com.ttttn.entity.CartProduct;
 import com.ttttn.entity.DeliveryMethod;
 import com.ttttn.entity.Order;
 import com.ttttn.entity.OrderItems;
+import com.ttttn.entity.Payment;
 import com.ttttn.entity.Product;
 import com.ttttn.service.AccountService;
 import com.ttttn.service.AddressService;
@@ -27,6 +28,7 @@ import com.ttttn.service.CartService;
 import com.ttttn.service.DeliveryMethodService;
 import com.ttttn.service.OrderItemService;
 import com.ttttn.service.OrderService;
+import com.ttttn.service.PayService;
 import com.ttttn.service.ProductService;
 
 @RestController
@@ -52,11 +54,15 @@ public class OrderRestController {
   ProductService     productService;
   @Autowired
   DeliveryMethodService deliveryMethodService;
+  @Autowired
+  PayService payService;
+  public static Integer amount;
+  
 
   @PostMapping("/allproducttocart")
-  public String saveOrder(@RequestParam("city_Id") Integer cityid, @RequestParam("district_Id") Integer districtId,
+  public Order saveOrder(@RequestParam("city_Id") Integer cityid, @RequestParam("district_Id") Integer districtId,
       @RequestParam("ward_Id") Integer wardId, @RequestParam("delivery_name") String deliveryName,
-      @RequestParam("delivery_fee") double deliveryFee) {
+      @RequestParam("delivery_fee") double deliveryFee,@RequestParam("payment") String descriptionPay) {
 
     /* add dia chi theo user */
     Account account = new Account();
@@ -111,11 +117,11 @@ public class OrderRestController {
       String formattedDateTime = now.format(formatter);
       order.setBookingdate(new Date());
       order.setDeliverydate(new Date());
-      order.setOrderstatus("đang giao");
+      order.setOrderstatus(descriptionPay);
       order.setTotalmoney((tongtien * 1000) + deliveryFee);
       order.setUser(account);
       orderService.insert(order);
-      
+      amount = (int) ((tongtien*1000)+deliveryFee);
       //add delivery_mothod
       DeliveryMethod deliveryMethod = new DeliveryMethod();
       deliveryMethod.setName(deliveryName);
@@ -141,10 +147,17 @@ public class OrderRestController {
           cartProductService.delete(cartProduct);
           cartService.delete(cart);
         }
-
+        
+        //add vao payment xac dinh phuong thuc thanh toan 
+        Payment payment = new Payment();
+        payment.setAmount(amount);
+        payment.setBankcode("");
+        payment.setDescription(descriptionPay);
+        payment.setOrder(order);
+        payService.insert(payment);
     }
 
-    return "thanh cong";
+    return order;
   }
 
 }

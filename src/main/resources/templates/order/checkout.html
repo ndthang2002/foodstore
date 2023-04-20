@@ -137,9 +137,10 @@
     <span for="" class="ttghichuthanhtoan " >Phương thức thanh toán </span>
     <div class="dropdown">
       <button class="ttthetindung dropdown-toggle" data-toggle="dropdown">Thẻ tín dụng</button>
-      <ul class="dropdown-menu w-100%">
-      <li class="chonvidientu"><img style="margin-right: 0.3rem;
-    width: 20px;" src="assets/images/Icon-VNPAY.webp"><a href="#" class="text-dark text-justify">ví điện tử vnpay</a></li>
+      <ul class="dropdown-menu w-100px p-1">
+      <li class="chonvidientu">
+        <input type="checkbox" ng-model="vnpaycheck" ng-change="handleChange()" class="text-dark text-justify mr-1"><img style="margin-right: 0.3rem;
+    width: 20px;" src="assets/images/Icon-VNPAY.webp">ví điện tử vnpay</li>
     </ul>
     </div>
     

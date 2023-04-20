@@ -15,7 +15,7 @@ public class PaymentConfig {
     public static final String IPDEFAULT="0:0:0:0:0:0:0:1";
     public static final String Version="2.1.0";
     public static final String Command="2.1.0";
-    public static final String orderType="190000";
+    public static final String orderType="1230";
     public static final String TmnCode="TT7LQ8ZB";
     public static final String CurrCode="VND";
     public static final String LocaleDefault="vn";
@@ -26,7 +26,6 @@ public class PaymentConfig {
     
     public static String hmacSHA512(final String key, final String data) {
         try {
-
             if (key == null || data == null) {
                 throw new NullPointerException();
             }

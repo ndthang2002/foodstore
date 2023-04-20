@@ -113,6 +113,12 @@ SecurityConfig acc;
     return "login/login";
   }
   
+  //vao trang edit taikhoan 
+  @RequestMapping("/editaccount")
+  public String editacc() {
+    return "login/account";
+  }
+  
   // thay doi dia chi 
 //  @PostMapping("/changeadress")
 //  public String changeAdress(@RequestParam("city") String city,@RequestParam("district") String district,@RequestParam("ward") String ward

@@ -1,7 +1,8 @@
 
-app.controller("myCtrl-order", function($scope, $http) {
+app.controller("myCtrl-order", function($scope, $http, $window) {
   console.log($scope.selectedCity);
   console.log($scope.cartdb);
+  console.log($scope.vnpaycheck);
   /* hiển thị địa chỉ và tính toán tiền vận chuyển */
   //thanh pho
   $scope.citys = [];
@@ -26,7 +27,7 @@ app.controller("myCtrl-order", function($scope, $http) {
     }
   }).then(function successCallback(response) {
     // Xử lý kết quả trả về từ API
-   
+
     $scope.citys = response.data.data;
   }, function errorCallback(response) {
     console.log("loi");
@@ -84,7 +85,7 @@ app.controller("myCtrl-order", function($scope, $http) {
             //tinh gia cuoc van chuyen 
             $scope.wardChoose = function(wardId) {
               console.log("vao chon xa");
-              console.log(wardId,"thanf");
+              console.log(wardId, "thanf");
               $scope.serviceChoose = function(serviceId) {
                 console.log(wardId);
                 $http({
@@ -96,7 +97,7 @@ app.controller("myCtrl-order", function($scope, $http) {
                     "coupon": null,
                     "from_district_id": 1542,
                     "to_district_id": districtId,
-                    "to_ward_code":wardId,
+                    "to_ward_code": wardId,
                     "height": 15,
                     "length": 15,
                     "weight": 1000,
@@ -111,37 +112,78 @@ app.controller("myCtrl-order", function($scope, $http) {
                   $scope.serviceFees = resp.data.data;
 
                   /*lua vao gio hang */
+                   
                   $scope.saveorder = function() {
-                    //lay cartid tung cai                     
-                    
-                    console.log("test long ham");
-                    console.log(wardId);
-                      var item  = $scope.shippingServices.find(item => item.service_id == serviceId);
-                    $http({
-                      method: 'POST',
-                      url: '/rest/order/allproducttocart',
-                      params: {
-                       city_Id: cityId,
-                       district_Id: districtId,
-                       ward_Id: wardId,
-                       delivery_name:item.short_name,
-                       delivery_fee :$scope.serviceFees.service_fee,
-                       },
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
+                    //kiem tra phuong thuc thanh toan 
+                 
+                      if ($scope.vnpaycheck) {
+                        //da check thanh toan online
+                        var item = $scope.shippingServices.find(item => item.service_id == serviceId);
+                        $http({
+                          method: 'POST',
+                          url: '/rest/order/allproducttocart',
+                          params: {
+                            city_Id: cityId,
+                            district_Id: districtId,
+                            ward_Id: wardId,
+                            delivery_name: item.short_name,
+                            delivery_fee: $scope.serviceFees.service_fee,
+                            payment: "Thanh toán online vnpay"
+                          },
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                          }
+                        }).then(resp => {
+                          console.log("thanhcong.");
+                          console.log(resp.data);
+                          var payment = {
+                            idService: resp.data.orderid,
+                            amount: 500000,
+                            description: "Thanh toan online",
+                            bankcode: "",
+                          }
+                          var json = JSON.stringify(payment);
+                          console.log("lay idorder", resp.data.orderid);
+                          $http.post(`/create-payment/${resp.data.orderid}`, json).then(resp => {
+                            console.log(resp.data.url);
+                            console.log(resp.data.status);
+                           $window.location.href = resp.data.url;
+                          }).catch(error => {
+                            console.log(error);
+                          })
+                        }).catch(error => {
+                          console.log(error.data);
+                        });
+                        showSuccessToast();
+                      } else {
+                        //khong check thanh toan khi nhan hang
+                        var item = $scope.shippingServices.find(item => item.service_id == serviceId);
+                        $http({
+                          method: 'POST',
+                          url: '/rest/order/allproducttocart',
+                          params: {
+                            city_Id: cityId,
+                            district_Id: districtId,
+                            ward_Id: wardId,
+                            delivery_name: item.short_name,
+                            delivery_fee: $scope.serviceFees.service_fee,
+                            payment: "Thanh toán khi nhận hàng"
+                          },
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                          }
+                        }).then(resp => {
+                          console.log("thanhcong.");
+                        }).catch(error => {
+                          console.log(error.data);
+                        });
+                        showSuccessToast();
                       }
-                    }).then(resp =>{
-                      console.log("thanhcong.");
-                      console.log(resp.data);
-                     
-                    }).catch(error=>{
-                      console.log(error.data);
-                    });
-                    showSuccessToast();
-                    
-                    
-                  }
+
+                    }
+                  
                   /*lua vao gio hang */
                 });
               }
@@ -177,9 +219,9 @@ app.controller("myCtrl-order", function($scope, $http) {
       $scope.tongtien = $scope.sanpham[i].price * $scope.sanpham[i].quantity;
       $scope.tongtienhang += $scope.tongtien;
     }
-   
+
   }).catch(error => {
- 
+
     console.log("loi khi goi api");
   });
 
@@ -231,44 +273,44 @@ app.controller("myCtrl-order", function($scope, $http) {
     },
   }
 
-// toast hien thi xoa thanh cong 
-function showSuccessToast(){
-  toast({
-    title:"Đặt hàng Thành công !",
-    message:"xem chi tiết đơn hàng trong mục đơn mua",
-    type:"success",
-    duration:5000
-  });
-}
-// Toast function
-function toast({ title = "", message = "", type = "", duration = "" }) {
-  const main = document.getElementById("toast");
-  if (main) {
-    const toastt = document.createElement("div");
+  // toast hien thi xoa thanh cong 
+  function showSuccessToast() {
+    toast({
+      title: "Đặt hàng Thành công !",
+      message: "xem chi tiết đơn hàng trong mục đơn mua",
+      type: "success",
+      duration: 5000
+    });
+  }
+  // Toast function
+  function toast({ title = "", message = "", type = "", duration = "" }) {
+    const main = document.getElementById("toast");
+    if (main) {
+      const toastt = document.createElement("div");
 
-    // Auto remove toast
-    const autoRemoveId = setTimeout(function () {
-      main.removeChild(toastt);
-    }, duration + 1000);
-    
-    // Remove toast when clicked
-    toastt.onclick = function (e) {
-      if (e.target.closest(".toast__close")) {
+      // Auto remove toast
+      const autoRemoveId = setTimeout(function() {
         main.removeChild(toastt);
-        clearTimeout(autoRemoveId);
-      }
-    };
-    const icons = {
-      success: "fas fa-check-circle"
-    };
-    const icon = icons[type];
-    const delay = (duration / 1000).toFixed(2);
+      }, duration + 1000);
 
-   toastt.classList.add("toastt", `toast--${type}`);
-  /* toast.style.animation = `slideInLeft ease .5s, fadeOut linear 5s 1s forwards`;*/
-    toastt.style.animation = `slideInLeft ease .3s, fadeOut linear ${delay}s 1s forwards`;
-    
-    toastt.innerHTML = `
+      // Remove toast when clicked
+      toastt.onclick = function(e) {
+        if (e.target.closest(".toast__close")) {
+          main.removeChild(toastt);
+          clearTimeout(autoRemoveId);
+        }
+      };
+      const icons = {
+        success: "fas fa-check-circle"
+      };
+      const icon = icons[type];
+      const delay = (duration / 1000).toFixed(2);
+
+      toastt.classList.add("toastt", `toast--${type}`);
+      /* toast.style.animation = `slideInLeft ease .5s, fadeOut linear 5s 1s forwards`;*/
+      toastt.style.animation = `slideInLeft ease .3s, fadeOut linear ${delay}s 1s forwards`;
+
+      toastt.innerHTML = `
                     <div class="toast__icon">
                         <i class="${icon}"></i>
                     </div>
@@ -280,10 +322,10 @@ function toast({ title = "", message = "", type = "", duration = "" }) {
                         <i class="fas fa-times"></i>
                     </div>
                 `;
-                
-    main.appendChild(toastt);
-   /* toast.classList.add('show');*/
+
+      main.appendChild(toastt);
+      /* toast.classList.add('show');*/
+    }
   }
-}
 
 }); 

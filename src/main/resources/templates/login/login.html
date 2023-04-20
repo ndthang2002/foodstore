@@ -15,8 +15,8 @@
   <h2 ng-show="show">Đăng nhập để trải nghiệm nhiều hơn</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-    
-		<form action="/signup" method="post" name="userform">
+   <!-- đăng ký -->
+	<form action="/signup" method="post" name="userform" novalidate>
 			<h2>Đăng ký tài khoản</h2>
 		<!--	<div class="social-container">
 				<a href="#"  class="social"><i class="fab fa-facebook-f"></i></a>
@@ -32,10 +32,14 @@
 			<i class="error" ng-show="!userform.email.$error.required&&userform.email.$error.pattern">Vui lòng nhập đúng email</i>
 			<input type="password" name="password" id="" placeholder="Password" ng-model="password" ng-minlength="4"  ng-required=true />
 	    <i class="error" ng-show="userform.password.$error.minlength">Mật khẩu phải lớn hơn 4 ký tự</i>
-	   
+	    <!--kiem tra -->
+	     <input type="password" name="confirmPassword" ng-model="confirmPassword" required />
+       <i class="error" ng-show="password !== confirmPassword">
+    xác nhận mật khẩu không đúng !
+  </i>
 			<button ng-disabled="userform.$invalid" >Đăng Ký </button>
 		</form>
-		
+		<!-- đăng ký -->
 		
 	</div>
 	<div class="form-container sign-in-container">
@@ -78,7 +82,7 @@
     </div>
 </div>
   <!-- thay thế bằng quên passs -->
-		<form th:action="@{/security/login}" method="post" >
+		<form th:action="@{/security/login}" method="post"  name="userform">
 			<h1>Đăng Nhập</h1>
 			<div class="social-container">
 				<a th:href="@{/security2/authrization/facebook}" class="social" onclick="FB.login()"><i class="fab fa-facebook-f"></i></a>
@@ -86,8 +90,10 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>hoặc dùng tài khoản khác</span>
-			<input type="text" placeholder="nhập tài khoản" name="username"  required/>
-			<input type="password" placeholder="Mật khẩu"   name="password"  required/>
+			<input type="text" placeholder="nhập tài khoản" name="username" ng-minlength="4"  required/>
+			<i class="error" ng-show="userform.username.$error.minlength">User không được để trống </i>
+			<input type="password" placeholder="Mật khẩu"   name="password" ng-minlength="4"  required/>
+			<i class="error" ng-show="userform.password.$error.minlength">User không được để trống </i>
 			<a href="#"ng-click="thaydoimatkhau()">Quên mật khẩu?</a>
 			<button type="submit">Đăng nhập</button>
 		</form>
@@ -103,6 +109,7 @@
 			</div>
 			<div class="overlay-panel overlay-right">
 				<h3>[[${message}]]</h3>
+				<span th:text="${errorsignup}"></span>
 				<p>Hãy đăng ký nếu bạn chưa có tài khoản </p>
 				<button class="ghost" id="signUp">Đăng Ký</button>
 			</div>

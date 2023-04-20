@@ -1,5 +1,7 @@
 package com.ttttn.service;
 
-public interface PayService {
+import com.ttttn.entity.Payment;
 
+public interface PayService {
+  Payment insert(Payment payment);
 }

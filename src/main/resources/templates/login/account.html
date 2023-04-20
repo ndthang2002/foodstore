@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<main ng-controller="myCtrl-account">
+  <style>
+   
+
+
+
+main {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Open sans';
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(57, 50, 173, 1)
+}
+
+main>* {
+    margin: 10px;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.wrapper {
+  margin-top: 100px;
+ height: 100%;
+
+    width: 700px;
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, .05);
+    overflow: hidden;
+}
+
+h1.title {
+    padding: 15px 0;
+    margin-left: 25px;
+    font-weight: normal;
+    color: rgb(166, 91, 0)
+}
+
+.form {
+    width: 700px;
+}
+
+.myform {
+    background: #F4F5F7;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px
+}
+
+.myform label {
+    display: block;
+    color: #A8AAC5;
+    font-weight: bold;
+    font-size: .8rem;
+    margin-bottom: 10px;
+}
+
+.myform input {
+    border: 0;
+    outline: 0;
+    height: 50px;
+    background: #FFF;
+    width: 100%;
+    border-radius: 5px;
+    color: #155BDA;
+    font-weight: 700;
+    font-size: .9rem;
+    text-indent: 15px;
+    border: 2px solid transparent;
+    transition: border 250ms;
+}
+
+.full-width {
+    grid-column: -1 / 1
+}
+
+.button {
+    grid-column: -1 / 1;
+    display: flex;
+    justify-content: center;
+}
+
+.button button {
+    border: 0;
+    outline: 0;
+    width: 120px;
+    height: 50px;
+    border-radius: 50px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: .9rem;
+    cursor: pointer;
+    background: linear-gradient(356deg, rgba(57, 50, 173, 1) 0%, rgba(87, 50, 173, 1) 100%);
+}
+
+.button button:hover {
+    background: rgba(57, 50, 173, 1);
+}
+  </style>
+
+  <div class="wrapper">
+     <div class="form">
+         <h1 class="title">Thông tin chi tiết tài khoản </h1>
+
+         <form action="#" class="myform" >
+             <div class="control-from">
+                 <label for="firstname">User Name *</label>
+                 <input type="text" id="firstname" value="" ng-model="firstname" required>
+             </div>
+
+             <div class="control-from">
+                 <label for="lastname">PassWord *</label>
+                 <input type="text" id="lastname" value="" ng-model="lastname" required>
+             </div>
+
+             <div class="control-from">
+                 <label for="emailaddress">Email Address *</label>
+                 <input type="text" id="emailaddress" value="" ng-model="emailaddress" required>
+             </div>
+
+             <div class="control-from">
+                 <label for="phonenumber">Phone Number</label>
+                 <input type="phone" id="phonenumber" value=""  ng-model="phonenumber"required>
+             </div>
+
+             <div class="full-width">
+                 <label for="companyname">Full Name</label>
+                 <input type="text" id="companyname" value="" ng-model="fullname" required>
+             </div>
+
+             <div class="button">
+                 <button id="register">Cập Nhật</button>
+             </div>
+
+         </form>
+     </div>
+ </div>
+
+</main>
+
+
+
+</html>

@@ -7,17 +7,20 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
   $scope.cartdb = [];
   $scope.cartLength = 0;
   const token='d6e3dccb-6289-11ea-8b85-c60e4edfe802';
-
   
   //tương tác với các thẻ html 
   let thongbaoaddtocart = document.getElementById(`thongbaoaddtocart`);
   
   //update so luong khi nguoi dung nhap vao input
-
+  
   this.getdata = function() {
     return $http.get('/rest/getCartByUserLoged');
   };
 
+  $http.get(`/rest/checklogin`).then(resp =>{
+    $scope.ischeckLoged=resp.data;
+  })
+  
   function addAllDatatoList() {
     return $scope.cartdb = $scope.cartdb;
     console.log($scope.cartdb);
@@ -27,9 +30,11 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
     var item = $scope.cartdb.find(item => item.cartid == id);
     return item;
   }
-  
+ 
   this.getdata().then(function(response) {
-    //kiem tra san pham sau khi mua se không hiển thị trong giỏ hàng
+    //an dangnhap khi da dang nhap
+    /*$scope.checkLoged=false;
+    alert($scope.checkLoged);*/
     $scope.cartdb = response.data;
     console.log(response.data);
     $scope.cartLength = $scope.cartdb.length;
@@ -176,6 +181,8 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
 
     };
   }).catch(erorr => {
+    $scope.checkLoged=false;
+    alert($scope.checkLoged);
     console.log("chua dang nhap");
   });
 

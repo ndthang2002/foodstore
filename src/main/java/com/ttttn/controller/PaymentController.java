@@ -29,15 +29,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ttttn.PaymentConfig;
 import com.ttttn.dto.PaymentResult;
 import com.ttttn.entity.Payment;
+import com.ttttn.restcontroller.OrderRestController;
 
 
 @RestController
 @CrossOrigin("*")
 public class PaymentController {
     PaymentConfig pConfig;
+    OrderRestController orderRestController;
     @PostMapping(value = "/create-payment/{id}")
     public ResponseEntity<?> createPayment(@RequestBody Payment req, @PathVariable("id")String orderId) throws IOException{
-        Integer amount = req.getAmount() * 100;
+      System.out.println(orderRestController.amount);
+        int amount = (orderRestController.amount *100);
         Map<String, String> vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", pConfig.Version);
         vnp_Params.put("vnp_Command", pConfig.Command);
