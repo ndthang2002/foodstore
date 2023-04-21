@@ -22,54 +22,56 @@ import com.ttttn.service.RoleService;
 
 @Controller
 public class AccountController {
-SecurityConfig acc;
+  SecurityConfig     acc;
   @Autowired
-  AccountService accService;
+  AccountService     accService;
   @Autowired
-  JavaMailSender mailer;
-  
+  JavaMailSender     mailer;
+
   @Autowired
   AuthoritiesService authoritiesService;
   @Autowired
-  RoleService roleService;
-  
-  SecurityConfig config;
+  RoleService        roleService;
 
- @PostMapping("/signup")
- public String dangky(Model model,@RequestParam("username") String username,@RequestParam("email") String email,@RequestParam("password") String password ,@RequestParam("fullname") String fullname ){
-   if(accService.findAccountByUserName(username)!=null) {
-     model.addAttribute("errorsignup", "Tài Khoản đã tồn tại");
-     return "login/login";
-   }
+  SecurityConfig     config;
+
+  @PostMapping("/signup")
+  public String dangky(Model model, @RequestParam("username") String username, @RequestParam("email") String email,
+      @RequestParam("password") String password, @RequestParam("fullname") String fullname) {
+    if (accService.findAccountByUserName(username) != null) {
+      model.addAttribute("errorsignup", "Tài Khoản đã tồn tại");
+      return "login/login";
+    }
 //   else if(password.equals(password)) {
 //     model.addAttribute("message", "Mật khẩu xác nhận lại không chính xác");
 //     return "that bai";
 //   }
-   else {
-     Account account = new Account();
-     account.setUsername(username);
-     account.setPassword(password);
-     account.setEmail(email);
-     account.setName(fullname);
-     accService.insert(account);
-     Authorities authorities = new Authorities();
-     Role role = roleService.findbyname("user");
-     authorities.setRole(role);
-     authorities.setUser(account);
-     authoritiesService.insert(authorities);
-     System.out.println("vo day va thanh cong");
-        }
-   return "login/login";
-   
- }
+    else {
+      Account account = new Account();
+      account.setUsername(username);
+      account.setPassword(password);
+      account.setEmail(email);
+      account.setName(fullname);
+      accService.insert(account);
+      Authorities authorities = new Authorities();
+      Role role = roleService.findbyname("user");
+      authorities.setRole(role);
+      authorities.setUser(account);
+      authoritiesService.insert(authorities);
+      System.out.println("vo day va thanh cong");
+    }
+    return "login/login";
+
+  }
+
   @RequestMapping("/login")
   public String loginsucess(Model model) {
-   
+
 //  model.addAttribute("disable", "false");
     model.addAttribute("message", "Đăng nhập để trải nghiệm nhiều hơn");
     return "login/login";
   }
-  
+
   @RequestMapping("failureLogin")
   public String loginErorr(Model model) {
     model.addAttribute("message", "Tài khoản hoặc mật khẩu không chính xác");
@@ -80,28 +82,30 @@ SecurityConfig acc;
   public String logoff(Model model) {
     model.addAttribute("message", "Đăng xuất thành công");
     this.acc.nameAccount = null;
-    this.config.accountLogedIn=null;
+    this.config.accountLogedIn = null;
     return "login/login";
   }
+
   @RequestMapping("/forgotpassword")
-  public String forgotpassword(Model model,@RequestParam("username") String username,@RequestParam("email") String email) {
+  public String forgotpassword(Model model, @RequestParam("username") String username,
+      @RequestParam("email") String email) {
     Account account = accService.findAccountByUserName(username);
-    if(account==null) {
+    if (account == null) {
       model.addAttribute("message", "Tài khoản không tồn tại");
-    }else if(!account.getEmail().equals(email)) {
-      System.out.println("day laa"+account.getEmail());
-        model.addAttribute("message","Sai email liên kết với tài khoản");
-    }
-      else {
-       try {
-         MimeMessage mail = mailer.createMimeMessage();
-        MimeMessageHelper  helper = new MimeMessageHelper(mail);
+    } else if (!account.getEmail().equals(email)) {
+      System.out.println("day laa" + account.getEmail());
+      model.addAttribute("message", "Sai email liên kết với tài khoản");
+    } else {
+      try {
+        MimeMessage mail = mailer.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mail);
         helper.setFrom("nguyendinhthang23082002@gmail.com");
         helper.setTo(email);
         helper.setReplyTo("nguyendinhthang23082002@gmail.com");
-        helper.setSubject("Chào bạn "+account.getName() + "");
-        helper.setText("Mật khẩu của bạn là:  " +account.getPassword(),true+"vui lòng không cung cấp mật khẩu này cho ai");
-        //gui mail
+        helper.setSubject("Chào bạn " + account.getName() + "");
+        helper.setText("Mật khẩu của bạn là:  " + account.getPassword(),
+            true + "vui lòng không cung cấp mật khẩu này cho ai");
+        // gui mail
         mailer.send(mail);
         model.addAttribute("message", "vui lòng check mail để nhận mật khẩu");
       } catch (Exception e) {
@@ -112,14 +116,33 @@ SecurityConfig acc;
     }
     return "login/login";
   }
-  
-  //vao trang edit taikhoan 
+
+  // vao trang edit taikhoan
   @RequestMapping("/editaccount")
   public String editacc() {
     return "login/account";
   }
+
+  @PostMapping("/accountedit")
+  public String editAccount(
+      @RequestParam("username") String username, 
+      @RequestParam("password") String password,
+      @RequestParam("email") String email, 
+      @RequestParam("phone") String phone, 
+      @RequestParam("name") String name,Model model) {
   
-  // thay doi dia chi 
+    Account account = new Account();
+       account.setUserid(config.accountLogedIn.getUserid());
+    account.setUsername(username);
+    account.setPassword(password);
+    account.setEmail(email);
+    account.setPhone(phone);
+    account.setName(name);
+    accService.insert(account);
+    model.addAttribute("thongbao", "Cập nhật thành công");
+    return "login/account";
+  }
+  // thay doi dia chi
 //  @PostMapping("/changeadress")
 //  public String changeAdress(@RequestParam("city") String city,@RequestParam("district") String district,@RequestParam("ward") String ward
 //      ) {
@@ -133,5 +156,5 @@ SecurityConfig acc;
 //    accService.insert(account);
 //    return "redirect:/payments";
 //  }
-  
+
 }

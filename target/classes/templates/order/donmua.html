@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+  <main ng-controller="myCtrl-donmua" >
+  
+<style>
+  .donhangform{
+    border: 1px solid gray;
+    height: auto;
+    width: 70%;
+    padding-left:2rem ;
+    padding: 50px;
+    background-color: white;
+  } 
+  main{
+    padding: 50px;
+  }
+  .truongthongtin{
+   display: flex;
+   align-items: center;
+   height: 30px;
+  }
+ .donhangform span{
+    margin-left: 1rem;
+    font-size: .5rem;
+    line-height: 10px;
+  }
+  label{
+    font-weight: bold;
+    font-size: .7rem;
+  }
+  
+</style>
+
+  <main>
+
+    <div action="" class="donhangform ">
+     <h4>CHI TIẾT ĐƠN HÀNG : orderid</h4>
+
+    <div class="truongthongtin">  
+     <label >Ngày đặt:</label>   <span>ngay dat</span>
+    </div>
+      <div class="truongthongtin">
+     <label>Thông tin người đặt:</label>   <span>ngay dat</span>
+    </div>
+      <div class="truongthongtin">
+     <label>Số tiền :</label>   <span>ngay dat</span>
+    </div>
+      <div class="truongthongtin">
+     <label>Hình thức thanh toán:</label>   <span>ngay dat</span>
+    </div>
+      <div class="truongthongtin">
+     <label>Ngày đặt:</label>   <span>ngay dat</span>
+    </div>
+      <div class="truongthongtin">
+     <label>Ngày đặt:</label>   <span>ngay dat</span>
+    </div>
+    </div>
+
+  </main>
+
+  </main>
+
+
+</html>

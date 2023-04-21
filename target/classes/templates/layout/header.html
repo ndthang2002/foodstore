@@ -73,7 +73,7 @@
               <div class="dropdown-menu">
                 <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
                  <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
-                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đơn mua</a>
+                 <a ng-show="ischeckLoged"   class="dropdown-item text-dark" href="" >Đơn mua</a>
                 <a class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
               </div>
             </li>
@@ -82,12 +82,13 @@
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
-
           <!-- ***** Menu End ***** -->
         </nav>
 
       </div>
     </div>
   </div>
+  
+  
 </header>
 <!-- ***** Header Area End ***** -->

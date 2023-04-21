@@ -16,7 +16,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(57, 50, 173, 1)
+    background: rgb(183, 190, 186)
 }
 
 main>* {
@@ -36,7 +36,7 @@ main>* {
     overflow: hidden;
 }
 
-h1.title {
+h3.title {
     padding: 15px 0;
     margin-left: 25px;
     font-weight: normal;
@@ -108,41 +108,47 @@ h1.title {
 
   <div class="wrapper">
      <div class="form">
-         <h1 class="title">Thông tin chi tiết tài khoản </h1>
+         <h3 class="title">Thông tin chi tiết tài khoản </h3>
 
-         <form action="#" class="myform" >
+         <form action="/accountedit" class="myform" method="post">
              <div class="control-from">
                  <label for="firstname">User Name *</label>
-                 <input type="text" id="firstname" value="" ng-model="firstname" required>
+                 <input type="text" id="firstname" value="" ng-model="account.username" required name="username">
              </div>
 
              <div class="control-from">
                  <label for="lastname">PassWord *</label>
-                 <input type="text" id="lastname" value="" ng-model="lastname" required>
+                 <input type="text" id="lastname" value="" ng-model="account.password" name="password" required>
              </div>
 
              <div class="control-from">
                  <label for="emailaddress">Email Address *</label>
-                 <input type="text" id="emailaddress" value="" ng-model="emailaddress" required>
+                 <input type="text" id="emailaddress" value="" ng-model="account.email" name="email" required>
              </div>
 
              <div class="control-from">
                  <label for="phonenumber">Phone Number</label>
-                 <input type="phone" id="phonenumber" value=""  ng-model="phonenumber"required>
+                 <input type="phone" id="phonenumber" value=""  ng-model="account.phone" name="phone" required placeholder="Cập nhật số điện thoại ">
              </div>
 
              <div class="full-width">
                  <label for="companyname">Full Name</label>
-                 <input type="text" id="companyname" value="" ng-model="fullname" required>
+                 <input type="text" id="companyname" name="name" value="" ng-model="account.name" placeholder="Cập nhật họ tên " required>
+             </div>
+ <div class="full-width">
+                 <label for="companyname" style="color: green;font-weight: bold;">[[${thongbao}]]</label>
+                
              </div>
 
+
              <div class="button">
-                 <button id="register">Cập Nhật</button>
+                 <button type="submit" id="register">Cập Nhật</button>
              </div>
 
          </form>
      </div>
  </div>
+
 
 </main>
 

@@ -2,6 +2,7 @@ package com.ttttn.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,17 +17,22 @@ import com.ttttn.repository.RoleJparepository;
 import com.ttttn.service.AccountService;
 import com.ttttn.service.AuthoritiesService;
 import com.ttttn.service.RoleService;
-
+@CrossOrigin("*")
 @RestController
-@RequestMapping("rest/account")
+
 public class AccountRestController {
+  
   @Autowired
   AccountService accountService;
   
   SecurityConfig config;
-  @GetMapping("/getaccountloged")
+  
+  @GetMapping("/rest/account/loged/")
   public Account getAcc() {
-    Account account = accountService.findbyid(config.accountLogedIn.getUserid());
+      
+      Account account = new Account();
+      account = accountService.findbyid(12);
+      
     return account;
   }
 }

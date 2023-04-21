@@ -129,15 +129,15 @@ public class OrderRestController {
       deliveryMethod.setOrder(order);
       deliveryMethodService.insert(deliveryMethod);
       
-        //add order_items 
+      //add order_items 
       OrderItems orderItems = new OrderItems();
-        for(Cart listcart :listCart) {
-          
-        Integer idProduct = cartProductService.findIdProductByCartid(listcart.getCartid());
+      List<Cart> listCarts = cartService.findIdCartByUserid(config.accountLogedIn.getUserid());
+        for(int i=0; i<=listCarts.size()-1;i++) {
+        Integer idProduct = cartProductService.findIdProductByCartid(listCarts.get(i).getCartid());
         Product product   = productService.findById(idProduct);
         orderItems.setOrder(order);
         orderItems.setProduct(product);
-        orderItems.setQuantity(listcart.getQuantityproduct());
+        orderItems.setQuantity(listCarts.get(i).getQuantityproduct());
         orderItemService.insert(orderItems);
        }
         
@@ -149,7 +149,7 @@ public class OrderRestController {
         }
         
         //add vao payment xac dinh phuong thuc thanh toan 
-        Payment payment = new Payment();
+        Payment payment = new Payment();  
         payment.setAmount(amount);
         payment.setBankcode("");
         payment.setDescription(descriptionPay);
@@ -159,5 +159,7 @@ public class OrderRestController {
 
     return order;
   }
+  
+  
 
 }

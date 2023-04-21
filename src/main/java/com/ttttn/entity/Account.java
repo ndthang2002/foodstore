@@ -31,7 +31,6 @@ public class Account {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer userid;
-
   private String email;
   private String name;
   private String phone;

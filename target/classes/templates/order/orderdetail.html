@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+  <main >
+  
+  <form>
+    <h3> Thanh toan thanh cong</h3>
+     <div class="truongthongtin">
+           
+                      <small>Hình thức thanh toán: [[${vnp_CardType}]]</small> <br>
+                      <small>Ngân hàng: [[${vnp_BankCode}]]</small> <br>
+                      <small>Hình thức thanh toán: [[${vnp_OrderInfo}]]</small> <br>
+                     <a th:href="@{/index}">Quay về trang chủ</a>
+                      
+    </div>
+  </form>
+</main>
+
+  </html>

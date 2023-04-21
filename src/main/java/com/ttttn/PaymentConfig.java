@@ -19,10 +19,10 @@ public class PaymentConfig {
     public static final String TmnCode="TT7LQ8ZB";
     public static final String CurrCode="VND";
     public static final String LocaleDefault="vn";
-    public static final String ReturnUrl="http://localhost:8080/order/detail";
+    public static final String ReturnUrl="http://localhost:8080/orderdetail";
     public static final String vnp_HashSecret="YNFFVTHWXZZWNDWDWTSJAVZQWTYSCORC";
     public static final String PayUrl="https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static final String ReturnPayment="http://localhost:8080/order/detail";
+    public static final String ReturnPayment="http://localhost:8080/orderdetail";
     
     public static String hmacSHA512(final String key, final String data) {
         try {

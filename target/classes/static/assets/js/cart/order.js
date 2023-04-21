@@ -1,5 +1,5 @@
 
-app.controller("myCtrl-order", function($scope, $http, $window) {
+app.controller("myCtrl-order", function($scope, $http, $window,$timeout) {
   console.log($scope.selectedCity);
   console.log($scope.cartdb);
   console.log($scope.vnpaycheck);
@@ -11,7 +11,7 @@ app.controller("myCtrl-order", function($scope, $http, $window) {
   $scope.shippingServices = [];
   $scope.serviceFees = [];
 
-  //cac ma thanh pho huyn xa
+  //cac ma thanh pho huyen xa
   $scope.cityId;
   $scope.districtId;
   $scope.wardId;
@@ -27,7 +27,6 @@ app.controller("myCtrl-order", function($scope, $http, $window) {
     }
   }).then(function successCallback(response) {
     // Xử lý kết quả trả về từ API
-
     $scope.citys = response.data.data;
   }, function errorCallback(response) {
     console.log("loi");
@@ -155,7 +154,7 @@ app.controller("myCtrl-order", function($scope, $http, $window) {
                         }).catch(error => {
                           console.log(error.data);
                         });
-                        showSuccessToast();
+                     
                       } else {
                         //khong check thanh toan khi nhan hang
                         var item = $scope.shippingServices.find(item => item.service_id == serviceId);
@@ -176,6 +175,11 @@ app.controller("myCtrl-order", function($scope, $http, $window) {
                           }
                         }).then(resp => {
                           console.log("thanhcong.");
+                          $timeout(function(){
+                            $window.location.href = 'http://localhost:8080/index';
+                          },1500);
+                          
+                           
                         }).catch(error => {
                           console.log(error.data);
                         });
