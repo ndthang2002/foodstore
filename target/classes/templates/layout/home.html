@@ -140,7 +140,7 @@
     </section>
 
     <!-- ***** Blog Start ***** -->
-    <section class="section" id="our-classes">
+     <section class="section" id="our-classes">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
@@ -156,38 +156,38 @@
                   <li><a href='#tabs-1'>NƠI BÁN CÁ HỒI TƯƠI SIÊU NGON, ĐẢM BẢO CHẤT LƯỢNG MÀ GIÁ CỰC RẺ.</a></li>
                   <li><a href='#tabs-2'>NHỮNG LOẠI THỊT BÒ NHẬP KHẨU NGON NHẤT.</a></li>
                   <li><a href='#tabs-3'>Bạn có biết thực phẩm sạch và thực phẩm organic là hai loại khác nhau.</a></li>
-                  <div class="main-rounded-button"><a href="blog.html">XEM THÊM</a></div>
+                  <div class="main-rounded-button"><a th:href="@{/blog}">XEM THÊM</a></div>
                 </ul>
               </div>
               <div class="col-lg-8">
                 <section class='tabs-content'>
                   <article id='tabs-1'>
-                    <img src="assets/images/blog-image-1-940x460.jpg" alt="">
+                    <img src="assets/images/cahoi.jpg" alt="">
                     <h4>NƠI BÁN CÁ HỒI TƯƠI SIÊU NGON, ĐẢM BẢO CHẤT LƯỢNG MÀ GIÁ CỰC RẺ</h4>
 
                     <p><i class="fa fa-user"></i> By: admin &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
 
                     <p>Cá hồi tươi là loại thực phẩm cung cấp giá trị dinh dưỡng vô cùng, nhất là hàm lượng chất đạm protein. Không những thế, cá hồi tươi còn có thể chế biến ra rất nhiều món ăn với hương vị độc đáo, thơm ngon, làm cho bữa ăn thêm đậm đà, bổ dưỡng. Bạn đang loay hoay tìm mãi một nơi bán cá hồi tươi sống đảm bảo chất lượng, giá cả phải chăng? Thế thì hãy cùng Thực Phẩm Sạch HD tìm hiểu qua thông tin trong bài viết sau bạn nhé.</p>
                     <div class="main-button">
-                        <a href="blog-details.html">XEM THÊM....</a>
+                        <a th:href="@{/blog-detail}">Đọc tiếp</a>
                     </div>
                   </article>
                   <article id='tabs-2'>
-                    <img src="assets/images/blog-image-2-940x460.jpg" alt="">
+                    <img src="assets/images/thitbo.jpg" alt="">
                     <h4>NHỮNG LOẠI THỊT BÒ NHẬP KHẨU NGON NHẤT.</h4>
                     <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
                     <p>Thịt bò nhập khẩu hiện nay đã không quá xa lạ đối với người Việt. Những miếng thịt bò đến từ Mỹ, Úc hay Nhật đang dần chiếm được sự ưa chuộng của các khách hàng. Với hương vị thơm sữa, mêm thịt, dễ dàng chế biến nhiều món ăn ngon khác nhau, thịt bò nhập khẩu đã giúp các bà nội trợ có thêm sự lựa chọn phong phú cho bữa ăn của gia đình mình.</p>
                     <div class="main-button">
-                        <a href="blog-details.html">XEM THÊM....</a>
+                        <a th:href="@{/blog-detail1}">Đọc tiếp</a>
                     </div>
                   </article>
                   <article id='tabs-3'>
-                    <img src="assets/images/blog-image-3-940x460.jpg" alt="">
-                    <h4>Bạn có biết thực phẩm sạch và thực phẩm organic là hai loại khác nhau.</h4>
+                    <img src="assets/images/rau.jpg" alt="">
+                    <h4>Bạn có biết thực phẩm sạch và thực phẩm hữu cơ là hai loại khác nhau.</h4>
                     <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
                     <p>Không ít người nghĩ rằng thực phẩm sạch và thực phẩm hữu cơ là một. Tuy nhiên thực phẩm sạch vẫn sử dụng các chất hóa học trong quá trình nuôi trồng, còn thực phẩm hữu cơ thì hoàn toàn không. Hãy cùng Prudential tìm hiểu sự khác nhau cũng như tác dụng của hai loại thực phẩm này với sức khỏe để lựa chọn loại thực phẩm phù hợp cho bữa cơm gia đình nhé!.</p>
                     <div class="main-button">
-                        <a href="blog-details.html">XEM THÊM....</a>
+                        <a th:href="@{/blog-detail2}">Đọc tiếp</a>
                     </div>
                   </article>
                 </section>
@@ -198,7 +198,7 @@
     <!-- ***** Blog End ***** -->
 
     <!-- ***** Call to Action Start ***** -->
-    <section class="section section-bg" id="call-to-action">
+ <!--   <section class="section section-bg" id="call-to-action">
         <div class="container">
             <div class="panel panel-primary">
                 <!-- <div class="row">
@@ -209,32 +209,10 @@
                         </div>
                     </div>
                 </div> -->
-                      <h2>GÓP <em>Ý</em></h2>
-                            <img src="assets/images/line-dec.png" alt="">
-                <div class="panel-body">
-                    <div class="form-group">
-                      <label for="usr">Họ Tên:</label>
-                      <input required="true" type="text" class="form-control" id="usr" placeholder="Nhập họ và tên...">
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Email:</label>
-                      <input required="true" type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email...">
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd">Số điện thoại:</label>
-                      <input required="true" type="number" class="form-control" id="sdt" placeholder="Nhập số điện thoại...">
-                    </div>
-                    <div class="form-group">
-                      <label for="confirmation_pwd">Nội dung:</label>
-                      <textarea id="story" name="story"
-                            rows="5" cols="100">
-                            </textarea>
-                    </div>
-                    <button class="btn btn-success">GỬI</button>
-                </div>
+       
             </div>
         </div>
-    </section>
+    </section>-->
     <!-- ***** Call to Action End ***** -->
 
     <!-- ***** Testimonials Item Start ***** -->

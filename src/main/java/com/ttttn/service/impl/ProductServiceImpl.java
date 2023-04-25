@@ -68,6 +68,25 @@ public class ProductServiceImpl implements ProductService{
    
   }
 
+  @Override
+  public Product insert(Product product) {
+    // TODO Auto-generated method stub
+    return productJparepository.save(product);
+  }
+
+  @Override
+  public void delete(Product product) {
+    // TODO Auto-generated method stub
+    productJparepository.delete(product);
+    
+  }
+
+  @Override
+  public Integer findIdCaByIdP(Integer idP) {
+    // TODO Auto-generated method stub
+    return productJparepository.findIdCaByIdP(idP);
+  }
+
 
 
 

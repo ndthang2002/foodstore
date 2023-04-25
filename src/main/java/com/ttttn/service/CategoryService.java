@@ -6,4 +6,5 @@ import com.ttttn.entity.Category;
 
 public interface CategoryService {
   List<Category> findAll();
+  Category findByid(Integer id);
 }

@@ -55,7 +55,7 @@ public class index {
     Role role = roleService.findById(roleid);
     if(role.getName().equalsIgnoreCase("admin")) {
       System.out.println("vao trang admin");
-      return "/admin";
+      return "redirect:admin/";
     }
     
      List<Category> list = categoryService.findAll();
@@ -63,5 +63,33 @@ public class index {
 //         System.out.println(acc.nameAccount);
 //     model.addAttribute("account",acc.nameAccount);
     return "layout/home";
+  }
+  @RequestMapping("/lienhe")
+  public String get() {
+    return "blog/contact";
+  }
+  @RequestMapping("/blog")
+  public String blog(Model model) {
+    return "/blog/blog";
+  }
+  
+  @RequestMapping("/blog-detail")
+  public String blogDetail(Model model) {
+    return "/blog/blog-details";
+  }
+  
+  @RequestMapping("/contact")
+  public String contact(Model model) {
+    return "/blog/contact";
+  }
+  
+  @RequestMapping("/blog-detail1")
+  public String blogDetail1(Model model) {
+    return "/blog/blog-details1";
+  }
+  
+  @RequestMapping("/blog-detail2")
+  public String blogDetail2(Model model) {
+    return "/blog/blog-details2";
   }
 }

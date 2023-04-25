@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Food Store Website Template</title>
+    <title>KIẾN THỨC</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
@@ -42,22 +42,22 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">Food Store</a>
+                        <a href="/index" class="logo">Food Store</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="index.html" class="active">Trang Chủ</a></li>
-                            <li><a href="products.html">Sản Phẩm</a></li>
-                            
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
-                              
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">Tin Tức</a>
-                                    <a class="dropdown-item" href="blog.html">Kiến Thức</a>
-                                </div>
-                            </li>
-                            <li><a href="contact.html">Liên Hệ</a></li> 
+            <li><a th:href="@{/index}" class="active">Trang Chủ</a></li>
+            <li><a th:href="@{/product}">Sản Phẩm</a></li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Tin Tức</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" th:href="@{/blog}">Tin Tức</a>
+                <a class="dropdown-item text-dark" th:href="@{/blog-detail}">Kiến Thức</a>
+              </div>
+            </li>
+            <li><a th:href="@{/contact}">Liên Hệ</a></li> 
                            
                             <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
@@ -83,8 +83,10 @@
                                 </a>
                               
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">Đăng Nhập</a>
-                                    <a class="dropdown-item" href="blog.html">Đăng Xuất</a>
+                                    <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
+                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
+                 <a ng-show="ischeckLoged"   class="dropdown-item text-dark" href="" >Đơn mua</a>
+                <a class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
                                 </div>
                             </li>
                         </ul>        
@@ -106,8 +108,8 @@
                     <div class="cta-content">
                         <br>
                         <br>
-                        <h2>Single <em>blog post</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <h2>Tham Khảo <em>Kiến Thức</em></h2>
+                        <p>Để biết thêm nhiều thông tin cũng như kiến thức thú vị về thực phẩm</p>
                     </div>
                 </div>
             </div>
@@ -121,21 +123,27 @@
             <br>
             <section class='tabs-content'>
               <article>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+                <h4>NƠI BÁN CÁ HỒI TƯƠI SIÊU NGON, ĐẢM BẢO CHẤT LƯỢNG MÀ GIÁ CỰC RẺ.</h4>
 
                 <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
 
-                <div><img src="assets/images/blog-image-fullscren-1-1920x700.jpg" alt=""></div>
+                <div><img src="assets/images/cahoi.jpg" width="2655px" height="800px" alt=""></div>
 
                 <br>
 
-                <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
+                <h3 style="color: black; font-weight: bold;">Vì sao cá hồi được ưu chuộng ?</h3>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam nihil magnam magni perferendis sit, inventore maxime architecto ab officia illum vitae veritatis asperiores laborum quaerat ratione omnis, possimus, sunt quae?</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus amet, corporis corrupti quod illum id autem assumenda nostrum quo, odio libero dolorum. Expedita, enim non voluptatibus qui veritatis iste ad? Voluptates natus dolor, minus culpa magnam! Iusto blanditiis beatae laudantium.</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolor nemo optio facere impedit fugiat obcaecati blanditiis tempora inventore sapiente beatae aspernatur vitae fuga totam possimus eveniet, praesentium maiores! Dolorum illum voluptates ipsum aspernatur explicabo numquam, aliquid a amet, deleniti eos suscipit totam laudantium excepturi voluptatum fugiat eum nesciunt minus iste, expedita provident temporibus, alias possimus veritatis aut fugit? Eaque.</p>
+                <p  style="color: black;">Cá hồi nổi tiếng là một lựa chọn lành mạnh với hàm lượng Omega 3 cao, mà các nhà nghiên cứu đã cho thấy nó mang lại nhiều lợi ích cho tim, ngăn ngừa ung thư, đẹp da, thúc đẩy hoạt động não bộ phát triển…mà hầu hết mọi người đều không đáp ứng đủ trong bữa ăn hàng ngày.
+                </p>
+                
+                <h3  style="color: black; font-weight: bold;">Lợi ích sức khỏe khi ăn cá hồi</h3>
+                
+                <P  style="color: black;">Duy trì sức khỏe cho bộ não: Cá hồi tươi rất giàu axit béo omega-3 giúp tăng cường chức năng của bộ não. Giúp cho trí nhớ sắc bén hơn và luôn tỉnh táo trong những giờ làm việc mệt mỏi. Các amino axit, vitamin A và D, selen, bảo vệ thần kinh khỏi những tác hại về lâu dài.
+Cải thiện sức khỏe của mắt: Hàm lượng omega-3 và axit amin có trong cá hồi giúp cải thiện sức khỏe của đôi mắt. Ngăn ngừa bệnh thoái hóa điểm vàng, mắt bị khô và mệt mỏi.
+Ngăn ngừa bệnh tim, hạn chế cao huyết áp: Cá hồi là nguồn cung cấp axit omega 3 tuyệt diệu. Hiệu quả trong việc giảm cholesterol và duy trì sức khỏe tim mạch. Củng cố cơ tim và phục hồi chức năng các mô tim mạch. Axit omega 3 giúp ngăn chặn các động mạch và tĩnh mạch bị xơ cứng. Cải thiện sức khỏe tim mạch nhờ vào việc tăng tốc độ biến thiên của nhịp tim (HRV). Giúp giảm nguy cơ loạn nhịp tim và đột tử.
+Chăm sóc da và tóc: Omega-3 cũng có tác dụng rất lớn trong việc hiệu ứng chống viêm. Cá hồi giúp chồng lại hiện tượng da bị cháy nắng cũng như bệnh ung thư da. Giúp tóc bóng mượt hơn và da mịn màng hơn.
+Bảo vệ đường tiêu hóa, ngăn ngừa ung thư và tốt cho tâm trạng: Thường xuyên ăn cá hồi giúp ngăn ngừa ung thư: vú, đại tràng, thực quản, dạ dày, buồng trứng…Omega-3 có trong cá hồi giúp giảm trầm cảm và mang lại cảm giác thoải mái.
+Và bây giờ đến phần quan trọng nhất, đó là địa chỉ để mua được cá hồi ngon chất lượng.</P>
 
                 <ul class="social-icons">
                     <li>Share this:</li>

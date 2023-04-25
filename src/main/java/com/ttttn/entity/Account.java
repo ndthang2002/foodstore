@@ -33,6 +33,7 @@ public class Account {
   private Integer userid;
   private String email;
   private String name;
+  private String image;
   private String phone;
   @NotEmpty(message = "Username is required")
   private String username;

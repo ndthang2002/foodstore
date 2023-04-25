@@ -1,6 +1,8 @@
 package com.ttttn.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,11 @@ public class RoleServiceImpl implements RoleService{
   public Role findById(Integer id) {
     // TODO Auto-generated method stub
     return roleJparepository.findById(id).get();
+  }
+  @Override
+  public List<Role> getAllRole() {
+    // TODO Auto-generated method stub
+    return roleJparepository.findAll();
   }
 
 }

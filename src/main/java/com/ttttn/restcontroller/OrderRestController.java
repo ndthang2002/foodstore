@@ -139,6 +139,12 @@ public class OrderRestController {
         orderItems.setProduct(product);
         orderItems.setQuantity(listCarts.get(i).getQuantityproduct());
         orderItemService.insert(orderItems);
+        
+//        update số lượng khi sp bị mua 
+        Integer soluong = product.getQuantity()- listCarts.get(i).getQuantityproduct();
+        product.setQuantity(soluong);
+        productService.insert(product);
+        
        }
         
         //xoa het cart sau khi mua 

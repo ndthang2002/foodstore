@@ -21,5 +21,9 @@ Page<Product> findProductByName(String name);
 
 Page<Product> findPaginated(Pageable pageable);
   
+Product insert(Product product);
+
+void delete(Product product);
+Integer findIdCaByIdP(Integer idP);
 
 }

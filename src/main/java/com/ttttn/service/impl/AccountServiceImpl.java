@@ -1,5 +1,7 @@
 package com.ttttn.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,18 @@ public class AccountServiceImpl implements AccountService{
   @Override
   public Account insert(Account account) {
     // TODO Auto-generated method stub
-    userJparepository.save(account);
-    return null;
+   
+    return  userJparepository.save(account);
+  }
+  @Override
+  public List<Account> findAll() {
+    // TODO Auto-generated method stub
+    return userJparepository.findAll();
+  }
+  @Override
+  public void delete(Integer id) {
+    // TODO Auto-generated method stub
+    userJparepository.deleteById(id);
+    
   }
 }

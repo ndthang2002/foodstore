@@ -93,7 +93,8 @@ protected void configure(HttpSecurity http) throws Exception {
   // tắt CSRF, COR
   http.csrf().disable().cors().disable().authorizeRequests().antMatchers("/index", "/categoryid", "/product",
       "/detail", "/search", "/assets/css/**", "/assets/js/**", "/assets/images/**", "/assets/fonts/**","/categoryid**").permitAll()
-      .antMatchers("/cart","/payments").hasRole("user").and();
+      .antMatchers("/cart","/payments").hasRole("user")
+      .antMatchers("/admin").hasRole("admin").and();
 
   // dang nhap
   http.formLogin().loginPage("/login").loginProcessingUrl("/security/login").defaultSuccessUrl("/index")

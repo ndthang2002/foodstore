@@ -6,4 +6,5 @@ public interface AddressService {
   Address insert(Address address);
   
   Address findAddressByUser(Integer id);
+  void delete(Address address);
 }

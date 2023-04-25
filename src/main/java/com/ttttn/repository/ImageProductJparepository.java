@@ -14,5 +14,5 @@ import com.ttttn.entity.Product;
 @Repository
 public interface ImageProductJparepository extends JpaRepository<ImageProduct, Integer>{
   @Query(value="SELECT * FROM image_product WHERE  product_id=?1",nativeQuery = true)
-  List<ImageProduct> findimageProductById(Integer cid);
+  List<ImageProduct> findimageProductById(Integer pid);
 }

@@ -68,8 +68,10 @@ public class AccountController {
   public String loginsucess(Model model) {
 
 //  model.addAttribute("disable", "false");
+    
     model.addAttribute("message", "Đăng nhập để trải nghiệm nhiều hơn");
     return "login/login";
+    
   }
 
   @RequestMapping("failureLogin")
@@ -132,7 +134,7 @@ public class AccountController {
       @RequestParam("name") String name,Model model) {
   
     Account account = new Account();
-       account.setUserid(config.accountLogedIn.getUserid());
+    account.setUserid(config.accountLogedIn.getUserid());
     account.setUsername(username);
     account.setPassword(password);
     account.setEmail(email);
@@ -156,5 +158,7 @@ public class AccountController {
 //    accService.insert(account);
 //    return "redirect:/payments";
 //  }
+  
+
 
 }

@@ -14,4 +14,8 @@ public interface AuthoritiesJparepository extends JpaRepository<Authorities, Int
 
   @Query(value="SELECT  roleid from authorities where userid=?1" , nativeQuery =true)
   Integer findIdRoleByUser (Integer id);
+ 
+  @Query(value=" select * from authorities  where userid =?1" , nativeQuery =true)
+  Authorities findAuthoritiesByUser (Integer id);
 }
+  

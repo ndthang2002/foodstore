@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Food Store Website Template</title>
+    <title>LIÊN HỆ</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
@@ -42,22 +42,22 @@
                 <div class="col-12">
                   <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">Food Store</a>
+                    <a href="/index" class="logo">Food Store</a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="index.html" class="active">Trang Chủ</a></li>
-                        <li><a href="products.html">Sản Phẩm</a></li>
-                        
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
-                          
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="about.html">Tin Tức</a>
-                                <a class="dropdown-item" href="blog.html">Kiến Thức</a>
-                            </div>
-                        </li>
-                        <li><a href="contact.html">Liên Hệ</a></li> 
+            <li><a th:href="@{/index}" class="active">Trang Chủ</a></li>
+            <li><a th:href="@{/product}">Sản Phẩm</a></li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Tin Tức</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" th:href="@{/blog}">Tin Tức</a>
+                <a class="dropdown-item text-dark" th:href="@{/blog-detail}">Kiến Thức</a>
+              </div>
+            </li>
+            <li><a th:href="@{/contact}">Liên Hệ</a></li> 
                        
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
@@ -83,8 +83,10 @@
                             </a>
                           
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="about.html">Đăng Nhập</a>
-                                <a class="dropdown-item" href="blog.html">Đăng Xuất</a>
+                                <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
+                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
+                 <a ng-show="ischeckLoged"   class="dropdown-item text-dark" href="" >Đơn mua</a>
+                <a class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
                             </div>
                         </li>
                     </ul>        
@@ -106,8 +108,8 @@
                     <div class="cta-content">
                         <br>
                         <br>
-                        <h2>Feel free to <em>Contact Us</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <h2>LIÊN HỆ <em>VỚI CHÚNG TÔI</em></h2>
+                        <p>Chậm nhất là 30p chúng tôi sẽ phản hồi bạn!</p>
                     </div>
                 </div>
             </div>
@@ -120,7 +122,7 @@
             <div class="row text-center">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>contact <em> info</em></h2>
+                        <h2>THÔNG TIN <em> LIÊN HỆ</em></h2>
                         <img src="assets/images/line-dec.png" alt="waves">
                         
                     </div>
@@ -151,7 +153,7 @@
                         <i class="fa fa-map-marker"></i>
                     </div>
 
-                    <h5>CVPM Quang Trung, Quận 12</h5>
+                    <h5><a href="https://goo.gl/maps/vnNBrnEXxaZhzD3a6">CVPM Quang Trung quận 12</a></h5>
 
                     <br>
                 </div>

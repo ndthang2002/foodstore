@@ -24,4 +24,12 @@ public class AddressServiceImpl  implements AddressService{
     return addressJparepository.findAdressByUser(id);
   }
 
+
+
+  @Override
+  public void delete(Address address) {
+    // TODO Auto-generated method stub
+    addressJparepository.delete(address);
+  }
+
 }

@@ -1,5 +1,7 @@
 package com.ttttn.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,18 @@ public class OrderItemServiceImpl implements OrderItemService
   public OrderItems insert(OrderItems orderItems) {
     // TODO Auto-generated method stub
     return orderItemJparepository.save(orderItems);
+  }
+
+  @Override
+  public List<OrderItems> findOrderItemsbyOrder(Integer orderid) {
+    // TODO Auto-generated method stub
+    return orderItemJparepository.findOrderItemByOrder(orderid);
+  }
+
+  @Override
+  public void delete(OrderItems orderItems) {
+    // TODO Auto-generated method stub
+    orderItemJparepository.delete(orderItems);
   }
 
 }

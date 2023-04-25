@@ -21,8 +21,17 @@ public class ImageProductServiceImpl implements ImageProductService{
     return imageProductJparepository.findimageProductById(id);
   }
 
+  @Override
+  public ImageProduct insert(ImageProduct imageProduct) {
+    // TODO Auto-generated method stub
+    return imageProductJparepository.save(imageProduct);
+  }
 
-  
-
+  @Override
+  public void delete(ImageProduct imageProduct) {
+    // TODO Auto-generated method stub
+    imageProductJparepository.delete(imageProduct);
+    
+  }
 
 }

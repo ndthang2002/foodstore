@@ -19,4 +19,10 @@ CategoryJparepository categoryJparepository;
     return categoryJparepository.findAll();
   }
 
+  @Override
+  public Category findByid(Integer id) {
+    // TODO Auto-generated method stub
+    return categoryJparepository.findById(id).get();
+  }
+
 }

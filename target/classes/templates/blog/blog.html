@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
   <head>
 
@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Food Store Website Template</title>
+    <title>TIN TỨC</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
@@ -42,22 +42,22 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">Food Store</a>
+                        <a href="/index" class="logo">Food Store</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="index.html" class="active">Trang Chủ</a></li>
-                            <li><a href="products.html">Sản Phẩm</a></li>
-                            
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức</a>
-                              
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">Tin Tức</a>
-                                    <a class="dropdown-item" href="blog.html">Kiến Thức</a>
-                                </div>
-                            </li>
-                            <li><a href="contact.html">Liên Hệ</a></li> 
+            <li><a th:href="@{/index}" class="active">Trang Chủ</a></li>
+            <li><a th:href="@{/product}">Sản Phẩm</a></li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Tin Tức</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" th:href="@{/blog}">Tin Tức</a>
+                <a class="dropdown-item text-dark" th:href="@{/blog-detail}">Kiến Thức</a>
+              </div>
+            </li>
+            <li><a th:href="@{/contact}">Liên Hệ</a></li> 
                            
                             <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
@@ -83,8 +83,10 @@
                                 </a>
                               
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">Đăng Nhập</a>
-                                    <a class="dropdown-item" href="blog.html">Đăng Xuất</a>
+                                    <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
+                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
+                 <a ng-show="ischeckLoged"   class="dropdown-item text-dark" href="" >Đơn mua</a>
+                <a class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
                                 </div>
                             </li>
                         </ul>        
@@ -106,8 +108,8 @@
                     <div class="cta-content">
                         <br>
                         <br>
-                        <h2>Read our <em>Blog</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <h2>TIN <em>TỨC</em></h2>
+                        <p>Xem thêm tin tức để biết nhiều kiến thức!</p>
                     </div>
                 </div>
             </div>
@@ -120,17 +122,17 @@
             <br>
             <br>
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-12">
                     <section class='tabs-content'>
                       <article>
-                        <img src="assets/images/blog-image-1-940x460.jpg" alt="">
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+                        <img src="assets/images/cahoi.jpg" width="2655px" height="800px" alt="">
+                        <h4>NƠI BÁN CÁ HỒI TƯƠI SIÊU NGON, ĐẢM BẢO CHẤT LƯỢNG MÀ GIÁ CỰC RẺ.</h4>
 
                         <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
 
-                        <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
+                        <p>Cá Hồi Tươi Là Loại Thực Phẩm Cung Cấp Giá Trị Dinh Dưỡng Vô Cùng, Nhất Là Hàm Lượng Chất Đạm Protein. Không Những Thế, Cá Hồi Tươi Còn Có Thể Chế Biến Ra Rất Nhiều Món Ăn Với Hương Vị Độc Đáo, Thơm Ngon, Làm Cho Bữa Ăn Thêm Đậm Đà, Bổ Dưỡng. Bạn Đang Loay Hoay Tìm Mãi Một Nơi Bán Cá Hồi Tươi Sống Đảm Bảo Chất Lượng, Giá Cả Phải Chăng? Thế Thì Hãy Cùng Thực Phẩm Sạch HD Tìm Hiểu Qua Thông Tin Trong Bài Viết Sau Bạn Nhé.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a th:href="@{/blog-detail}">Đọc tiếp</a>
                         </div>
                       </article>
 
@@ -138,12 +140,12 @@
                       <br>
 
                       <article>
-                        <img src="assets/images/blog-image-2-940x460.jpg" alt="">
-                        <h4>Aspernatur excepturi magni, placeat rerum nobis magnam libero! Soluta.</h4>
+                        <img src="assets/images/thitbo.jpg" alt="">
+                        <h4>NHỮNG LOẠI THỊT BÒ NHẬP KHẨU NGON NHẤT.</h4>
                         <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
-                        <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        <p>Thịt Bò Nhập Khẩu Hiện Nay Đã Không Quá Xa Lạ Đối Với Người Việt. Những Miếng Thịt Bò Đến Từ Mỹ, Úc Hay Nhật Đang Dần Chiếm Được Sự Ưa Chuộng Của Các Khách Hàng. Với Hương Vị Thơm Sữa, Mêm Thịt, Dễ Dàng Chế Biến Nhiều Món Ăn Ngon Khác Nhau, Thịt Bò Nhập Khẩu Đã Giúp Các Bà Nội Trợ Có Thêm Sự Lựa Chọn Phong Phú Cho Bữa Ăn Của Gia Đình Mình.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a th:href="@{/blog-detail1}">Đọc tiếp</a>
                         </div>
                       </article>
 
@@ -151,50 +153,18 @@
                       <br>
 
                       <article>
-                        <img src="assets/images/blog-image-3-940x460.jpg" alt="">
-                        <h4>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non adipisci nihil.</h4>
+                        <img src="assets/images/rau.jpg" width="2655px" height="800px" alt="">
+                        <h4>Bạn có biết thực phẩm sạch và thực phẩm hữu cơ là hai loại khác nhau.</h4>
                         <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
-                        <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
+                        <p>Không Ít Người Nghĩ Rằng Thực Phẩm Sạch Và Thực Phẩm Hữu Cơ Là Một. Tuy Nhiên Thực Phẩm Sạch Vẫn Sử Dụng Các Chất Hóa Học Trong Quá Trình Nuôi Trồng, Còn Thực Phẩm Hữu Cơ Thì Hoàn Toàn Không. Hãy Cùng Prudential Tìm Hiểu Sự Khác Nhau Cũng Như Tác Dụng Của Hai Loại Thực Phẩm Này Với Sức Khỏe Để Lựa Chọn Loại Thực Phẩm Phù Hợp Cho Bữa Cơm Gia Đình Nhé!.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a th:href="@{/blog-detail2}">Đọc tiếp</a>
                         </div>
                       </article>
                     </section>
                 </div>
 
-                <div class="col-lg-4">
-                    <h5 class="h5">Search</h5>
-                    
-                    <div class="contact-form">
-                        <form id="search_form" name="gs" method="GET" action="#">
-                          <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
-                        </form>
-                    </div>
-
-                    <h5 class="h5">Recent posts</h5>
-
-                    <ul>
-                        <li>
-                            <p><a href="blog-details.html">Dolorum corporis ullam, reiciendis inventore est repudiandae</a></p>
-                            <small><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10</small>
-                        </li>
-
-                        <li><br></li>
-
-                        <li>
-                            <p><a href="blog-details.html">Culpa ab quasi in rerum dolorum impedit expedita</a></p>
-                            <small><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10</small>
-                        </li>
-
-                        <li><br></li>
-
-                        <li>
-                          <p><a href="blog-details.html">Explicabo soluta corrupti dolor doloribus optio dolorum</a></p>
-
-                          <small><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10</small>
-                        </li>
-                    </ul>
-                </div>
+                
             </div>
         </div>
     </section>

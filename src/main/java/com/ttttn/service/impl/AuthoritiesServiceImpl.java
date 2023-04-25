@@ -22,5 +22,15 @@ public class AuthoritiesServiceImpl implements AuthoritiesService{
     // TODO Auto-generated method stub
     return  authoritiesJparepository.findIdRoleByUser(id);
   }
+  @Override
+  public Authorities findAuthoritiesByUser(Integer idUser) {
+    // TODO Auto-generated method stub
+     return authoritiesJparepository.findAuthoritiesByUser(idUser) ;
+}
+  @Override
+  public void delete(Authorities authorities) {
+    // TODO Auto-generated method stub
+    authoritiesJparepository.delete(authorities);
+  }
   
 }

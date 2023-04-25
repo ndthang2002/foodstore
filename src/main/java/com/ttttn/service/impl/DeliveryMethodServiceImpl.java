@@ -19,4 +19,17 @@ public class DeliveryMethodServiceImpl implements DeliveryMethodService{
     return  deliveryMethodJparepository.save(deliveryMethod);
   }
 
+  @Override
+  public DeliveryMethod finDeliveryMethod(Integer orderid) {
+    // TODO Auto-generated method stub
+    return deliveryMethodJparepository.finDeliveryMethod(orderid);
+  }
+
+  @Override
+  public void delete(DeliveryMethod deliveryMethod) {
+    // TODO Auto-generated method stub
+    deliveryMethodJparepository.delete(deliveryMethod);
+    
+  }
+
 }

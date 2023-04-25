@@ -17,9 +17,9 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">Tin Tức</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item text-dark" th:href="@{/tintuc}">Tin Tức</a>
-                <a class="dropdown-item text-dark" th:href="@{/kienthuc}">Kiến Thức</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" th:href="@{/blog}">Tin Tức</a>
+                <a class="dropdown-item text-dark" th:href="@{/blog-detail}">Kiến Thức</a>
               </div>
             </li>
             <li><a th:href="@{/lienhe}">Liên Hệ</a></li>
@@ -73,8 +73,8 @@
               <div class="dropdown-menu">
                 <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
                  <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
-                 <a ng-show="ischeckLoged"   class="dropdown-item text-dark" href="" >Đơn mua</a>
-                <a class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
+                 
+                <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
               </div>
             </li>
            

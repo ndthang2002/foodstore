@@ -17,4 +17,6 @@ public interface ProductJparepository extends JpaRepository<Product, Integer>{
   
   @Query(value="SELECT * FROM product WHERE  name like  ?1",nativeQuery = true)
   List<Product> findByKeyword(String keyword);
+  @Query(value="SELECT  categoryid  from product where productid=?1",nativeQuery = true)
+  Integer findIdCaByIdP(Integer idp);
 }

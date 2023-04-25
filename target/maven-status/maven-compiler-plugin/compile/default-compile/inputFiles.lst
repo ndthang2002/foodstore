@@ -23,8 +23,11 @@
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/OrderItemJparepository.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/Address.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/AuthoritiesServiceImpl.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/dto/nhanvienDto.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/ImageProductJparepository.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/Authorities.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/UploadFileService.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/DeliveryMethod.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/dto/PaymentResult.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/AccountServiceImpl.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/ProductJparepository.java
@@ -32,6 +35,7 @@
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/PaymentConfig.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/AccountService.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/DiscountJparepository.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/AdminController.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/PayJparepository.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/ProductController.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/CartProductJparepository.java
@@ -42,7 +46,6 @@
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/dto/CartDto.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/AuthoritiesService.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/index.java
-/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/DeliveryMothod.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/InterceptorConfig.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/OrderItemService.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/restcontroller/OrderRestController.java
@@ -57,13 +60,14 @@
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/ReviewService.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/AccountJparepository.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/Comment.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/dto/donmua.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/AccountAndAddress.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/CategoryServiceImple.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/DuAnTotNghiepApplication.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/ImageProductServiceImpl.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/CategoryJparepository.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/AddressServiceImpl.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/PaymentController.java
-/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/Pay.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/CartServiceImpl.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/RoleJparepository.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/CategoryController.java
@@ -77,8 +81,11 @@
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/CartService.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/PayService.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/ImageProduct.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/OrderController.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/entity/Payment.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/restcontroller/ProductRestController.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/repository/OrderJparepository.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/CartController.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/controller/AccountController.java
 /Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/ReviewServiceImpl.java
+/Users/thang/dev/projects/duantotnghiep/src/main/java/com/ttttn/service/impl/UploadFileImpl.java

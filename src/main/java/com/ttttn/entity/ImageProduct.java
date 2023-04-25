@@ -24,7 +24,7 @@ public class ImageProduct {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer imageproductid;
   private String urlname;  
-  private String imagedescription;
+  private String imagedescription;  
   private Date  datecreated;
 
   @ManyToOne

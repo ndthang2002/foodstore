@@ -6,14 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class donmua {
-
-  private Date ngaydat;
-  private String thongtinuser;
-  private double sotien;
-  private String hinhthucthanhtoan;
-  private 
-}
+/*
+ * @Data
+ * 
+ * @NoArgsConstructor
+ * 
+ * @AllArgsConstructor public class donmua {
+ * 
+ * private Date ngaydat; private String thongtinuser; private double sotien;
+ * private String hinhthucthanhtoan; private }
+ */
