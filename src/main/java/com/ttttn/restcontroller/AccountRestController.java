@@ -77,7 +77,7 @@ public class AccountRestController {
   @GetMapping("/rest/account/loged/")
   public Account getAcc() {
     Account account = new Account();
-    account = accountService.findbyid(12);
+    account = accountService.findbyid(config.accountLogedIn.getUserid());
     return account;
   }
 

@@ -35,7 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   HttpServletRequest    request;
   @Autowired
   AccountService        accountService;
+
   BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
+  
   CookieService cookie;
   public static String nameAccount;
   public static boolean isLogedIn=false;
@@ -47,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     auth.userDetailsService(Username -> {
       try {
         // Kiểm tra tài khoản trong data
-       
         Account user = accountService.findAccountByUserName(Username);
         nameAccount = user.getName();
         // Kiểm tra pass  
@@ -83,10 +84,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //  return new InMemoryUserDetailsManager(user,admin);
 //}
 
-@Bean
-public PasswordEncoder passwordEncoder() {
-  return new BCryptPasswordEncoder();
-}
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+      return new BCryptPasswordEncoder();
+  }
 
 @Override
 protected void configure(HttpSecurity http) throws Exception {

@@ -33,7 +33,7 @@
 			<input type="password" name="password" id="" placeholder="Password" ng-model="password" ng-minlength="4"  ng-required=true />
 	    <i class="error" ng-show="userform.password.$error.minlength">Mật khẩu phải lớn hơn 4 ký tự</i>
 	    <!--kiem tra -->
-	     <input type="password" name="confirmPassword" ng-model="confirmPassword" required />
+	     <input type="password" name="confirmPassword" ng-model="confirmPassword" required  placeholder="xác nhận lại mật khẩu"/>
        <i class="error" ng-show="password !== confirmPassword">
     xác nhận mật khẩu không đúng !
   </i>

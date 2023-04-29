@@ -27,7 +27,6 @@ public class AccountController {
   AccountService     accService;
   @Autowired
   JavaMailSender     mailer;
-
   @Autowired
   AuthoritiesService authoritiesService;
   @Autowired
@@ -47,6 +46,11 @@ public class AccountController {
 //     return "that bai";
 //   }
     else {
+//      System.out.println("b1");
+//      String hasPass = config.passwordEncoder().encode(password);
+//      System.out.println(hasPass);
+//      System.out.println("b2");
+      
       Account account = new Account();
       account.setUsername(username);
       account.setPassword(password);
