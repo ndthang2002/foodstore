@@ -48,20 +48,22 @@ public class index {
   @RequestMapping("/index")
   public String index(Model model)  {
     
-    if(config.accountLogedIn==null) {
-      return "layout/home";
-    }
-    int roleid = authoritiesService.findIdRoleByUser(config.accountLogedIn.getUserid());
-    Role role = roleService.findById(roleid);
-    if(role.getName().equalsIgnoreCase("admin")) {
-      System.out.println("vao trang admin");
-      return "redirect:admin/";
-    }
-    
-     List<Category> list = categoryService.findAll();
-     model.addAttribute("listcategory", list);
-//         System.out.println(acc.nameAccount);
-//     model.addAttribute("account",acc.nameAccount);
+      if(config.accountLogedIn==null) {
+        return "layout/home";
+      }
+      int roleid = authoritiesService.findIdRoleByUser(config.accountLogedIn.getUserid());
+      Role role = roleService.findById(roleid);
+      if(role.getName().equalsIgnoreCase("admin")) {
+        System.out.println("vao trang admin");
+        return "redirect:admin/";
+      }
+      
+       List<Category> list = categoryService.findAll();
+       model.addAttribute("listcategory", list);
+//           System.out.println(acc.nameAccount);
+//       model.addAttribute("account",acc.nameAccount);
+   
+   
     return "layout/home";
   }
   @RequestMapping("/lienhe")

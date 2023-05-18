@@ -1,6 +1,10 @@
 
 package com.ttttn.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.ttttn.SecurityConfig;
 import com.ttttn.entity.Account;
 import com.ttttn.entity.Authorities;
@@ -31,7 +38,7 @@ public class AccountController {
   AuthoritiesService authoritiesService;
   @Autowired
   RoleService        roleService;
-
+  @Autowired
   SecurityConfig     config;
 
   @PostMapping("/signup")
@@ -46,14 +53,16 @@ public class AccountController {
 //     return "that bai";
 //   }
     else {
-//      System.out.println("b1");
-//      String hasPass = config.passwordEncoder().encode(password);
-//      System.out.println(hasPass);
-//      System.out.println("b2");
+      System.out.println("b1");
+      String hasPass = config.passwordEncoder().encode(password);
+      System.out.println(hasPass);
+      System.out.println("b2");
+      Boolean be = config.passwordEncoder().matches(password, hasPass);
+      System.out.println(be);
       
       Account account = new Account();
       account.setUsername(username);
-      account.setPassword(password);
+      account.setPassword(hasPass);
       account.setEmail(email);
       account.setName(fullname);
       accService.insert(account);
@@ -135,7 +144,10 @@ public class AccountController {
       @RequestParam("password") String password,
       @RequestParam("email") String email, 
       @RequestParam("phone") String phone, 
-      @RequestParam("name") String name,Model model) {
+      @RequestParam("name") String name,
+      @RequestParam("image") MultipartFile image
+      ,Model model) {
+    
   
     Account account = new Account();
     account.setUserid(config.accountLogedIn.getUserid());
@@ -144,6 +156,34 @@ public class AccountController {
     account.setEmail(email);
     account.setPhone(phone);
     account.setName(name);
+    
+    // cap nhat anh 
+    // up anh len clound va vao database
+    Map<String, String> config = new HashMap<>();
+    config.put("cloud_name", "dpbixmrep");
+    config.put("api_key", "132427124622788");
+    config.put("api_secret", "KI7WCnrGYQ1Hxkqj-mmHBT-6EBg");
+
+    Cloudinary cloudinary = new Cloudinary(config);
+
+    Map params = ObjectUtils.asMap("upload_preset", "v9e7akio");
+    if (!image.isEmpty()) {
+      try {
+        Object res = cloudinary.uploader().upload(image.getBytes(), params);
+        // URL để lưu vào database
+        String urlUploaded = ((Map<String, String>) res).get("url");
+        String baseUrl = "http://res.cloudinary.com/dpbixmrep/image/upload/";
+        String path = urlUploaded.replace(baseUrl, "");
+        account.setImage(path);
+
+      } catch (IOException exception) {
+        exception.printStackTrace();
+      }
+    } else {
+      System.out.println("anh 1 null");
+    }
+    
+    
     accService.insert(account);
     model.addAttribute("thongbao", "Cập nhật thành công");
     return "login/account";

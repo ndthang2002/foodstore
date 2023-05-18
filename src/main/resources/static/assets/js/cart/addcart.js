@@ -6,21 +6,22 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
   let idProduct;
   $scope.cartdb = [];
   $scope.cartLength = 0;
-  const token='d6e3dccb-6289-11ea-8b85-c60e4edfe802';
-  
+  $scope.checkcart = false;
+  const token = 'd6e3dccb-6289-11ea-8b85-c60e4edfe802';
+
   //tương tác với các thẻ html 
   let thongbaoaddtocart = document.getElementById(`thongbaoaddtocart`);
-  
+
   //update so luong khi nguoi dung nhap vao input
-  
+
   this.getdata = function() {
     return $http.get('/rest/getCartByUserLoged');
   };
 
-  $http.get(`/rest/checklogin`).then(resp =>{
-    $scope.ischeckLoged=resp.data;
-  })
-  
+  $http.get(`/rest/checklogin`).then(resp => {
+    $scope.ischeckLoged = resp.data;
+  });
+
   function addAllDatatoList() {
     return $scope.cartdb = $scope.cartdb;
     console.log($scope.cartdb);
@@ -30,34 +31,37 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
     var item = $scope.cartdb.find(item => item.cartid == id);
     return item;
   }
- 
+
   this.getdata().then(function(response) {
     //an dangnhap khi da dang nhap
     /*$scope.checkLoged=false;
     alert($scope.checkLoged);*/
     $scope.cartdb = response.data;
+    if ($scope.cartdb.length == 0) {
+      $scope.checkcart = true;
+
+    }
     console.log(response.data);
     $scope.cartLength = $scope.cartdb.length;
     addAllDatatoList($scope.cartdb);
-    
     $scope.cart = {
 
       items: [],
       /*them san pham vo*/
       add(id) {
-        $http.get(`/rest/checklogin`).then(resp =>{
+        $http.get(`/rest/checklogin`).then(resp => {
           console.log(resp.data);
-          if(resp.data === true){
+          if (resp.data === true) {
             console.log("deo vo day");
-            thongbaoaddtocart.innerText="Thêm sản phẩm thành công";
-            $scope.checklogin=true;
-            $scope.iconsthongbao=true;
-            setTimeout(function(){
-  document.getElementById("close").click();
-}, 700);
+            thongbaoaddtocart.innerText = "Thêm sản phẩm thành công";
+            $scope.checklogin = true;
+            $scope.iconsthongbao = true;
+            setTimeout(function() {
+              document.getElementById("close").click();
+            }, 700);
           }
         })
-        
+
         var item = $scope.cartdb.find(item => item.productid == id);
         console.log(item);
         if (item) {
@@ -66,8 +70,8 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
           console.log("them so luong");
         } else {
           $http.get(`/rest/addtocart/${id}`).then(resp => {
-           $scope.cartdb.push(resp.data);
-           $scope.cartLength = $scope.cartLength + 1;
+            $scope.cartdb.push(resp.data);
+            $scope.cartLength = $scope.cartLength + 1;
           }).catch(error => {
             console.log(error.data);
           });
@@ -85,7 +89,7 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
           console.log("checkbox is not ");
         }
       },
-      
+
       remove(id, index) {
         //xoa tren list tam
         $scope.cartdb.splice(index, 1);
@@ -100,13 +104,13 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
         }).catch(error => {
           alert("loi");
         });
-        showSuccessToast();
+        showSuccessToast("Thành công", "Xóa Thành Công", "success");
       },
       cleartCart() {
         console.log("hihia");
         $http.delete(`/rest/deletecartall`);
-        $scope.cartdb=[];
-        $scope.cartLength=0;
+        $scope.cartdb = [];
+        $scope.cartLength = 0;
         console.log("thang");
       },
       get getCount() {
@@ -138,24 +142,23 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
            console.log("loi");
          })
        },*/
-       
+
       cong(id) {
         var item = $scope.cartdb.find(item => item.cartid == id);
-          item.quantity++;
-          $http.put(`updatecart/${id}`,item.quantity).then(rest =>{
-          }).catch(error=>{
-           
-          });
-          
+        item.quantity++;
+        $http.put(`updatecart/${id}`, item.quantity).then(rest => {
+        }).catch(error => {
+        });
+
       }, tru(id) {
         var item = $scope.cartdb.find(item => item.cartid == id);
-          item.quantity--;
-           $http.put(`updatecart/${id}`,item.quantity).then(rest =>{
-          }).catch(error=>{
-           
-          });
+        item.quantity--;
+        $http.put(`updatecart/${id}`, item.quantity).then(rest => {
+        }).catch(error => {
+
+        });
       },
-      
+
       gettt() {
         let amount = 0;
         $scope.items.forEach(element => {
@@ -181,7 +184,7 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
 
     };
   }).catch(erorr => {
-    $scope.checkLoged=false;
+    $scope.checkLoged = false;
     alert($scope.checkLoged);
     console.log("chua dang nhap");
   });
@@ -193,15 +196,75 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
     $scope.disabledFlag = true;
   }
 
+
+  // add comment
+
+  // mang toan commentsdto
+  $scope.comments = [];
+
+  $scope.chophepxoa = function() {
+    $http.get(`/rest/getallcomment`).then(resp => {
+      $scope.comments = resp.data;
+      // lay ra id user dang dang nhap de cho phep xoa
+      $http.get(`/rest/account/loged/`).then(response => {
+        $scope.checkdelete;
+        $scope.idUser = response.data.userid;
+        $scope.comments.forEach(function(comment) {
+          console.log(comment.idaccount);
+
+          if (comment.idaccount === $scope.idUser) {
+            $scope.checkdelete = true;
+            console.log($scope.checkdelete);
+          } else {
+            $scope.checkdelete = false;
+            console.log($scope.checkdelete);
+          }
+        })
+
+      })
+    });
+  }
+  $scope.chophepxoa();
+
+
+  $scope.addcomment = function() {
+    $scope.checkLoged;
+    //kiem tra user da mua hang chua va co phai mua sna pham nay khong 
+    $http.get(`/rest/getaccounted`).then(resp => {
+      $scope.checkLoged = resp.data;
+      var textcomment = JSON.stringify($scope.textcomment);
+      if ($scope.checkLoged === true) {
+        $http.post(`/rest/uploadcomment`, textcomment).then(response => {
+          var comment = response.data;
+          $scope.comments.push(comment);
+          console.log(comment);
+          $scope.textcomment = "";
+          $scope.chophepxoa();
+        })
+      } else {
+        showSuccessToast("Thất bại", "vui lòng đăng nhập", "error");
+        console.log("thanng nay chua dang nhap");
+      }
+    })
+  }
+
+  //xoa comment
+  $scope.deletecomment = function(id, index) {
+    console.log(id);
+    console.log(index);
+    $http.delete(`/rest/deletecomment/${id}`);
+    $scope.comments.splice(index, 1);
+  }
+
 });
 
 // toast hien thi xoa thanh cong 
-function showSuccessToast(){
+function showSuccessToast(titles, messages, types) {
   toast({
-    title:"Thành công !",
-    message:"xóa thành công",
-    type:"success",
-    duration:3000
+    title: titles,
+    message: messages,
+    type: types,
+    duration: 3000
   });
 }
 // Toast function
@@ -211,27 +274,28 @@ function toast({ title = "", message = "", type = "", duration = "" }) {
     const toastt = document.createElement("div");
 
     // Auto remove toast
-    const autoRemoveId = setTimeout(function () {
+    const autoRemoveId = setTimeout(function() {
       main.removeChild(toastt);
     }, duration + 1000);
-    
+
     // Remove toast when clicked
-    toastt.onclick = function (e) {
+    toastt.onclick = function(e) {
       if (e.target.closest(".toast__close")) {
         main.removeChild(toastt);
         clearTimeout(autoRemoveId);
       }
     };
     const icons = {
-      success: "fas fa-check-circle"
+      success: "fas fa-check-circle",
+      error: "fa-sharp fa-solid fa-circle-exclamation"
     };
     const icon = icons[type];
     const delay = (duration / 1000).toFixed(2);
 
-   toastt.classList.add("toastt", `toast--${type}`);
-  /* toast.style.animation = `slideInLeft ease .5s, fadeOut linear 5s 1s forwards`;*/
+    toastt.classList.add("toastt", `toast--${type}`);
+    /* toast.style.animation = `slideInLeft ease .5s, fadeOut linear 5s 1s forwards`;*/
     toastt.style.animation = `slideInLeft ease .3s, fadeOut linear ${delay}s 1s forwards`;
-    
+
     toastt.innerHTML = `
                     <div class="toast__icon">
                         <i class="${icon}"></i>
@@ -244,9 +308,9 @@ function toast({ title = "", message = "", type = "", duration = "" }) {
                         <i class="fas fa-times"></i>
                     </div>
                 `;
-                
+
     main.appendChild(toastt);
-   /* toast.classList.add('show');*/
+    /* toast.classList.add('show');*/
   }
 }
 

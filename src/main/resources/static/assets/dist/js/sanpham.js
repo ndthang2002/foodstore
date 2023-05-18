@@ -4,11 +4,11 @@ app.controller("ctrl-sanpham", function($scope, $http) {
   $scope.categorys=[];
   $scope.products =[];
   $scope.checkedit=true;
-   $scope.imageChinh;
+  $scope.imageChinh;
   $scope.imageF1;
   $scope.imageF2;
   $scope.imageF3;
- 
+  
     $http.get(`/rest/getcategory`).then(resp =>{
       $scope.categorys= resp.data;
       console.log(resp.data);

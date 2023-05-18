@@ -56,6 +56,7 @@ private List<ImageProduct> imageProducts;
 @JsonIgnore
 @OneToMany(mappedBy = "product")
 private List<CartProduct> cartProducts;
+
 //@ManyToMany
 //@JoinTable(name = "order_items",
 //joinColumns = @JoinColumn(name="product_id"),

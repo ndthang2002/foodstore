@@ -21,7 +21,15 @@ public class AddressServiceImpl  implements AddressService{
   @Override
   public Address findAddressByUser(Integer id) {
     // TODO Auto-generated method stub
-    return addressJparepository.findAdressByUser(id);
+    Address address =null;
+    try {
+      
+      address = addressJparepository.findAdressByUser(id);
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.out.println("không tìm thấy addres theo nguoi dung nay ");
+    }
+    return address;
   }
 
 

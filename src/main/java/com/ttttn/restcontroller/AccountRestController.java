@@ -1,8 +1,9 @@
 package com.ttttn.restcontroller;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -14,19 +15,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.ttttn.SecurityConfig;
-import com.ttttn.dto.nhanvienDto;
 import com.ttttn.entity.Account;
 import com.ttttn.entity.AccountAndAddress;
 import com.ttttn.entity.Address;
 import com.ttttn.entity.Authorities;
-import com.ttttn.entity.DeliveryMethod;
-import com.ttttn.entity.Order;
-import com.ttttn.entity.OrderItems;
-import com.ttttn.entity.Payment;
 import com.ttttn.entity.Role;
 import com.ttttn.service.AccountService;
 import com.ttttn.service.AddressService;
@@ -44,35 +44,35 @@ import com.ttttn.service.UploadFileService;
 public class AccountRestController {
 
   @Autowired
-  AccountService       accountService;
+  AccountService        accountService;
 
   @Autowired
-  AddressService       addressService;
-  
-  @Autowired
-  AuthoritiesService   authoritiesService;
+  AddressService        addressService;
 
   @Autowired
-  UploadFileService    uploadFileService;
+  AuthoritiesService    authoritiesService;
 
   @Autowired
-  ServletContext       app;
+  UploadFileService     uploadFileService;
 
   @Autowired
-  RoleService          roleService;
-  
+  ServletContext        app;
+
   @Autowired
-  OrderService orderService;
+  RoleService           roleService;
+
+  @Autowired
+  OrderService          orderService;
   @Autowired
   DeliveryMethodService deliveryMethodService;
   @Autowired
-  OrderItemService orderItemService;
+  OrderItemService      orderItemService;
   @Autowired
-  PayService payService;
-  
-  SecurityConfig       config;
+  PayService            payService;
 
-  public static String images;
+  SecurityConfig        config;
+
+  public static String  images;
 
   @GetMapping("/rest/account/loged/")
   public Account getAcc() {
@@ -86,7 +86,7 @@ public class AccountRestController {
   public List<Role> getRoles() {
     return roleService.getAllRole();
   }
-  
+
   // add nhanvien da được thay thế bằng java controller
   /*
    * @PostMapping("/rest/nhanvien/create/{id}") public Account create(@RequestBody
@@ -110,130 +110,143 @@ public class AccountRestController {
    * 
    * }
    */
-   
+
   @GetMapping("/rest/nhanvien/getlist")
   public List<Account> getList() {
     List<Account> list = accountService.findAll();
-
     return list;
   }
-  //lay dia chi
+
+  // lay dia chi
   @GetMapping("/rest/nhanvien/getAddress/{id}")
-  public Address getListAddress(@PathVariable("id") Integer id)
-      {
+  public Address getListAddress(@PathVariable("id") Integer id) {
     Address address = addressService.findAddressByUser(id);
     return address;
   }
-  
-  //lay quyen
+
+  // lay quyen
   @GetMapping("/rest/nhanvien/getAuthorities/{id}")
   public Authorities getAtuAuthorities(@PathVariable("id") Integer id) {
     Authorities authorities = authoritiesService.findAuthoritiesByUser(id);
     return authorities;
   }
-  
-  @DeleteMapping("/rest/nhanvien/deleteAccount/{id}")
-  public Account deleteAddress(@PathVariable("id") Integer id)
-      {
-    //xoa dia chi
-    Address address = addressService.findAddressByUser(id);
-    System.out.println(address.getAddressid());
-    addressService.delete(address);
-    
-    // xoa phan quyen
-    Authorities authorities = authoritiesService.findAuthoritiesByUser(id);
-    authoritiesService.delete(authorities);
-    
-    // xoa order
-      
-      // xoa order
-      if(orderService.findOrderByUser(id) !=null) {
-        List<Order> listOrder = orderService.findOrderByUser(id);
-        for(Order order :listOrder) {
-          //xoa devlvery
-          DeliveryMethod deliveryMethod = deliveryMethodService.finDeliveryMethod(order.getOrderid());
-          deliveryMethodService.delete(deliveryMethod);
-          //xoa order items
-          List<OrderItems> orderItems = orderItemService.findOrderItemsbyOrder(order.getOrderid());
-          for(OrderItems orderItem :orderItems) {
-            orderItemService.delete(orderItem);
-          }
-          
-          List<Payment> payments = payService.findPaymentsbbyOrder(order.getOrderid());
-          for(Payment pay :payments) {
-            payService.delete(pay);
-          }
-          orderService.delete(order);
-        }
-    
-    
-    //xoa payment
-    //xoa order
-      
-  
 
-  
+  @DeleteMapping("/rest/nhanvien/deleteAccount/{id}")
+  public Account deleteAddress(@PathVariable("id") Integer id) {
+    Account account = null;
+    Address address = addressService.findAddressByUser(id);
+    try {
+
+      if (address != null) {
+        // xoa dia chi
+        System.out.println(address.getAddressid());
+        addressService.delete(address);
+      }
+      // xoa phan quyen
+      Authorities authorities = authoritiesService.findAuthoritiesByUser(id);
+      if (authorities != null) {
+        authoritiesService.delete(authorities);
+      }
+      account = accountService.findbyid(id);
+      accountService.delete(id);
+    } catch (Exception e) {
+
+      // TODO: handle exception
     }
-    Account account = accountService.findbyid(id);
-     accountService.delete(id);
-    
+
     return account;
   }
-  
-  //upload 
+
+  // upload
   @PostMapping("/rest/nhanvien/update/{idUser}")
-  public Account updateAccount(@PathVariable("idUser") Integer idUser,@RequestBody AccountAndAddress request) {
-    
-    Account account = request.getAccount();
-    Address address = request.getAddress();
-    Role role = request.getRole();
-    account.setUserid(idUser);
-    //account.setImage(image.getOriginalFilename());//
-    account = accountService.insert(account);
-   
+  @ResponseBody
+  public Account updateAccount(@PathVariable("idUser") Integer idUser, @RequestParam("image") MultipartFile image,
+      @RequestParam("username") String username, @RequestParam("password") String password,
+      @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("phone") String phone,
+      @RequestParam("roleid") Integer roleid, @RequestParam("cityid") Integer cityid,
+      @RequestParam("districtid") Integer districtid, @RequestParam("wardid") Integer wardid) {
+
+
+    /*
+     * Role role = request.getRole(); account.setUserid(idUser);
+     * //account.setImage(image.getOriginalFilename());// account =
+     * accountService.insert(account);
+     */
     Address adres = new Address();
-    Account acc  = accountService.findbyid(idUser);
-    
-    //cap nhat anh 
-  
-//    try {
-//      String fileName = image.getOriginalFilename();
-//      System.out.println(fileName);
-//      //lấy tên ảnh 
-//      String filePath = "/Users/thang/dev/projects/duantotnghiep/src/main/resources/static/assets/images/" + fileName;
-//      // Lưu tệp ảnh vào thư mục
-//      File dest = new File(filePath);
-//      image.transferTo(dest);
-//    }catch (IOException e) {
-//      // TODO Auto-generated catch block
-//      e.printStackTrace();
-//    }
+    Account acc = accountService.findbyid(idUser);
+    acc.setUsername(username);
+    acc.setPassword(password);
+    acc.setName(name);
+    acc.setEmail(email);
+    acc.setPhone(phone);
+    // cap nhat anh
+    // up anh len clound va vao database
+    Map<String, String> config = new HashMap<>();
+    config.put("cloud_name", "dpbixmrep");
+    config.put("api_key", "132427124622788");
+    config.put("api_secret", "KI7WCnrGYQ1Hxkqj-mmHBT-6EBg");
+
+    Cloudinary cloudinary = new Cloudinary(config);
+
+    Map params = ObjectUtils.asMap("upload_preset", "v9e7akio");
+    if (!image.isEmpty()) {
+      try {
+        Object res = cloudinary.uploader().upload(image.getBytes(), params);
+        // URL để lưu vào database
+        String urlUploaded = ((Map<String, String>) res).get("url");
+        String baseUrl = "http://res.cloudinary.com/dpbixmrep/image/upload/";
+        String path = urlUploaded.replace(baseUrl, "");
+        acc.setImage(path);
+
+      } catch (IOException exception) {
+        exception.printStackTrace();
+      }
+    } else {
+      System.out.println("anh 1 null");
+    }
+    // cap nhat dia chi
     // kiem tra dia chi co chua
-    if (addressService.findAddressByUser(acc.getUserid())== null) {
-      adres.setCityid(address.getCityid());
-      adres.setDistrictid(address.getDistrictid());
-      adres.setWardid(address.getWardid());
+    if (addressService.findAddressByUser(acc.getUserid()) == null) {
+      adres.setCityid(cityid);
+      adres.setDistrictid(districtid);
+      adres.setWardid(wardid);
       adres.setUser(acc);
       addressService.insert(adres);
     } else {
       /*
        * update neu tai khoan da co
-       */      
+       */
       adres.setAddressid(addressService.findAddressByUser(idUser).getAddressid());
-      adres.setCityid(address.getCityid());
-      adres.setDistrictid(address.getDistrictid());
-      adres.setWardid(address.getWardid());
+      adres.setCityid(cityid);
+      adres.setDistrictid(districtid);
+      adres.setWardid(wardid);
       adres.setUser(acc);
       addressService.insert(adres);
     }
-   
+
+    //cap nhat quyen 
     Authorities authorities = authoritiesService.findAuthoritiesByUser(idUser);
-    Role role2 = roleService.findById(role.getRoleid());
+    Role role2 = roleService.findById(roleid);
     authorities.setRole(role2);
     authoritiesService.insert(authorities);
-    return account;
-    
-    
+    acc = accountService.insert(acc);
+    return acc;
+
+  }
+
+  @GetMapping("/rest/authoties/getall")
+  public List<Authorities> getAllAuthorities() {
+    List<Authorities> list = authoritiesService.findAll();
+    return list;
+  }
+  
+  @GetMapping("/rest/getaccounted")
+  public Boolean getaccounted() {
+    boolean checkLoged = false;
+   if(config.accountLogedIn!=null) {
+     checkLoged = true;
+   }
+   return checkLoged;
   }
 
 }

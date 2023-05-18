@@ -35,7 +35,7 @@
                 <div class="col-lg-4" th:each="list :${listcategory}">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img th:src="@{|${list.image}|}" alt="">
+                            <img th:src="@{|https://res.cloudinary.com/dpbixmrep/image/upload/${list.image}|}" alt="">
                         </div>
                         <div class="down-content">
                             <h3>[[${list.name}]]</h3>

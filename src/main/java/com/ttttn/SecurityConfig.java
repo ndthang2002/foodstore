@@ -22,6 +22,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.ttttn.entity.Account;
 import com.ttttn.service.AccountService;
@@ -43,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   public static boolean isLogedIn=false;
   public static Account accountLogedIn;
 
+  
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //    return auth.getAuthenticationManager();
@@ -52,14 +54,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         Account user = accountService.findAccountByUserName(Username);
         nameAccount = user.getName();
         // Kiểm tra pass  
-        String password = pe.encode(user.getPassword());
+        String password = user.getPassword();
+        
 
         // Kiểm tea quyền
   
         String[] roles = user.getAuthorities().stream().map(er -> er.getRole().getName()).collect(Collectors.toList())
             .toArray(new String[0]);
         
-//cookie.add("username", Username, 720);
+//cookie.add("username", Username, 720);  
 //      cookie.add("password", password, 720);
       isLogedIn=true;
       accountLogedIn = user;

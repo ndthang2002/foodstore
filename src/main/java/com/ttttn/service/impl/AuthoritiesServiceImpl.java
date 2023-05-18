@@ -1,5 +1,7 @@
 package com.ttttn.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +27,24 @@ public class AuthoritiesServiceImpl implements AuthoritiesService{
   @Override
   public Authorities findAuthoritiesByUser(Integer idUser) {
     // TODO Auto-generated method stub
-     return authoritiesJparepository.findAuthoritiesByUser(idUser) ;
+    Authorities authorities = null ;
+    try {
+      authorities = authoritiesJparepository.findAuthoritiesByUser(idUser);
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.out.println("khong tim thay quyen cua user");
+    }
+     return authorities;
 }
   @Override
   public void delete(Authorities authorities) {
     // TODO Auto-generated method stub
     authoritiesJparepository.delete(authorities);
+  }
+  @Override
+  public List<Authorities> findAll() {
+    // TODO Auto-generated method stub
+    return authoritiesJparepository.findAll();
   }
   
 }

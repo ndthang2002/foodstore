@@ -181,3 +181,82 @@ main {
   width: 150px;
   border-radius: 0px !important
 }
+.imgaccount{
+width: 35px;
+    height: 30px;
+  border-radius: 50%;
+  margin-right: .2rem;
+}
+.accountcomment{
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    margin-left: 1rem;
+   padding: .5rem;
+   position: relative;
+}
+.nameaccount{
+  color: black;
+  font-size: 20px;
+}
+.contentcmt{
+    display: flex;
+    margin-left: 4.5rem;
+    font-size: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  
+}
+.contentcomment{
+  margin-left: .2rem;
+  color: black;
+  overflow: auto;
+}
+.upcomment{
+position: absolute;
+    bottom: 0;
+    width: 70%;
+    border: 0.2px solid gray;
+    
+}
+.btnupcomment{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    border: 0.2px solid gray;
+}
+.cmt{
+ 
+  overflow: scroll;
+  height:  327px;
+  
+}
+.fa-star{
+  color: yellow;
+}
+.star{
+  color: black;
+}
+
+.comment{
+   background-color: rgb(229, 220, 245);
+  margin-bottom: .5rem;
+  display: grid;
+    grid-template-rows: 40% 60%;
+}
+.btndelete{
+  font-size: 14px;
+    color: #d92121;
+  
+ /*   background: conic-gradient(at top right, white, gray);*/
+    width: 50px;
+    text-align: center;
+    border-radius: 13%;
+    position: absolute;
+    right: 40px;
+}
+.uploadform{
+  margin-top: 2.3rem;
+}
+

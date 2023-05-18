@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Food shop</title>
+  <title>Nhân Viên</title>
 
   <!-- Google Font: Source Sans Pro -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
@@ -48,8 +48,8 @@
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
               class="fas fa-bars"></i></a></li>
-        <li class="nav-item d-none d-sm-inline-block"><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link">Contact</a></li>
+        <li class="nav-item d-none d-sm-inline-block"><a  href="/admin/" class="nav-link">Trang chủ</a></li>
+      <!--  <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link">Contact</a></li>
         <li class="nav-item"><a class="nav-link" data-widget="navbar-search" href="#" role="button"> <i
               class="fas fa-search"></i>
           </a>
@@ -68,7 +68,7 @@
               </div>
             </form>
           </div>
-        </li>
+        </li>-->
       </ul>
 
       <!-- Right navbar links -->
@@ -135,7 +135,7 @@
             <li class="nav-header">QUẢN LÝ CHUNG</li>
             <li class="nav-item menu-open"><a href="/admin/" class="nav-link active"> <i
                   class="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
+                <p>Trang Chủ</p>
               </a></li>
             <li class="nav-item menu-open"><a href="#" class="nav-link active"> <i
                   class="nav-icon fas fa-tachometer-alt"></i>
@@ -272,6 +272,7 @@
         <option class="optiondiachi" value="">Chọn phường/xã</option>
         <option class="optiondiachi" ng-repeat="ward in wards" value="{{ward.WardCode}}" ng-selected="selectedWard === {{ward.WardCode}}">{{ward.WardName}}</option>
       </select>
+      
                       </div>
                       <div class="form-group col-sm-6">
                         <label>SĐT</label> <input class="form-control" type="text" ng-pattern="/^\d+$/" name="phone" ng-model="phone" ng-minlength="10" ng-maxlength="10" ng-required=true  placeholder="Nhập số điện thoại"/>
@@ -289,7 +290,6 @@
                         <small ng-show="userform.phone.$error.pattern"> vui lòng nhập đúng đinh dạng số</small><br> 
                       </div>
                       
-                      
                     </div>
                   </div>
                 </div>
@@ -298,7 +298,7 @@
                 <button type="submit" ng-disabled="userform.$invalid" class="btn btn-primary"  accept="image/png, image/jpeg">
                   <b class="fa-solid fa-square-plus"></b> Create
                 </button>
-                <button type="button" class="btn btn-success" ng-disabled="checkedit" ng-click="update(idUser)">
+                <button type="button" class="btn btn-success" ng-disabled="checkedit" ng-click="update(idUser)" >
                   <b class="fa-solid fa-square-pen"></b> Update
                 </button>
                 <button type="button" ng-click="delete(idUser,index)" ng-disabled="checkedit" class="btn btn-danger"><b class="fa-solid fa-trash-can"></b>
@@ -322,7 +322,7 @@
                     <th>Tên</th>
                     <th>SĐT</th>
                     <th>Tài Khoản</th>
-                    <th>Mật Khẩu</th>
+                    
                     <th>Email</th>
                     <th>Hoạt động</th>
                   </tr>
@@ -334,7 +334,7 @@
                     <td >{{item.name}}</td>
                     <td >{{item.phone}}</td>
                     <td >{{item.username}}</td>
-                    <td >{{item.password}}</td>
+                    
                     <td >{{item.email}}</td>
                     <td ><a class="btn btn-primary btn-sm]" href="" th:attr="ng-click=@{|edit(item.userid,$index)|}">Edit</a>
                     <a class="btn btn-danger btn-sm]" href="" th:attr="ng-click=@{|delete(item.userid,$index)|}">Delete</a></td>
@@ -346,6 +346,20 @@
         </div>
     </div>
   </div>
+  <did id="toast">
+    
+</did>
+  <!-- The Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-button w3-display-topright">&times;</span>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+    </div>
+  </div>
+</div>
   <!-- /.row (main row) -->
   </div>
   <!-- /.container-fluid -->
@@ -370,8 +384,7 @@
   <!-- ./wrapper -->
   
   
-  <!--upload anh  -->
-  <script src="path/to/ng-file-upload.js"></script>
+
   
   <!--khai bao nhan vien-->
   <script src="../assets/dist/js/nhanvien.js"></script>

@@ -2,15 +2,21 @@ package com.ttttn.restcontroller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.ttttn.SecurityConfig;
 import com.ttttn.entity.Account;
 import com.ttttn.entity.Address;
@@ -106,11 +112,8 @@ public class OrderRestController {
       // tinh tong tien
       double tongtien = 0;
       for (Cart listc : listCart) {
-        if (listc.getOrder() != null) {
-          tongtien = 0;
-        } else {
           tongtien = tongtien + listc.getTotalall();
-        }
+        
       }
       LocalDateTime now = LocalDateTime.now();
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -130,22 +133,27 @@ public class OrderRestController {
       deliveryMethodService.insert(deliveryMethod);
       
       //add order_items 
-      OrderItems orderItems = new OrderItems();
+      
+      List<Product> products = new ArrayList<>();
       List<Cart> listCarts = cartService.findIdCartByUserid(config.accountLogedIn.getUserid());
         for(int i=0; i<=listCarts.size()-1;i++) {
         Integer idProduct = cartProductService.findIdProductByCartid(listCarts.get(i).getCartid());
         Product product   = productService.findById(idProduct);
+       OrderItems orderItems = new OrderItems();
+        
         orderItems.setOrder(order);
         orderItems.setProduct(product);
-        orderItems.setQuantity(listCarts.get(i).getQuantityproduct());
+        orderItems.setQuantityproduct(listCarts.get(i).getQuantityproduct()); 
         orderItemService.insert(orderItems);
-        
+        System.out.println(listCarts.get(i).getQuantityproduct());
+       
 //        update số lượng khi sp bị mua 
-        Integer soluong = product.getQuantity()- listCarts.get(i).getQuantityproduct();
+        Integer soluong = product.getQuantity() - listCarts.get(i).getQuantityproduct();
+        
         product.setQuantity(soluong);
         productService.insert(product);
-        
        }
+       
         
         //xoa het cart sau khi mua 
         for(Cart cart :listCart) {
@@ -153,19 +161,32 @@ public class OrderRestController {
           cartProductService.delete(cartProduct);
           cartService.delete(cart);
         }
-        
         //add vao payment xac dinh phuong thuc thanh toan 
         Payment payment = new Payment();  
         payment.setAmount(amount);
         payment.setBankcode("");
         payment.setDescription(descriptionPay);
         payment.setOrder(order);
-        payService.insert(payment);
+        payService.insert(payment); 
     }
 
     return order;
   }
   
   
+  @GetMapping("/getAllOrder")
+  public List<Order> getOrder(){
+    List<Order> lists  = orderService.findAll();
+    return lists;
+  }
+  
+  @GetMapping("/getOrderdetail/{id}")
+  public OrderItems getdetail(@PathVariable("id") Integer id) {
+    OrderItems orderitem = new OrderItems();
+    orderitem = orderItemService.findOrderItemsbyOrder(id);
+
+    System.out.println(id);
+    return orderitem;
+  }
 
 }

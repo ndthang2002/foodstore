@@ -10,7 +10,8 @@ import com.ttttn.entity.Account;
 
 public interface CommentService {
   List<Comment> finAll();
-
+  List<Comment> getListcomentbyPro( Integer pid);
+  Comment insert(Comment comment);
   Comment finById(Integer id);
 
   Comment add(Comment comment);

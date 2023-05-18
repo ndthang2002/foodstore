@@ -24,15 +24,21 @@ public class OrderItemServiceImpl implements OrderItemService
   }
 
   @Override
-  public List<OrderItems> findOrderItemsbyOrder(Integer orderid) {
+  public OrderItems findOrderItemsbyOrder(Integer orderid) {
     // TODO Auto-generated method stub
-    return orderItemJparepository.findOrderItemByOrder(orderid);
+    return  orderItemJparepository.findOrderItemByOrder(orderid);
   }
 
   @Override
   public void delete(OrderItems orderItems) {
     // TODO Auto-generated method stub
     orderItemJparepository.delete(orderItems);
+  }
+
+  @Override
+  public List<OrderItems> findAll() {
+    // TODO Auto-generated method stub
+    return orderItemJparepository.findAll();
   }
 
 }

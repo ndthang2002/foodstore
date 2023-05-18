@@ -46,6 +46,7 @@ public class ProductController {
 
   @Autowired
   ImageProductService imageProductService;
+  public static Integer IdProduct;
 
 
   @RequestMapping("/product")
@@ -92,6 +93,7 @@ public class ProductController {
 
   @RequestMapping("/detail")
   public String showProductDetail(Model model, @RequestParam("pid") Integer id) {
+    this.IdProduct = id;
     Product product = new Product();
     product = productService.findById(id);
     model.addAttribute("product", product);

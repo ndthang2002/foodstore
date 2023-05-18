@@ -11,6 +11,6 @@ import com.ttttn.entity.OrderItems;
 @Repository
 public interface OrderItemJparepository extends JpaRepository<OrderItems, Integer>{
   
-  @Query(value="SELECT  * FROM  order_items  WHERE order_id=?1" , nativeQuery =true)
-  List<OrderItems> findOrderItemByOrder (Integer orderid);
+  @Query(value="SELECT  * FROM  order_items  WHERE order_id = ?1" , nativeQuery =true)
+  OrderItems findOrderItemByOrder (Integer orderid);
 }

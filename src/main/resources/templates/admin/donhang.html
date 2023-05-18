@@ -4,9 +4,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | Dashboard</title>
+<title>Qẩn lý đơn hàng</title>
 
 <!-- Google Font: Source Sans Pro -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -36,7 +37,7 @@
 	href="../assets/plugins/summernote/summernote-bs4.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" ng-app="appDonhang" ng-controller="ctrl-donhang">
 	<div class="wrapper">
 
 		<!-- Preloader -->
@@ -54,8 +55,9 @@
 				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
 					href="#" role="button"><i class="fas fa-bars"></i></a></li>
 				<li class="nav-item d-none d-sm-inline-block"><a
-					href="index.html" class="nav-link">Home</a></li>
-				<li class="nav-item d-none d-sm-inline-block"><a href="#"
+					 href="/admin/" class="nav-link">Trang Chủ</a></li>
+					
+				<!--<li class="nav-item d-none d-sm-inline-block"><a href="#"
 					class="nav-link">Contact</a></li>
 				<li class="nav-item"><a class="nav-link"
 					data-widget="navbar-search" href="#" role="button"> <i
@@ -77,7 +79,7 @@
 								</div>
 							</div>
 						</form>
-					</div></li>
+					</div></li>-->
 			</ul>
 
 			<!-- Right navbar links -->
@@ -147,7 +149,7 @@
 						<li class="nav-item menu-open"><a href="/admin/"
 							class="nav-link active"> <i
 								class="nav-icon fas fa-tachometer-alt"></i>
-								<p>Dashboard</p>
+								<p>Trang Chủ</p>
 						</a></li>
 						<li class="nav-item menu-open"><a href="#"
 							class="nav-link active"> <i
@@ -202,12 +204,12 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">Dashboard</h1>
+							<h1 class="m-0">Quản lý đơn hàng</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+								<li class="breadcrumb-item"><a href="/admin/">trang chủ</a></li>
 								<li class="breadcrumb-item active">Đơn Hàng</li>
 							</ol>
 						</div>
@@ -237,80 +239,32 @@
 										<table  class="table table-bordered" >
 											<thead class="bg-success text-white">
 												<tr>
-													<th>Đon Hàng ID</th>
-													<th>Số đơn hàng</th>
+													<th>STT</th>
 													<th>Tên khách hàng</th>
-													<th>Ngày giao</th>
-													<th>Địa chỉ</th>
+													<th>Ngày Đặt</th>
+													<th>Trạng thái TT</th>
 													<th>Thành tiền</th>
-													<th>Nhóm Lệnh</th>
+													<th></th>
 												</tr>
 											</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>01</td>
-													<td>Nguyễn Hoài Nam</td>
-													<td>19/04/2023</td>
-													<td>Quận 12</td>
-													<td>100.000</td>
+											<tbody ng-init="stt=0">
+												<tr ng-repeat="order in orders">
+													<td>{{$index}}</td>
+													<td>{{order.user.name}}</td>
+													<td>{{order.bookingdate |date:'dd/MM/yyyy' }}</td>
+											    <td>{{order.orderstatus}}</td>
+													<td>{{order.totalmoney}}</td>
 													<td>
-														<button class="btn btn-danger">Hủy đơn</button>
-														<button class="btn btn-success">Chi tiết</button>
+													
+														<button class="btn btn-success" ng-click="orderdetai(order.orderid)" data-toggle="modal" data-target="#exampleModal">Chi tiết</button>
 													</td>
 												</tr>
-												<tr>
-													<td>2</td>
-													<td>01</td>
-													<td>Phạm Phan Duy Tú</td>
-													<td>12/01/2023</td>
-													<td>Quận 12</td>
-													<td>100.000</td>
-													<td>
-														<button class="btn btn-danger">Hủy đơn</button>
-														<button class="btn btn-success">Chi tiết</button>
-													</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>01</td>
-													<td>Nguyễn Hoàng Huy</td>
-													<td>11/01/2023</td>
-													<td>Quận 12</td>
-													<td>100.000</td>
-													<td>
-														<button class="btn btn-danger">Hủy đơn</button>
-														<button class="btn btn-success">Chi tiết</button>
-													</td>
-												</tr>
-												<tr>
-													<td>4</td>
-													<td>01</td>
-													<td>Trần Anh Vy</td>
-													<td>20/04/2023</td>
-													<td>Quận 12</td>
-													<td>100.000</td>
-													<td>
-														<button class="btn btn-danger">Hủy đơn</button>
-														<button class="btn btn-success">Chi tiết</button>
-													</td>
-												</tr>
-												<tr>
-													<td>5</td>
-													<td>01</td>
-													<td>Vòng Gia Tuấn</td>
-													<td>07/02/2023</td>
-													<td>Quận 12</td>
-													<td>100.000</td>
-													<td>
-														<button class="btn btn-danger">Hủy đơn</button>
-														<button class="btn btn-success">Chi tiết</button>
-													</td>
-												</tr>
+												
 											</tbody>
 										</table>
 									
-									<div class="row">
+									
+								<!--	<div class="row">
 										<div class="col-sm-12 col-md-5">
 											<div class="dataTables_info" id="example2_info" role="status"
 												aria-live="polite">Showing 1 to 10 of 57 entries</div>
@@ -348,7 +302,9 @@
 												</ul>
 											</div>
 										</div>
-									</div>
+									</div>-->
+									
+									
 								</div>
 								<!-- /.card-body -->
 							</div>
@@ -369,6 +325,35 @@
 				<b>Version</b> 3.2.0
 			</div>
 		</footer>
+<!-- Modal hien thi don hang chi tiet -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chi Tiết Đơn Hàng </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      <div><label> Mã đơn hàng :</label> {{orderitem.order.orderid}}</div>
+      
+      <div><label> Tên sản phẩm :</label>{{orderitem.product.name}}</div>
+      
+      <div><label> Đơn giá :</label>{{orderitem.product.price}}</div>
+      
+      <div><label>số lượng :</label> {{orderitem.quantityproduct}}</div>
+      
+      <div><label>Số tiền  :</label>{{(orderitem.quantityproduct*orderitem.product.price)*1000 | currency: 'VND':0}}</div>
+      
+        
+      </div>
+     
+    </div>
+  </div>
+</div>
+
 
 		<!-- Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark">
@@ -378,6 +363,9 @@
 	</div>
 	<!-- ./wrapper -->
 
+ <!--khai bao don hangn-->
+  <script src="../assets/dist/js/donhang.js"></script>
+  
 	<!-- jQuery -->
 	<script src="../assets/plugins/jquery/jquery.min.js"></script>
 	<!-- jQuery UI 1.11.4 -->

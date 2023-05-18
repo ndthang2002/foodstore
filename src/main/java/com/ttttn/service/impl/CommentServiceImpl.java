@@ -20,7 +20,7 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public List<Comment> finAll() {
     // TODO Auto-generated method stub
-    return null;
+    return commentJparepository.findAll();
   }
 
   @Override
@@ -50,12 +50,26 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public void deleteid(Integer id) {
     // TODO Auto-generated method stub
+    commentJparepository.deleteById(id);
   }
 
   @Override
   public Comment update(Integer id) {
     // TODO Auto-generated method stub
     return null;
+  }
+
+  @Override
+  public Comment insert(Comment comment) {
+    // TODO Auto-generated method stub
+    Comment comment2 = commentJparepository.save(comment);
+    return comment2;
+  }
+
+  @Override
+  public List<Comment> getListcomentbyPro(Integer pid) {
+    // TODO Auto-generated method stub
+    return commentJparepository.getListcomentbyPro(pid);
   }
   
 }

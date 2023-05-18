@@ -44,7 +44,7 @@ h3.title {
 }
 
 .form {
-    width: 700px;
+    width: 750px;
 }
 
 .myform {
@@ -110,7 +110,7 @@ h3.title {
      <div class="form">
          <h3 class="title">Thông tin chi tiết tài khoản </h3>
 
-         <form action="/accountedit" class="myform" method="post">
+         <form action="/accountedit" class="myform" method="post" enctype="multipart/form-data">
              <div class="control-from">
                  <label for="firstname">User Name *</label>
                  <input type="text" id="firstname" value="" ng-model="account.username" required name="username">
@@ -135,14 +135,19 @@ h3.title {
                  <label for="companyname">Full Name</label>
                  <input type="text" id="companyname" name="name" value="" ng-model="account.name" placeholder="Cập nhật họ tên " required>
              </div>
- <div class="full-width">
-                 <label for="companyname" style="color: green;font-weight: bold;">[[${thongbao}]]</label>
-                
+           
+               <div class="control-from">
+                 <label for="companyname">Image</label>
+                <input type="file"  name="image" value="chọn ảnh" placeholder="" required>
              </div>
+             
+
+                 <label for="companyname" style="color: green;font-weight: bold;">[[${thongbao}]]</label>
+              
 
 
              <div class="button">
-                 <button type="submit" id="register">Cập Nhật</button>
+                 <button type="submit" id="register" accept="image/png, image/jpeg">Cập Nhật</button>
              </div>
 
          </form>

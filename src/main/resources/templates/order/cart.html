@@ -37,7 +37,7 @@
  
  
  <div class="phanthan">
-  <div id="goiyvanchuyen"><span id="noidunggoiy"><i class="fas fa-truck"></i> Nhấp vào mã voucher ở phía dưới để nhận free ship nhé !</span></div>
+  <div id="goiyvanchuyen"><span id="noidunggoiy"><i class="fas fa-truck"></i></span></div>
   
  <div id="tieudegiohang">
   <div class="tieudetrai">
@@ -111,7 +111,7 @@ Xem thêm voucher <i class="fas fa-caret-down dropbtn">
   <button style="background-color: #ffff;"   ng-disabled="!all" ng-click="cart.cleartCart()" class="xoa">xóa </button>
  <!-- <button style="background-color: #ffff;" class="luumucthanhtoan">lưu vào mục đã thanh toán </button>-->
 <!-- <div class="tongthanhtoan" >Tổng <span ng-if="ischecked">3</span> <span  ng-if="all">({{cart.getCount}})</span> </span>sản phẩm : $<span ng-if="all">{{cart.getAmount}}</span></div>-->
- <a style="text-align: center;" class="muahang" href="/payments">Mua Hàng </a>
+ <button style="text-align: center;" class="muahang" onclick="window.location.href = '/payments';" ng-disabled="checkcart">Mua Hàng </button>
  </div>
  </div>
  

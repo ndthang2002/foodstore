@@ -47,6 +47,7 @@
           </div>
         </div>
         <div class="col-md-6">
+          <div class="row-md-4">
           <div class="p-3 right-side">
             <div class="d-flex justify-content-between align-items-center">
               <h2 style="color: black;">[[${product.name}]]</h2> <span class="heart"><i class='bx bx-heart'></i></span>
@@ -61,7 +62,7 @@
                 <!--  <span>441
                 reviews</span>-->
             </div>
-          
+            
             <div class="buttons d-flex flex-row mt-5 gap-3"> 
               <a class="btn btn-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal"
                     th:attr="ng-click=@{|cart.add(${product.productid})|}">Add to Cart</a> </div>
@@ -70,19 +71,42 @@
             </div>-->
           </div>
         </div>
+        <div class="row-md-8 border-top border-1 cmt">
+          <div class="comment" ng-repeat="comment in comments">
+            <div class="accountcomment"> 
+               <img class="imgaccount" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{comment.image}}"> 
+              <span class="nameaccount">{{comment.nameaccount}}</span>
+              <p class="timecomment"  >({{comment.date}} Ngày)</p>
+              <button class="btndelete"  ng-if="comment.idaccount==idUser?true:false" ng-click="deletecomment(comment.idcomment,$index)">Xóa </button>
+            </div>
+            <div class="contentcmt">
+           
+             
+              <span class="contentcomment">{{comment.content}} </span> 
+            </div>
+          </div>
+           
+           
+          <form class="uploadform" name="userform" > 
+            <input class="upcomment" type="text" ng-model="textcomment" minlength="1" maxlength="30" placeholder="Nhận xét sản phẩm" required>
+            <input class="btnupcomment" type="submit" ng-click="addcomment()" value="Đăng">
+             </form>
+        </div>
+        
+        </div>
       </div>
     </div>
   </div>
   <script>
     function changeImage(element) {
-
       var main_prodcut_image = document.getElementById('main_product_image');
       main_prodcut_image.src = element.src;
-
-
     }
   </script>
   
+   <did id="toast">
+    
+</did>
    <!-- Modal  thong bao-->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

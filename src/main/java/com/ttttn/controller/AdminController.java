@@ -38,6 +38,7 @@ public class AdminController {
   AuthoritiesService authoritiesService;
   @Autowired
   RoleService roleService;
+  @Autowired
   SecurityConfig config;
   @RequestMapping("/")
   public String getIndex(Model model) {
@@ -62,6 +63,7 @@ public class AdminController {
     return "admin/donhang";
   }
   
+  // day la phan add nguoi dung moi
   @PostMapping("saveImage")
   public String saveimage(
       @RequestParam("image") MultipartFile image,
@@ -96,7 +98,8 @@ public class AdminController {
       
       Account account = new Account();
       account.setUsername(username);
-      account.setPassword(password);
+      String encodePassword = config.passwordEncoder().encode(password);
+      account.setPassword(encodePassword);
      
       
       //up anh len clound va vao database

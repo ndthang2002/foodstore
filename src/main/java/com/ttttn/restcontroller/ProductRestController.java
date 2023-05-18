@@ -1,8 +1,12 @@
 package com.ttttn.restcontroller;
 
-import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,10 +26,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.ttttn.SecurityConfig;
+import com.ttttn.controller.ProductController;
+import com.ttttn.dto.CommentDto;
+import com.ttttn.entity.Account;
 import com.ttttn.entity.Category;
+import com.ttttn.entity.Comment;
 import com.ttttn.entity.ImageProduct;
 import com.ttttn.entity.Product;
+import com.ttttn.service.AccountService;
 import com.ttttn.service.CategoryService;
+import com.ttttn.service.CommentService;
 import com.ttttn.service.ImageProductService;
 import com.ttttn.service.ProductService;
 
@@ -35,12 +46,18 @@ import com.ttttn.service.ProductService;
 public class ProductRestController {
 
   @Autowired
+  AccountService accountService;
+  @Autowired
   CategoryService categoryService;
   @Autowired
   ProductService productService;
   @Autowired
   ImageProductService imageProductService;
+  SecurityConfig config;
+  ProductController pController;
   
+  @Autowired
+  CommentService commentService;
   @GetMapping("getcategory")
   public List<Category> getCategory(){
     List<Category> list  = categoryService.findAll();
@@ -90,6 +107,7 @@ public class ProductRestController {
     pro.setQuantity(quantity);
     pro.setPrice(price);
     pro.setName(name);
+    pro.setOrderItems(null);
     // up anh chinh up anh phu len 
     //up anh len clound va vao database
     Map<String, String> config = new HashMap<>();
@@ -167,4 +185,76 @@ public class ProductRestController {
     return "thancong";
   }
   
+  // comment san pham 
+  // them moi comment
+  @PostMapping("uploadcomment")
+  public CommentDto saveComment(@RequestBody String textComment) {
+    Product product = productService.findById(pController.IdProduct);
+    Account account = config.accountLogedIn;
+    Comment comment = new Comment();
+    String cleanText = textComment.replaceAll("[^\\p{L}\\p{N}\\s]+", "");
+    comment.setContent(cleanText);
+    comment.setDatesubmited(new Date());
+    comment.setStar(0);
+    comment.setUser(account);
+    comment.setProduct(product);
+    comment= commentService.insert(comment);
+    
+    // tao dto hien thi
+    //hien thị thời gian kể từ lúc comment đến bây giờ'
+    ZoneId zoneId = ZoneId.systemDefault();
+    LocalDateTime localDateTime = comment.getDatesubmited().toInstant().atZone(zoneId).toLocalDateTime();
+
+    LocalDateTime now = LocalDateTime.now();
+    Duration duration = Duration.between(localDateTime, now);
+    long minutes = duration.toMinutes();
+    long hours = duration.toHours();
+    long days = duration.toDays();
+    
+    CommentDto  commentDto = new CommentDto();
+    commentDto.setContent(textComment);
+    commentDto.setDate(days);
+    commentDto.setImage(comment.getUser().getImage());
+    commentDto.setNameaccount(comment.getUser().getName());
+    commentDto.setStar(comment.getStar());
+    return commentDto;
+    
+  }
+  // la ra toan bo comment theo tung san pham
+  @GetMapping("getallcomment")
+  public List<CommentDto> getAllComment(){
+    List<Comment> listcomComments = commentService.getListcomentbyPro(pController.IdProduct);
+    List<CommentDto> commentDtos = new ArrayList<>() ;
+    
+    for(Comment comment :listcomComments) {
+      CommentDto commentDto = new CommentDto();
+      // lay ra anh va ten nguoi dung
+      Account account = comment.getUser();
+    //hien thị thời gian kể từ lúc comment đến bây giờ'
+      ZoneId zoneId = ZoneId.systemDefault();
+      LocalDateTime localDateTime = comment.getDatesubmited().toInstant().atZone(zoneId).toLocalDateTime();
+
+      LocalDateTime now = LocalDateTime.now();
+      Duration duration = Duration.between(localDateTime, now);
+      long minutes = duration.toMinutes();
+      long hours = duration.toHours();
+      long days = duration.toDays();
+      commentDto.setDate(days);
+      commentDto.setContent(comment.getContent());
+      commentDto.setImage(account.getImage());
+      commentDto.setNameaccount(account.getName());
+      commentDto.setStar(comment.getStar());
+      commentDto.setIdaccount(account.getUserid());
+      commentDto.setIdcomment(comment.getCommentid());
+      commentDtos.add(commentDto);
+    }
+    return commentDtos;
+    
+  }
+  
+  @DeleteMapping("deletecomment/{id}")
+  public void deleteComment(@PathVariable("id") Integer id) {
+    commentService.deleteid(id);
+  
+  }
 }

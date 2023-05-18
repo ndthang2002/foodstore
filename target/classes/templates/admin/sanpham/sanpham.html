@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>foodshop</title>
+<title>Quản lý sản phẩm</title>
 
 <!-- Google Font: Source Sans Pro -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="../assets/plugins/jqvmap/jqvmap.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
-<!-- overlayScrollbars -->
+<!-- overlayScrollbars -->s
 <link rel="stylesheet"
 	href="../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <!-- Daterange picker -->
@@ -56,10 +56,11 @@
 				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
 					href="#" role="button"><i class="fas fa-bars"></i></a></li>
 				<li class="nav-item d-none d-sm-inline-block"><a
-					href="index.html" class="nav-link">Home</a></li>
-				<li class="nav-item d-none d-sm-inline-block"><a href="#"
-					class="nav-link">Contact</a></li>
-				<li class="nav-item"><a class="nav-link"
+					 href="/admin/" class="nav-link">Trang Chủ</a></li>
+				<!--<li class="nav-item d-none d-sm-inline-block"><a href="#"
+					class="nav-link">Contact</a></li>-->
+					
+			<!--	<li class="nav-item"><a class="nav-link"
 					data-widget="navbar-search" href="#" role="button"> <i
 						class="fas fa-search"></i>
 				</a>
@@ -79,7 +80,7 @@
 								</div>
 							</div>
 						</form>
-					</div></li>
+					</div></li>-->
 			</ul>
 
 			<!-- Right navbar links -->
@@ -149,7 +150,7 @@
 						<li class="nav-item menu-open"><a href="/admin/"
 							class="nav-link active"> <i
 								class="nav-icon fas fa-tachometer-alt"></i>
-								<p>Dashboard</p>
+								<p>Trang chủ</p>
 						</a></li>
 						<li class="nav-item menu-open"><a href="#"
 							class="nav-link active"> <i
@@ -232,6 +233,7 @@
 							<h3 class="mt-2">Sản phẩm</h3>
 						</div>
 						<form  method="post"  th:action="@{/product/save}" enctype="multipart/form-data" name="userform" >
+              
 							<div class="card-body">
 								<div class="row">
 
@@ -311,9 +313,11 @@
 								<button class="btn btn-primary" type="submit" accept="image/png, image/jpeg" ng-disabled="userform.$invalid">
 									<b class="fa-solid fa-square-plus"></b> Create
 								</button>
+								
 								<button type="button" class="btn btn-success" ng-disabled="checkedit" ng-click="update(productid)">
 									<b class="fa-solid fa-square-pen" ></b> Update
 								</button>
+								
 								<button type="button" ng-click=delete(productid,index) class="btn btn-danger" ng-disabled="checkedit"><b class="fa-solid fa-trash-can"></b> Delete</button>
 								<button type="button" class="btn btn-info" ng-click="reset()">
 									<b class="fa-solid fa-rotate"></b> Reset
@@ -348,7 +352,7 @@
                       <td>{{product.name}}</td>
                       <td>{{product.quantity}}</td>
                       <td>{{product.price}}</td>
-										<td class="text-center " style="margin:20px; display:flex">
+										<td class="text-center " style="margin:20px; display:flex;justify-content: center;">
 											<button class="btn btn-warning"  ng-click="edit(product.productid,$index)">
 												<i class="fa-solid fa-square-pen"></i>Edit
 											</button>

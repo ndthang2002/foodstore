@@ -206,9 +206,19 @@ public class CartRestController {
   public String updateQuantityCart(@PathVariable("id") Integer id,@RequestBody int quantityNow) {
     //TODO: process PUT request
     Cart cart = cartService.findById(id);
+    Integer productid = cartProductService.findIdProductByCartid(id);
+    Product product = productService.findById(productid);
+
     cart.setQuantityproduct(quantityNow);
+    cart.setTotalall(quantityNow * product.getPrice());
     cartService.insert(cart);
     return "thanh cong";
+  }
+  //lay ra toan bo gio hang 
+  @GetMapping("/rest/getall")
+  public List<Cart> getAll(){
+    List<Cart> list = cartService.getAllCart();
+    return list;
   }
 
 }

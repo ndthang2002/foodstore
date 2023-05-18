@@ -2,17 +2,17 @@ var app = angular.module("appNhanvien", []);
 app.controller("ctrl-nhanvien", function($scope, $http) {
   $scope.listRole = [];
   $scope.listAccount = [];
-  $scope.checkedit=true;
+  $scope.checkedit = true;
   $scope.initial = function() {
     //get role 
     $http.get(`/rest/allrole`).then(resp => {
       $scope.listRole = resp.data;
-    })
+    });
     $http.get(`/rest/nhanvien/getlist`).then(resp => {
       $scope.listAccount = resp.data;
-    }).catch(resp => {
-    })
 
+    }).catch(resp => {
+    });
   }
   $scope.initial();
 
@@ -40,6 +40,9 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
         $scope.cityId = cityid;
         $scope.districtId = districtid;
         $scope.wardId = wardid;
+        console.log(cityid);
+        console.log(districtid);
+
       }
     }
   }
@@ -85,7 +88,7 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
 
   //ham reset 
   $scope.reset = function() {
-      $scope.checkedit=true;
+    $scope.checkedit = true;
     $scope.username = "";
     $scope.password = "";
     $scope.image = "";
@@ -102,7 +105,7 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
   $scope.idUser;
   $scope.index;
   $scope.edit = function(id, index) {
-      $scope.checkedit=false;
+    $scope.checkedit = false;
     console.log(id);
     var item = $scope.listAccount.find(item => item.userid == id);
     $scope.username = item.username;
@@ -115,73 +118,139 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
     $scope.selectedWard = item.selectedWard;
     $scope.phone = item.phone;
     $scope.fullname = item.name;
-
     //gui id len cho delete button 
     $scope.idUser = id;
     $scope.index = index;
 
-  
-
     //lay role
     $http.get(`/rest/nhanvien/getAuthorities/${id}`).then(resp => {
       $scope.selectedRole = resp.data.role.roleid;
-    })
+    });
   }
   //xoa
   $scope.delete = function(id, index) {
-    $http.delete(`/rest/nhanvien/deleteAccount/${id}`).then(resp => {
-    })
-    $scope.listAccount.splice(index, 1);
+    var deleted = false;
+
+
+
+    //kiem tra xem user co trong cart hay khong 
+    $http.get(`/rest/getall`).then(resp1 => {
+      for (const cart of resp1.data) {
+        console.log();
+        if (cart.user.userid === id) {
+          deleted = true;
+          console.log(deleted);
+          break;
+        }
+      }
+
+      //kiem tra xem co phai la admin hay khong
+      $http.get(`/rest/authoties/getall`).then(resp2 => {
+        var authorities = resp2.data.find(auth => auth.user.userid == id);
+        if (authorities) {
+          console.log(authorities);
+          console.log("no3");
+          if (authorities.role.name === "admin") {
+            console.log("thnadsd");
+            deleted = true;
+            console.log(deleted);
+          }
+        }
+
+
+        // kiem tra xem user nay co duoc xoa khoong
+        $http.get(`/rest/order/getAllOrder`).then(resp3 => {
+          var order = resp3.data.find(order => order.user.userid == id);
+        /*  for (const orders of resp3.data) {*/
+            if (order) {
+              console.log("sao may co",order);
+              deleted = true;
+              console.log(deleted);
+
+             /* break;
+            }*/
+          }
+          //xoa neu user không bị ràng buộc bởi thực thể nào 
+          if (!deleted) {
+            console.log("b1");
+            console.log(deleted);
+            $http.delete(`/rest/nhanvien/deleteAccount/${id}`).then(resp4 => {
+              $scope.listAccount.splice(index, 1);
+            })
+          } else {
+            alert('Người dùng này không được xóa');
+
+          }
+        });
+      });
+    });
 
   }
-  $scope.file1 =null;
-    $scope.setFile = function(files, index) {
+  $scope.setFile = function(files, index) {
     if (index == 1) {
       $scope.file1 = files[0];
-      console.log($scope.file1);
     }
   };
-  $scope.update = function(idUser){
-    //lay anh
-   console.log($scope.file1);
+  console.log($scope.file1);
+
+  $scope.update = function(idUser) {
+    //lay anh $scope.file1 = null;
+
     var formData = new FormData();
-     formData.append("image", $scope.file1);
-     console.log(formData);
-      $scope.nhanvien = {
-       "username": $scope.username,
-       "password": $scope.password,
-       "image": $scope.image,
-       "name": $scope.fullname,
-       "email": $scope.email,
-       "phone": $scope.phone
-     }
-     $scope.role ={
-       "roleid":$scope.selectedRole,
-     }
- 
-     //lay dia chi 
-     $scope.diachi = {
-       "cityid": $scope.cityId,
-       "districtid": $scope.districtId,
-       "wardid": $scope.wardId
-     }
-      var data = {
-       account: { ...$scope.nhanvien },
-       address: { ...$scope.diachi },
-       role:{...$scope.role},
+
+    if ($scope.file1) {
+      formData.append("image", $scope.file1);
+    }
+console.log(formData);
+console.log($scope.file1);
+    formData.append("username", $scope.username);
+    formData.append("password", $scope.password);
+    formData.append("name", $scope.fullname);
+    formData.append("email", $scope.email);
+    formData.append("phone", $scope.phone);
+    formData.append("roleid", $scope.selectedRole);
+    formData.append("cityid", $scope.cityId);
+    formData.append("districtid", $scope.districtId);
+    formData.append("wardid", $scope.wardId);
+    console.log($scope.cityId);
+    console.log($scope.districtId);
+    console.log($scope.wardId);
+    /*   console.log(formData);
+       $scope.nhanvien = {
+         "username": $scope.username,
+         "password": $scope.password,
+         "image": $scope.image,
+         "name": $scope.fullname,
+         "email": $scope.email,
+         "phone": $scope.phone
+       }
+       $scope.role = {
+         "roleid": $scope.selectedRole,
+       }
    
-     }
-       $http.post(`/rest/nhanvien/update/${idUser}`, data
-      
-     ).then(resp => {
-        console.log(resp.data);
-        var item = resp.data;
-      var index =  $scope.listAccount.findIndex(i=>i.userid == item.userid);
-       $scope.listAccount.splice(index, 1, item);
-      
+       //lay dia chi 
+       $scope.diachi = {
+         "cityid": $scope.cityId,
+         "districtid": $scope.districtId,
+         "wardid": $scope.wardId
+       }
+       console.log("dia chi za",$scope.wardId);
+       console.log($scope.cityId);
        
-   })
-      
+       var data = {
+         account: { ...$scope.nhanvien},
+         address: { ...$scope.diachi },
+         role: { ...$scope.role },
+       }*/
+    $http.post(`/rest/nhanvien/update/${idUser}`, formData, {
+      transformRequest: angular.identity,
+      headers: {'Content-Type': undefined}
+    }).then(resp => {
+      console.log(resp.data);
+      var item = resp.data;
+      var index = $scope.listAccount.findIndex(i => i.userid == item.userid);
+      $scope.listAccount.splice(index, 1, item);
+    })
   }
 
   //dia chi
@@ -234,9 +303,7 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
       }
     }).then(resp => {
       $scope.districts = resp.data.data;
-
       // lay phuong xa theo quan 
-
       $scope.districtChoose = function(districtId) {
         //lay ma huyen
         $scope.districtId = districtId;
@@ -250,7 +317,9 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
           }
         }).then(resp => {
           $scope.wards = resp.data.data;
-
+          $scope.wardChoose = function(wardId){
+            $scope.wardId= wardId;
+          }
 
         }).catch(resp => {
           console.log("lỗi khi lấy xa ")
