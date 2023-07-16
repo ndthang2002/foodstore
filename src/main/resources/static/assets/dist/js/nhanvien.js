@@ -10,7 +10,6 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
     });
     $http.get(`/rest/nhanvien/getlist`).then(resp => {
       $scope.listAccount = resp.data;
-
     }).catch(resp => {
     });
   }
@@ -158,7 +157,7 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
         }
 
 
-        // kiem tra xem user nay co duoc xoa khoong
+        // kiem tra xem co trong order khong
         $http.get(`/rest/order/getAllOrder`).then(resp3 => {
           var order = resp3.data.find(order => order.user.userid == id);
         /*  for (const orders of resp3.data) {*/
@@ -177,7 +176,7 @@ app.controller("ctrl-nhanvien", function($scope, $http) {
             $http.delete(`/rest/nhanvien/deleteAccount/${id}`).then(resp4 => {
               $scope.listAccount.splice(index, 1);
             })
-          } else {
+          } else {  
             alert('Người dùng này không được xóa');
 
           }

@@ -99,7 +99,7 @@ public class ProductRestController {
       @RequestParam("categoryid") Integer categoryid
     )
   {
-  
+    
     Category category = categoryService.findByid(categoryid);
     Product pro = productService.findById(idp);
     pro.setCategory(category);

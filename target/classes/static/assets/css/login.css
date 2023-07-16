@@ -255,3 +255,33 @@ footer a {
   font-size: 10px;
 
 }
+
+@media(max-width:572px){
+  form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    height: 100%;
+    text-align: center;
+}
+.quenmk{
+  width: 100%;
+}
+.form-group{
+    display: grid;
+    justify-content: center;
+}
+.input_quenmk{
+  width: unset;
+}
+.input_quenmk{
+   width: unset;
+}
+
+}
+.input_quenmk{
+/*  width: 250px;
+*/}

@@ -121,7 +121,6 @@ public class PaymentController {
         String vnp_SecureHash = pConfig.hmacSHA512(pConfig.vnp_HashSecret, hashData.toString());
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
         String paymentUrl = pConfig.PayUrl + "?" + queryUrl;
-
         PaymentResult result=new PaymentResult();
         result.setStatus("00");
         result.setMessage("success");

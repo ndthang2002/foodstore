@@ -6,7 +6,7 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
   let idProduct;
   $scope.cartdb = [];
   $scope.cartLength = 0;
-  $scope.checkcart=false;
+  $scope.checkcart = false;
   const token = 'd6e3dccb-6289-11ea-8b85-c60e4edfe802';
 
   //tương tác với các thẻ html 
@@ -37,14 +37,12 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
     /*$scope.checkLoged=false;
     alert($scope.checkLoged);*/
     $scope.cartdb = response.data;
-    if( $scope.cartdb.length==0){
+    if ($scope.cartdb.length == 0) {
       $scope.checkcart = true;
-      console.log($scope.checkcart);
     }
     console.log(response.data);
     $scope.cartLength = $scope.cartdb.length;
     addAllDatatoList($scope.cartdb);
-console.log($scope.checkcart);
     $scope.cart = {
 
       items: [],
@@ -212,7 +210,7 @@ console.log($scope.checkcart);
         $scope.idUser = response.data.userid;
         $scope.comments.forEach(function(comment) {
           console.log(comment.idaccount);
-         
+
           if (comment.idaccount === $scope.idUser) {
             $scope.checkdelete = true;
             console.log($scope.checkdelete);
@@ -250,13 +248,13 @@ console.log($scope.checkcart);
   }
 
   //xoa comment
-  $scope.deletecomment = function(id,index){
+  $scope.deletecomment = function(id, index) {
     console.log(id);
     console.log(index);
     $http.delete(`/rest/deletecomment/${id}`);
-      $scope.comments.splice(index,1);
+    $scope.comments.splice(index, 1);
   }
-  
+
 });
 
 // toast hien thi xoa thanh cong 

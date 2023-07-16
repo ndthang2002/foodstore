@@ -13,7 +13,17 @@
     color: black;
     font-weight: bold;
   }
+  form{
+    background-color: lightcyan;
+    
+  }
+  .orderdetail{
+    background-color: lightblue;
+    
+  }
 </style>
+<div class="orderdetail">
+  
 
   <form class="border  container  mt-5 p-5 zindex-sticky">
     <h3 class="d-flex justify-content-center"> Thanh toán thành công</h3>
@@ -22,11 +32,11 @@
                       <small >Hình thức thanh toán: [[${vnp_CardType}]]</small> <br>
                       <small>Ngân hàng: [[${vnp_BankCode}]]</small> <br>
                       <small>Hình thức thanh toán: [[${vnp_OrderInfo}]]</small> <br>
-                      <small>số tiền thanh toán: [[${paymentPrice}/100]]</small> <br>
+                      <small>Số tiền thanh toán: [[${paymentPrice}/100]]</small> <br>
                      <a th:href="@{/index}">Quay về trang chủ</a>
                       
     </div>
   </form>
-
+</div>
 </main>
 </html>

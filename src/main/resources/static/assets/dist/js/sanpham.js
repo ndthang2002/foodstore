@@ -8,7 +8,7 @@ app.controller("ctrl-sanpham", function($scope, $http) {
   $scope.imageF1;
   $scope.imageF2;
   $scope.imageF3;
-  
+
     $http.get(`/rest/getcategory`).then(resp =>{
       $scope.categorys= resp.data;
       console.log(resp.data);
@@ -29,8 +29,39 @@ app.controller("ctrl-sanpham", function($scope, $http) {
   }
   
   $scope.delete = function(id,index){
-    $scope.products.splice(index,1);
+    var deleted = false;
+    $http.get(`/rest/getAllCartProduct`).then(resp1=>{
+       for(const order of resp1.data){
+         if(order.product.productid === id){}
+         deleted=true;
+         break;
+       }
+    $http.get(`/rest/getallcomment`).then(resp2 =>{
+      for(const comment of resp2.data){
+        if(comment.product.productid === id){
+          deleted=true;
+          break;
+        }
+      }
+    $http.get(`/rest/orderitem/getallorderitem`).then(resp3 => {
+      for(const orderitem of resp3.data){
+        if(orderitem.product.productid === id){
+          deleted=true;
+          break;
+        }
+      }
+      if(!deleted){
+         $scope.products.splice(index,1);
     $http.delete(`/rest/delete/${id}`);
+      }else{
+         alert("Không được xóa sản phẩm này ");
+      }
+     
+     
+    });
+    });
+    });
+    
   }
   
   $scope.productid ;

@@ -1,0 +1,19 @@
+.card-header:first-child {
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+}
+.congcu{
+  display: flex;
+  justify-content: end;
+      margin-left: 50rem;
+}
+.content-congcu{
+  z-index: 999;
+  right: 0;
+}
+.body-render-bill{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  color: white;
+  grid-gap: 10px;
+}

@@ -2,11 +2,13 @@
 package com.ttttn.controller;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.codec.CharEncoding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -101,36 +103,35 @@ public class AccountController {
     return "login/login";
   }
 
-  @RequestMapping("/forgotpassword")
-  public String forgotpassword(Model model, @RequestParam("username") String username,
-      @RequestParam("email") String email) {
-    Account account = accService.findAccountByUserName(username);
-    if (account == null) {
-      model.addAttribute("message", "Tài khoản không tồn tại");
-    } else if (!account.getEmail().equals(email)) {
-      System.out.println("day laa" + account.getEmail());
-      model.addAttribute("message", "Sai email liên kết với tài khoản");
-    } else {
-      try {
-        MimeMessage mail = mailer.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(mail);
-        helper.setFrom("nguyendinhthang23082002@gmail.com");
-        helper.setTo(email);
-        helper.setReplyTo("nguyendinhthang23082002@gmail.com");
-        helper.setSubject("Chào bạn " + account.getName() + "");
-        helper.setText("Mật khẩu của bạn là:  " + account.getPassword(),
-            true + "vui lòng không cung cấp mật khẩu này cho ai");
-        // gui mail
-        mailer.send(mail);
-        model.addAttribute("message", "vui lòng check mail để nhận mật khẩu");
-      } catch (Exception e) {
-        e.printStackTrace();
-        // TODO: handle exception
-        model.addAttribute("message", "lỗi gửi mail vui lòng kiểm tra lại");
-      }
-    }
-    return "login/login";
-  }
+//  @RequestMapping("/forgotpassword")
+//  public String forgotpassword(Model model, @RequestParam("username") String username,
+//      @RequestParam("email") String email) {
+//    Account account = accService.findAccountByUserName(username);
+//    if (account == null) {
+//      model.addAttribute("message", "Tài khoản không tồn tại");
+//    } else if (!account.getEmail().equals(email)) {
+//      System.out.println("day laa" + account.getEmail());
+//      model.addAttribute("message", "Sai email liên kết với tài khoản");
+//    } else {
+//      try {
+//        MimeMessage mail = mailer.createMimeMessage();
+//        MimeMessageHelper helper = new MimeMessageHelper(mail);
+//        helper.setFrom("nguyendinhthang23082002@gmail.com");
+//        helper.setTo(email);
+//        helper.setReplyTo("nguyendinhthang23082002@gmail.com");
+//        helper.setSubject("Chào bạn ");
+//        helper.setText("Mật khẩu của bạn là: vui lòng không cung cấp mật khẩu này cho ai 123");
+//        // gui mail
+//        mailer.send(mail);
+//        model.addAttribute("message", "vui lòng check mail để nhận mật khẩu");
+//      }catch (Exception e) {
+//        e.printStackTrace();
+//        // TODO: handle exception
+//        model.addAttribute("message", "lỗi gửi mail vui lòng kiểm tra lại");
+//      }
+//    }
+//    return "login/login";
+//  }
 
   // vao trang edit taikhoan
   @RequestMapping("/editaccount")

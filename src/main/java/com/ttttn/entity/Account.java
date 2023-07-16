@@ -60,6 +60,8 @@ public class Account {
   @OneToMany(mappedBy = "user")
   private List<Address> address;
   
+  //for got password
+  private String resetPasswordToken;
 //  @ManyToMany
 //  @JoinTable(name = "authorities",
 //  joinColumns = @JoinColumn(name="userid"),

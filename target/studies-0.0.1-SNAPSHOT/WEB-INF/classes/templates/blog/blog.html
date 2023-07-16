@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <title>TIN TỨC</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/index" class="logo">Food Store</a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+            <li><a th:href="@{/index}" class="active">Trang Chủ</a></li>
+            <li><a th:href="@{/product}">Sản Phẩm</a></li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Tin Tức</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" th:href="@{/blog}">Tin Tức</a>
+                <a class="dropdown-item text-dark" th:href="@{/blog-detail}">Kiến Thức</a>
+              </div>
+            </li>
+            <li><a th:href="@{/contact}">Liên Hệ</a></li> 
+                           
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                    <svg id="i-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                        <circle cx="14" cy="14" r="12" />
+                                        <path d="M23 23 L30 30"  />
+                                    </svg>
+                                </button>
+                              </form>
+                              <li><a href="checkout.html">
+                                <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
+                                    <circle cx="25" cy="27" r="2" />
+                                    <circle cx="12" cy="27" r="2" />
+                                </svg>
+                            </a></li>
+                              <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+<path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
+                                    </svg>
+                                </a>
+                              
+                                <div class="dropdown-menu">
+                                    <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
+                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
+                 <a ng-show="ischeckLoged"   class="dropdown-item text-dark" href="" >Đơn mua</a>
+                <a class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
+                                </div>
+                            </li>
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2>TIN <em>TỨC</em></h2>
+                        <p>Xem thêm tin tức để biết nhiều kiến thức!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ***** Blog Start ***** -->
+    <section class="section" id="our-classes">
+        <div class="container">
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <section class='tabs-content'>
+                      <article>
+                        <img src="assets/images/cahoi.jpg" width="2655px" height="800px" alt="">
+                        <h4>NƠI BÁN CÁ HỒI TƯƠI SIÊU NGON, ĐẢM BẢO CHẤT LƯỢNG MÀ GIÁ CỰC RẺ.</h4>
+
+                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+
+                        <p>Cá Hồi Tươi Là Loại Thực Phẩm Cung Cấp Giá Trị Dinh Dưỡng Vô Cùng, Nhất Là Hàm Lượng Chất Đạm Protein. Không Những Thế, Cá Hồi Tươi Còn Có Thể Chế Biến Ra Rất Nhiều Món Ăn Với Hương Vị Độc Đáo, Thơm Ngon, Làm Cho Bữa Ăn Thêm Đậm Đà, Bổ Dưỡng. Bạn Đang Loay Hoay Tìm Mãi Một Nơi Bán Cá Hồi Tươi Sống Đảm Bảo Chất Lượng, Giá Cả Phải Chăng? Thế Thì Hãy Cùng Thực Phẩm Sạch HD Tìm Hiểu Qua Thông Tin Trong Bài Viết Sau Bạn Nhé.</p>
+                        <div class="main-button">
+                            <a th:href="@{/blog-detail}">Đọc tiếp</a>
+                        </div>
+                      </article>
+
+                      <br>
+                      <br>
+
+                      <article>
+                        <img src="assets/images/thitbo.jpg" alt="">
+                        <h4>NHỮNG LOẠI THỊT BÒ NHẬP KHẨU NGON NHẤT.</h4>
+                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+                        <p>Thịt Bò Nhập Khẩu Hiện Nay Đã Không Quá Xa Lạ Đối Với Người Việt. Những Miếng Thịt Bò Đến Từ Mỹ, Úc Hay Nhật Đang Dần Chiếm Được Sự Ưa Chuộng Của Các Khách Hàng. Với Hương Vị Thơm Sữa, Mêm Thịt, Dễ Dàng Chế Biến Nhiều Món Ăn Ngon Khác Nhau, Thịt Bò Nhập Khẩu Đã Giúp Các Bà Nội Trợ Có Thêm Sự Lựa Chọn Phong Phú Cho Bữa Ăn Của Gia Đình Mình.</p>
+                        <div class="main-button">
+                            <a th:href="@{/blog-detail1}">Đọc tiếp</a>
+                        </div>
+                      </article>
+
+                      <br>
+                      <br>
+
+                      <article>
+                        <img src="assets/images/rau.jpg" width="2655px" height="800px" alt="">
+                        <h4>Bạn có biết thực phẩm sạch và thực phẩm hữu cơ là hai loại khác nhau.</h4>
+                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+                        <p>Không Ít Người Nghĩ Rằng Thực Phẩm Sạch Và Thực Phẩm Hữu Cơ Là Một. Tuy Nhiên Thực Phẩm Sạch Vẫn Sử Dụng Các Chất Hóa Học Trong Quá Trình Nuôi Trồng, Còn Thực Phẩm Hữu Cơ Thì Hoàn Toàn Không. Hãy Cùng Prudential Tìm Hiểu Sự Khác Nhau Cũng Như Tác Dụng Của Hai Loại Thực Phẩm Này Với Sức Khỏe Để Lựa Chọn Loại Thực Phẩm Phù Hợp Cho Bữa Cơm Gia Đình Nhé!.</p>
+                        <div class="main-button">
+                            <a th:href="@{/blog-detail2}">Đọc tiếp</a>
+                        </div>
+                      </article>
+                    </section>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- ***** Blog End ***** -->
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        Copyright © 2020 Company Name
+                        - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script> 
+    <script src="assets/js/mixitup.js"></script> 
+    <script src="assets/js/accordions.js"></script>
+    
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>

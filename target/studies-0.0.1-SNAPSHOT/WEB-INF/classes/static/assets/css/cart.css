@@ -1,0 +1,617 @@
+/* css dropdown */
+.dropbtn {
+  
+ 
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(17, 4, 4, 0.2);
+    z-index: 2;
+   left: 250px;
+   top: 50px;
+   animation: dropdown 0.5s ease alternate;
+  }
+  @keyframes dropdown {
+    
+    from{
+      top: 30px;
+  
+    }to{
+      top: 50px;
+    }
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+  
+  body{
+    background-color: rgb(56,21,0);
+  }
+  header{
+    background-color: rgb(12, 9, 7);
+  }
+  html{
+    background-color: rgb(233, 187, 187);
+  }
+  .item1{ 
+    background-color: rgb(181, 61, 17);
+    width: 100%;
+    height:200px;
+    display: grid;  
+    grid-template-columns: repeat(2,50%);
+    align-items: center;
+    border: 1px solid rgb(204, 197, 197);
+    
+  }
+  .logogiohang{
+  
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+  }
+  #logo{
+    font-size: 40px;
+  }
+  #giohang{
+    font-size: 40px;
+    text-transform: uppercase;
+    color: rgb(229, 225, 225);
+    margin-top: 10px;
+  }
+  .timkiem{
+    display: flex;
+    justify-content: center;
+  }
+  #timkiemIP{
+    width: 300px;
+    height: 30px;
+    border: none;
+    opacity: 50%;
+  }
+  #timkiemBT{
+    width: 50px;
+    height: 30px;
+    border: none;
+    background-color: rgb(235, 227, 227);
+    -webkit-tap-highlight-color: aliceblue;
+    
+  }
+  .item2{
+   padding: 30px 100px 0px 100px ;
+   background-color: rgb(245,245,245);
+   height: 700px;
+   overflow: hidden;
+  }
+  .phanthan{
+    height: 80vh;
+    
+  }
+  #goiyvanchuyen{
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgb(219, 211, 211);
+    background-color: rgb(255, 255, 255);
+  }
+  #goiyvanchuyen span{
+    align-items: center;
+    line-height: 50px;
+    margin-left:4rem;
+  }
+  .fa-truck{
+    color: aquamarine;
+  }
+  #tieudegiohang{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    width: 100%;
+    line-height: 50px;
+   background-color: aliceblue;
+   margin: 10px 0 10px 0;
+  }
+  #chontoanbo{
+    width: 20px;
+  }
+  .tieudetrai{
+    display: grid;
+    grid-template-columns: 20% 80%;
+  }
+  #check{
+    width:20px;
+    margin-left: 50px;
+  }
+  .tieudephai{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4,auto);
+    align-items: center;
+  }
+  .hienthisanpham{
+  display: grid;
+  grid-template-rows: 15% 60% 15%;
+
+  }
+  
+  
+  .tenloaisanpham{
+   background-color: #FFFFFF;
+   width: 100%;
+   min-height: 50px;
+   display: flex;
+   align-items: center;
+   padding-left: 20px;
+   color:black;
+   font-weight: bold;
+   text-transform: uppercase;
+  }
+  .chitietsanpham{
+      display: grid;
+    grid-template-columns: 45% 55%;
+    width: 100%;
+    line-height: 50px;
+   min-height: 200px;
+    background-color: #e7e5e5;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+   
+  }
+  .voucher{
+    width: 100%;
+    min-height: 50px;
+    background-color:#FFFFFF;
+    line-height: 50px;
+  }
+  .voucher span{
+    margin-left: 30px;font-size: 11px;
+}
+.sanphamtrai{
+  display: grid;
+  grid-template-columns: 70% 30%;
+ gap:10rem;
+} 
+.anhsanpham{
+  width: 100px;
+  height:50%;
+  margin-left: 5rem;
+}
+.anh{
+  display: flex;
+  align-items: center;
+}
+.anh img{
+  border-radius: 5%;
+}
+.motasanpham{ 
+  padding: 10px;
+  font-size: 13px;
+    display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+  width: 200px;
+  
+}   
+.tensanpham{
+  color: black;
+  width: 200px;
+  display: flex;
+  font-weight: bold;
+}
+.item3{
+   position: -webkit-sticky;
+    position: sticky;
+   bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #FFFFFF;
+padding: 20px;
+
+}
+.item3 button{
+  border: none;
+}
+.item3 input{
+ width: 50px;
+ height: 30px;
+}
+.themvaodonhang{
+display: flex;
+align-items: center;
+justify-content: space-between;
+line-height: 50px;
+}
+.muahang{
+  background-color: rgb(253, 83, 4);
+  width: 200px;
+}
+header{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+.tru{
+  height: 10px;
+}
+.nhapsoluong{
+width: 30px;
+height: 30px;
+margin-left: 5px;
+margin-right: 5px;
+border: none;
+}
+
+
+@media only screen and (max-width: 1024px){
+    
+    .chontatca{
+      font-size: 13px;
+      width: 150px;
+      height: 40px;
+      margin-right: 1rem;
+    }
+    .xoa{
+      font-size: 13px;
+      width: 50px;
+      height: 40px;
+       margin-right: 1rem;
+    }
+    .luumucthanhtoan{
+       width: 250px;
+      height: 40px;
+       margin-right: 1rem;
+       font-size: 13px;
+    }
+    .tongthanhtoan{
+      font-size: 7px;
+    }
+    .muahang{
+     width: 100px;
+     height: 50px;
+     font-size: 11px;
+    }
+    .ttsanphamtrai{
+      margin-left: 10px;
+    }
+  .logogiohang{
+    margin-top: 100px;
+  }
+  .timkiem{
+    margin-top: 100px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .chontatca{
+    height: 50px;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .xoa{
+    height: 50px;
+  }
+
+  .luumucthanhtoan{
+    height: 50px;
+  }
+  .tongthanhtoan{
+    font-size: 11px;
+  }
+
+  #chontatca{
+    height: 30px;
+    width: 40px;
+  }
+  
+
+}
+@media only screen and (max-width: 768px){
+#noidunggoiy{
+    font-size: 13px;
+  }
+.ttsanphamtrai{
+  font-size: 13px;
+
+}
+#ttsanhamphai{
+  font-size: 13px;  
+}
+.tieudetrai{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+}
+.anh{
+  height: 100px;
+  width: 50px;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.motasanpham p{
+  font-size: 11px;
+  overflow: scroll;
+ 
+}
+}
+
+
+ @media only screen and (max-width: 736px){
+     .chontatca{
+    height: 50px;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .xoa{
+    height: 50px;
+  }
+
+  .luumucthanhtoan{
+    height: 50px;
+  }
+  .tongthanhtoan{
+    font-size: 11px;
+  }
+
+  #chontatca{
+    height: 30px;
+    width: 40px;
+  }
+  
+
+}
+@media only screen and (max-width: 768px){
+  #giohang{
+    font-size: 25px;
+  }
+#noidunggoiy{
+    font-size: 13px;
+  }
+.ttsanphamtrai{
+  font-size: 13px;
+
+}
+#ttsanhamphai{
+  font-size: 13px;  
+}
+.tieudetrai{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+}
+.anh{
+  height: 100px;
+  width: 50px;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.motasanpham p{
+  font-size: 11px;overflow: scroll;
+ 
+}
+ }
+
+ @media only screen and (max-width: 375px){
+  #giohang{
+    font-size: 20px;
+  }
+   #timkiemIP{
+    width: 100px;
+   }
+   #timkiemBT{
+    width: 30px;
+   }
+   #goiyvanchuyen{
+    width: 200px;
+    height: 50px;
+    display: grid;
+    justify-content: center;
+    
+   }
+   .item2{
+    padding: 0;
+    display: grid;
+    grid-template-rows: repeat(7,auto);
+
+   }
+ }
+ 
+ .sanpham{
+   overflow: scroll;
+   height: 500px;
+ }
+ .nhapsoluong 
+   input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+ 
+ .themvaodonhang button:hover{
+   color:red;
+ }
+ 
+ .nhapsoluong{
+   outline: none;
+ }
+ 
+ /*disable the a */
+.disabled {
+  cursor: not-allowed;  
+  pointer-events: none;
+  
+  text-decoration: none;
+  color: black;
+}
+.cong{
+  height: 10rem;  
+  width: 30px;
+  border-radius: 1px;
+  box-shadow:  0px 0px 1px 5px rgb(255, 255, 255);
+  color: black; 
+  
+  background-color: white;
+  
+}
+.tru{
+  height: 10rem;
+  width: 30px;
+  border-radius: 1px;
+  box-shadow:  0px 0px 1px 5px rgb(255, 255, 255);
+  color: black; 
+ 
+  background-color: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica Neue";
+  background-color: #f4f4f5;
+}
+
+body > div {
+  margin: auto;
+}
+
+/* ======= Buttons ======== */
+
+/* Block */
+
+
+/* ======= Toast message ======== */
+
+#toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 999999;
+}
+
+.toastt {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 20px 0;
+  min-width: 400px;
+  max-width: 450px;
+  border-left: 4px solid;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+  transition: all linear 0.3s;
+  margin-bottom: 1rem;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 32px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.toast--success {
+  border-color: #47d864;
+}
+
+.toast--success .toast__icon {
+  color: #47d864;
+}
+
+.toast--info {
+  border-color: #2f86eb;
+}
+
+.toast--info .toast__icon {
+  color: #2f86eb;
+}
+
+.toast--warning {
+  border-color: #ffc021;
+}
+
+.toast--warning .toast__icon {
+  color: #ffc021;
+}
+
+.toast--error {
+  border-color: #ff623d;
+}
+
+.toast--error .toast__icon {
+  color: #ff623d;
+}
+
+.toast + .toast {
+  margin-top: 24px;
+}
+
+.toast__icon {
+  font-size: 24px;
+}
+
+.toast__icon,
+.toast__close {
+  padding: 0 16px;
+}
+
+.toast__body {
+  flex-grow: 1;
+}
+
+.toast__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.toast__msg {
+  font-size: 14px;
+  color: #888;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.toast__close {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.toast:not(.showing):not(.show) {
+    opacity: 100%;
+}

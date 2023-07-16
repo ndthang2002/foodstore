@@ -10,9 +10,9 @@
 var app = angular.module("appHome", []);
 app.controller("ctrl-home", function($scope, $http) {
 
-  $scope.raucu = 0;
-  $scope.tinhbot = 0;
-  $scope.thitca = 0;
+  $scope.raucu =0;
+  $scope.tinhbot =0;
+  $scope.thitca =0;
 
   //load thống kê các loại bán chạy
 
@@ -78,7 +78,7 @@ app.controller("ctrl-home", function($scope, $http) {
  
   //thong ke don hang theo thang
     $http.get(`/rest/order/getAllOrder`).then(resp=>{
-       $scope.t1=0;
+      $scope.t1=0;
       $scope.t2=0;
       $scope.t3=0;
       $scope.t4=0;
@@ -90,11 +90,10 @@ app.controller("ctrl-home", function($scope, $http) {
       $scope.t10=0;
       $scope.t11=0;
       $scope.t12=0;
-      console.log($scope.t5);
+ 
       for(const order of resp.data){
       var date = new Date(order.bookingdate);
       var month = date.getMonth()+1;
-      console.log(month);
       switch(month){
           case 1:
           $scope.t1+=1;
@@ -149,8 +148,7 @@ app.controller("ctrl-home", function($scope, $http) {
       $scope.t10=($scope.t10/12)*100;
       $scope.t11=($scope.t11/12)*100;
       $scope.t12=($scope.t12/12)*100;
-      console.log($scope.t5);
-      console.log($scope.t1);
+    
      
     /* Chart.js Charts */
     // Sales chart
@@ -233,10 +231,13 @@ app.controller("ctrl-home", function($scope, $http) {
           console.log($scope.tinhbot);
         }
       }
-
-      var thitca = Math.floor(($scope.thitca / 3) * 100);
-      var raucu = Math.floor(($scope.raucu / 3) * 100);
-      var tinhbot = Math.floor(($scope.tinhbot / 3) * 100);
+ console.log(thitca);
+      console.log(tinhbot);
+      console.log(raucu);
+      var total = $scope.thitca + $scope.raucu + $scope.tinhbot;
+      var thitca = Math.floor(($scope.thitca / total) * 100);
+      var raucu = Math.floor(($scope.raucu / total) * 100);
+      var tinhbot = Math.floor(($scope.tinhbot / total) * 100);
 
       console.log(thitca);
       console.log(tinhbot);

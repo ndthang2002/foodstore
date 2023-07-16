@@ -3,6 +3,7 @@ package com.ttttn.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ttttn.entity.Account;
@@ -41,5 +42,36 @@ public class AccountServiceImpl implements AccountService{
     // TODO Auto-generated method stub
     userJparepository.deleteById(id);
     
+  }
+  @Override
+  public void updateResetPasswordToken(String token, String email){
+    try {
+      Account account = userJparepository.findByEmail(email);
+      if(account !=null) {
+        account.setResetPasswordToken(token);
+        userJparepository.save(account);
+      }else {
+        System.out.println("khoong tim thay nguoi dung");
+      }
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.out.println("ngoai le do tim kiem user ");
+      e.printStackTrace();
+    }
+    // TODO Auto-generated method stub
+    
+  }
+  @Override
+  public Account getByResetPasswordToken(String token) {
+    // TODO Auto-generated method stub
+    return userJparepository.findByResetPasswordToken(token);
+  }
+  @Override
+  public void updatePassword(Account account, String newPassword) {
+    // TODO Auto-generated method stub
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    String encodePassword = passwordEncoder.encode(newPassword);
+    account.setPassword(encodePassword);
+    account.setResetPasswordToken(null);userJparepository.save(account);
   }
 }

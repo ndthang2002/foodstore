@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<!--<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ <!-- <link rel="stylesheet" href="assets/css/thanhtoan.css">-->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">-->
+
+</head>-->
+<body>
+
+  <main ng-controller="myCtrl-order">
+  <!-- ***** Header Area End ***** -->
+  
+ <!-- <div class="ttitem1">
+    
+    <span class="tttieudethanhtoan">Thanh Toán</span>
+  </div>
+-->
+   <!-- ***** Call to Action Start ***** -->
+    <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2><em>Sản Phẩm Của Chúng Tôi</em></h2>
+                        <p>Food cung cấp nhiều gói ăn và thực phẩm dùng kèm đa dạng phù hợp với mọi nhu cầu của bạn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
+   <!-- mỗi sản phẩm của khách hàng mua  -->
+  <div class="ttitem2">
+    <div class="tttoanitem2">
+    <div class="ttdiachi">
+      <span class="ttdiachinhanhang"><i class="fas fa-map-marker-alt"></i> Địa chỉ nhận hàng </span>
+      
+       
+      <label class="lablediachi" for="thanhpho">Thành phố:</label>
+      <select class="selectdiachi" id="thanhpho" name="city"   ng-model="selectedCity" ng-change=cityChoose(selectedCity)>
+        <option class="optiondiachi" value="" >Chọn thành phố</option>-
+         <option class="optiondiachi" ng-repeat="city in citys" value="{{city.ProvinceID}}"> {{city.ProvinceName}} </option>
+      </select>
+      
+      
+      <label class="lablediachi" for="quanhuyen" >Quận/Huyện:</label>
+         <select class="selectdiachi" id="quanhuyen" name="district" value="{{district.DistrictName}}" ng-model="selectedDistrict" ng-change=districtChoose(selectedDistrict)>
+        <option class="optiondiachi" value="" >Chọn quận/huyện</option>
+        <option class="optiondiachi" ng-repeat="district in districts" value="{{district.DistrictID}}">{{district.DistrictName}}</option>
+      </select>
+    
+    
+      <label class="lablediachi" for="phuongxa">Phường/Xã:</label>
+      <select class="selectdiachi" id="phuongxa" name="ward" value="{{ward.WardName}}" ng-model="selectedWard" ng-change=wardChoose(selectedWard)>
+        <option class="optiondiachi" value="">Chọn phường/xã</option>
+        <option class="optiondiachi" ng-repeat="ward in wards" value="{{ward.WardCode}}">{{ward.WardName}}</option>
+      </select>
+      
+    
+      
+    </div>
+
+
+    <div class="ttsanpham" >
+        <div class="tttieude">
+          <span style="margin-left: 50px;">Sản Phẩm </span>
+          <span>Đơn Giá </span>
+          <span>Số Lượng</span>
+          <span class="ttthanhtien">Thành Tiền</span>
+        </div>
+        
+       <div class="ttsanphammuaform">
+        <div class="ttsanphammua" ng-repeat="item in cartdb" >
+          <div class="ttanh">
+            <img class="tthinhsanpham" ng-src="https://res.cloudinary.com/dpbixmrep/image/upload/{{item.imageproduct}}" alt=""> 
+            <span class="tttensanpham">{{item.name}}</span>
+          </div> 
+          <div class="ttsolieusanpham">
+            <span ng-click="laycartid(item.cartid)">{{item.price}}</span>
+            <span>{{item.quantity}}</span>    
+            <span>{{item.price*item.quantity}}.000vnd</span>
+          </div>
+        </div>  
+        
+        </div>
+    <!--    <div class="ttvanchuyen">
+          <div class="ttnhavanchuyen">
+            <div class="ttloinhan">
+            <label for="">Lời Nhắn:</label>
+            <input class="ttghichuship" type="text" placeholder="lưu ý cho người bán ">
+            </div>
+            <label for="">Đơn vị vận chuyển :</label> 
+            <span><span class="pthuc">nhanh</span>  
+            
+            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+   Thay Đổi
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item text-dark" href="#">Nhanh</a></li>
+    <li><a class="dropdown-item text-dark" href="#">Siêu Tốc </a></li>
+    <li><a class="dropdown-item text-dark" href="#">Siêu rẻ </a></li>
+  </ul>
+</div>
+            </span> 
+            <span class="tienship">đ38.00</span>
+
+
+    
+    
+  </div>
+
+          </div>-->
+         <!-- <div class="tongtiensanpham">
+            <div class="phantongtien">  
+                 <label for="">Tổng số tiền (1 sản phẩm ): </label>
+            <span>đ78.800</span>
+            </div>
+          </div>-->
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="ttitem2">
+   <div class="ttphuongthucthanhtoan">
+   
+   <div class="ttphuongthuc"> 
+    <span for="" class="ttghichuthanhtoan " >Phương thức thanh toán </span>
+    <div class="dropdown">
+      <button class="ttthetindung dropdown-toggle" data-toggle="dropdown">Thẻ tín dụng</button>
+      <ul class="dropdown-menu w-100px p-1">
+      <li class="chonvidientu">
+        <input type="checkbox" ng-model="vnpaycheck" ng-change="handleChange()" class="text-dark text-justify mr-1"><img style="margin-right: 0.3rem;
+    width: 20px;" src="assets/images/Icon-VNPAY.webp">ví điện tử vnpay</li>
+    </ul>
+    </div>
+    
+    <p>Nếu không chọn mặc định sẽ thanh toán khi nhận hàng</p>
+   </div>
+
+   <div class="tttinhtong">
+     
+     <div class="tttinhtongTrai">
+    
+   
+    <div class="ttvanchuyen">
+          <div class="ttnhavanchuyen">
+            <label class="donvivanchuyen" for="">Đơn vị vận chuyển :</label> 
+            <span><span class="pthuc"></span>  
+            <div class="chonphuongthuc">
+ <select id="phuongxa" name="ward" value="" ng-model="serviceId" ng-change=serviceChoose(serviceId)>
+        <option value="">Chọn phương thức </option>
+        <option  ng-repeat="service in shippingServices" value="{{service.service_id}}">{{service.short_name}}</option>
+      </select>
+  </div>
+    <small class="tienship" ng-model="servicefee" >Tiền vận chuyển :{{serviceFees.service_fee| currency: "" : 0 }}(VND)</small>
+            </span> 
+          
+  </div>
+  </div>
+  
+  
+     <div class="tttinhtongchild">
+    <label for="">Tổng tiền hàng:</label>
+    <span>{{tongtienhang| currency: "" : 3 }}vnd</span><br>
+    <label for=" ">Phí Vận Chuyển:</label>
+    <span>đ{{serviceFees.service_fee}}</span><br> 
+    <label for="">Tổng Thanh Toán :</label>
+    <span style="color: orangered;">{{serviceFees.service_fee+(tongtienhang*1000) | currency: "" : 0}}VND</span>
+      </div>
+     </div>
+     
+     </div> 
+     
+     <div class="ttdathang">
+      <span>Nhấn đặt hàng đồng nghĩa với việc bạn đồng ý tuân theo Điều Khoản củ chúng tôi</span>
+      <button class="ttdathangbtn" ng-click="saveorder()" >Đặt hàng</button>
+     </div>
+     </div>
+     
+    </div>
+    
+ <!-- Modal  thong bao-->
+  <div  id="loader" ng-show="true" >
+  <div class="inner one"></div>
+  <div class="inner two"></div>
+  <div class="inner three"></div>
+  </div>
+
+<did id="toast"></did>
+
+     
+    </div>
+  </div>
+</div>
+</main>
+<script src="assets/js/cart/order.js"></script> 
+ <script src="assets/js/thanhtoan.js"></script>  
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Plugins -->
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/mixitup.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/index.js"></script>  
+  </body>
+  </html>

@@ -39,7 +39,6 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
     $scope.cartdb = response.data;
     if ($scope.cartdb.length == 0) {
       $scope.checkcart = true;
-
     }
     console.log(response.data);
     $scope.cartLength = $scope.cartdb.length;

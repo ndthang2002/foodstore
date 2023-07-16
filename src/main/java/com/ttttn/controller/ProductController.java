@@ -57,6 +57,7 @@ public class ProductController {
 //  List<Category> listCategory = categoryService.findAll();
 //  model.addAttribute("listCategory", listCategory);
 //    return "product/products";
+  
   public String listBooks(Model model, @RequestParam("page") Optional<Integer> page,
       @RequestParam("size") Optional<Integer> size) {
     List<Category> listCategory = categoryService.findAll();
@@ -130,7 +131,7 @@ public class ProductController {
     Category category = categoryService.findByid(categoryid);
     product.setCategory(category);
     product.setModel(model);
-    product.setName(name);
+    product.setName(name.toUpperCase());
     product.setQuantity(quantity);
     product.setPrice(price);
     

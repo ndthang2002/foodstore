@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
-  <div class="container">
+  <div class="container mobie_background">
     <div class="row">
       <div class="col-12">
         <nav class="main-nav">
@@ -18,16 +18,16 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">Tin Tức</a>
             <div class="dropdown-menu">
-          <a class="dropdown-item text-dark" th:href="@{/blog}">Tin Tức</a>
+          <a class="dropdown-item text-dark tintuc" th:href="@{/blog}">Tin Tức</a>
                 <a class="dropdown-item text-dark" th:href="@{/blog-detail}">Kiến Thức</a>
               </div>
             </li>
             <li><a th:href="@{/contact}">Liên Hệ</a></li>
 
-            <form class="form-inline my-2 my-lg-0" action="/search">
-              <input class="form-control mr-sm-2" name="timkiem" type="search" placeholder="Search" aria-label="Search"
+            <form class="form-inline my-2 my-lg-0 form_mobie" action="/search">
+              <input class="form-control mr-sm-2 search_mobie " name="timkiem" type="search" placeholder="Search" aria-label="Search"
                 id="search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              <button class="btn btn-outline-success search_btn my-2 my-sm-0" type="submit">
                 <svg id="i-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25"
                   fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                   <circle cx="14" cy="14" r="12" />
@@ -58,10 +58,10 @@
                               </div>-->
               </div>
             </li>
- <p style="color: black; font-weight: bold; margin-left: 1rem;">[[${account}]] </p>
+ <p  class="accoundLoged accoundLoged_mobie">[[${account}]]</p>
 
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              <a class="dropdown-toggle icons_login" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
                 <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"
                   fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -70,14 +70,20 @@
                 </svg>
               </a>
 
-              <div class="dropdown-menu">
+              <div class="dropdown-menu form_login" style="margin-top: 20px;">
                 <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
                  <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
-                 
                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
               </div>
+              
+               <div class="login-mobie">
+                <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
+                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
+                <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
+              </div>
+              
             </li>
-           
+            
           </ul>
           <a class='menu-trigger'>
             <span>Menu</span>

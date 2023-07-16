@@ -421,7 +421,7 @@ border: none;
     width: 30px;
    }
    #goiyvanchuyen{
-    width: 200px;
+    
     height: 50px;
     display: grid;
     justify-content: center;
@@ -615,3 +615,80 @@ body > div {
 .toast:not(.showing):not(.show) {
     opacity: 100%;
 }
+
+@media(max-width:572px){
+  .item2 {
+    padding: 30px 82px 0px 150px;
+    background-color: rgb(245,245,245);
+    height: 700px;
+    overflow: hidden;
+    display: grid;
+    justify-content: center;
+}
+.phanthan {
+    height: 80vh;
+    width: 350px;
+}
+.chitietsanpham {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    width: 65%;
+    line-height: 50px;
+    min-height: 200px;
+    background-color: #e7e5e5;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+    padding-right: 60px;
+}
+.motasanpham {
+    padding: 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+    width: 200px;
+}
+.tieudephai {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4,auto);
+    align-items: center;
+    justify-content: stretch;
+}
+.sanphamtrai {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 10rem;
+    /* margin-left: -4px; */
+    justify-content: start;
+    justify-content: center;
+}
+.ttsanphamtrai{
+      font-size: 9px;
+}
+.tieudephai{
+  font-size: 9px;
+  margin-right: 25px;
+}
+#ttsanhamphai{
+      font-size: 9px;
+}
+.item3 {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    width: 84%;
+    height: 100px;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+.sanpham {
+    overflow: scroll;
+    height: 450px;
+}
+#toast{
+  width: 300px;
+}
+
+}
+

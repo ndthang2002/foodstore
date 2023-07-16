@@ -221,4 +221,9 @@ public class CartRestController {
     return list;
   }
 
+  @GetMapping("/rest/getAllCartProduct")
+  public List<CartProduct> getAllCartProduct(){
+    List<CartProduct> list  = cartProductService.fillAllCart();
+    return list;
+  }
 }

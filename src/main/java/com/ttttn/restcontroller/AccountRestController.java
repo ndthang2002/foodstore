@@ -77,7 +77,12 @@ public class AccountRestController {
   @GetMapping("/rest/account/loged/")
   public Account getAcc() {
     Account account = new Account();
-    account = accountService.findbyid(config.accountLogedIn.getUserid());
+    try {
+        account = accountService.findbyid(config.accountLogedIn.getUserid());
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.out.println("user chưa đăng nhập");
+    }
     return account;
   }
 
@@ -157,7 +162,7 @@ public class AccountRestController {
     return account;
   }
 
-  // upload
+  // update
   @PostMapping("/rest/nhanvien/update/{idUser}")
   @ResponseBody
   public Account updateAccount(@PathVariable("idUser") Integer idUser, @RequestParam("image") MultipartFile image,

@@ -280,7 +280,7 @@ header
 }
 
 .header-area .main-nav .nav li a {
-  display: block;
+ /* display: block;*/
   font-weight: 500;
   font-size: 13px;
   color: #7a7a7a;
@@ -581,7 +581,7 @@ banner
     background-color: rgba(35,45,57,0.8);
     top: 0;
     left: 0;
-    bottom: 7px;
+    bottom: 0px;
     width: 100%;
 }
 
@@ -1435,10 +1435,10 @@ justify-content: center;
   overflow: hidden;
  }
  .imgloaisanpham img{
-  width: 150px;
-  height: 100px;
-  margin-right: 50px;
+  width: 120px;
+  height: 70px;
   transition: transform 0.5s ease;
+  margin-top: 2rem;
  }
  .imgloaisanpham img:hover{
   transform: scale(1.2);
@@ -1504,7 +1504,7 @@ input[type="range"]{
   justify-content: center;
   margin-top: 10px;
 }
-.imgloaisanpham{
+.imgloaisanpham a{
   position: relative;
   color: black;
 }
@@ -1512,8 +1512,6 @@ input[type="range"]{
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 0;
-  left: 20%;
 }
 .thongbao{
  display: inline-block;
@@ -2876,4 +2874,94 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swa
         transform:rotate(360deg)
     }
 }
+.card-header:first-child {
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+}
+
+@media(max-width:575px){
+  .imgloaisanpham img{
+  width: 90px;
+  height: 50px;
+  transition: transform 0.5s ease;
+ }
+ .imgloaisanpham{
+   display: flex;
+   justify-content: start;
+ }
+ .loaisanpham{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  
+}
+ .cart_icons:hover .itemcart{
+  display: none;
+ 
+ }
+ .accoundLoged_mobie{
+      color: black;
+    font-weight: bold;
+    /* margin-left: 1rem; */
+    background: #ffff;
+    width: 100%;
+    border: 0.5px solid gray;
+}
+.dropdown dropdown-toggle{
+  border: 1px solid gray;
+}
+.mobie_background{
+  background-color: #ffffff;
+}
+.form_mobie{
+/*  border: 1px solid gray;
+*/}
+.cart_icons{
+  border: 0.5px solid gray;
+
+}
+.search_mobie{
+  width: 80%;
+}
+
+.form-control{
+    all: unset;
+}
+.search_btn{
+  width: 100%;
+}
+.login-mobie{
+  display: block;
+}
+
+
+.icons_login {
+  display: none;
+}
+
+
+}
+@media (min-width: 600px){
+  .accoundLoged{
+  color: black;
+   font-weight: bold;
+    margin-left: 1rem;
+}
+
+.form_login{
+  margin-top: 20px;
+}
+.login-mobie{
+  display: none;
+}
+
+}
+.tintuc{
+  display: flex;
+  align-items: center;
+}
+
+
+
+
 

@@ -56,9 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Kiểm tra pass  
         String password = user.getPassword();
         
-
         // Kiểm tea quyền
-  
         String[] roles = user.getAuthorities().stream().map(er -> er.getRole().getName()).collect(Collectors.toList())
             .toArray(new String[0]);
         

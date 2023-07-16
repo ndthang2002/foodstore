@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<main>
+ 
+  
+<style>
+  small{
+    color: red;
+    font-style: italic;
+  }
+  h3{
+    color: black;
+    font-weight: bold;
+  }
+</style>
+
+  <form class="border  container  mt-5 p-5 zindex-sticky">
+    <h3 class="d-flex justify-content-center"> Thanh toán thành công</h3>
+    
+     <div class="truongthongtin d-grid justify-content-center p-3">
+                      <small >Hình thức thanh toán: [[${vnp_CardType}]]</small> <br>
+                      <small>Ngân hàng: [[${vnp_BankCode}]]</small> <br>
+                      <small>Hình thức thanh toán: [[${vnp_OrderInfo}]]</small> <br>
+                      <small>số tiền thanh toán: [[${paymentPrice}/100]]</small> <br>
+                     <a th:href="@{/index}">Quay về trang chủ</a>
+                      
+    </div>
+  </form>
+
+</main>
+</html>

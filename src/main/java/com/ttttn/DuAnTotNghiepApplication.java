@@ -1,6 +1,7 @@
 package com.ttttn;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 //@EnableConfigurationProperties
 //@ComponentScan(basePackages = "com.ttttn")
 //@EnableJpaRepositories(basePackages = {"com.ttttn.repository"})
