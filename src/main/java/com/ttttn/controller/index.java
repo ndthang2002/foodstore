@@ -49,6 +49,7 @@ public class index {
   public String index(Model model)  {
     
       if(config.accountLogedIn==null) {
+        System.out.println("hihi");
         return "layout/home";
       }
       int roleid = authoritiesService.findIdRoleByUser(config.accountLogedIn.getUserid());

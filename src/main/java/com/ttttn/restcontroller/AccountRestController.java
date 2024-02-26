@@ -24,7 +24,6 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.ttttn.SecurityConfig;
 import com.ttttn.entity.Account;
-import com.ttttn.entity.AccountAndAddress;
 import com.ttttn.entity.Address;
 import com.ttttn.entity.Authorities;
 import com.ttttn.entity.Role;
@@ -70,7 +69,8 @@ public class AccountRestController {
   @Autowired
   PayService            payService;
 
-  SecurityConfig        config;
+  @Autowired
+  SecurityConfig     config;
 
   public static String  images;
 
@@ -179,8 +179,9 @@ public class AccountRestController {
      */
     Address adres = new Address();
     Account acc = accountService.findbyid(idUser);
+    String hasPass = config.passwordEncoder().encode(password);
     acc.setUsername(username);
-    acc.setPassword(password);
+    acc.setPassword(hasPass);
     acc.setName(name);
     acc.setEmail(email);
     acc.setPhone(phone);
