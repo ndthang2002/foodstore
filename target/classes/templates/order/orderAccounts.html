@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<main>
+
+<style>
+  #dtBasicExample{
+    margin: 0 auto;
+    width: 80%;
+    height: 50%;
+    margin-top: 7rem;
+    margin-bottom: 5rem;
+    background-color: #b2d9f0;
+
+  }
+</style>
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm">Tên sản phẩm
+      </th>
+      <th class="th-sm">Trạng thái thanh toán
+      </th>
+      <th class="th-sm">Mô tả
+      </th>
+      <th class="th-sm">Số lượng
+      </th>
+      <th class="th-sm">Ngày đặt
+      </th>
+      <th class="th-sm">Tổng tiền
+      </th>
+       <th class="th-sm">Thao tác
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="orderAcc in orderByAcc ">
+     
+      <td>{{orderAcc.product.name}}</td>
+      <td>{{orderAcc.orderStatus}}</td>
+      <td>{{orderAcc.product.model}}</td>
+      <td>{{orderAcc.quantityProduct}}</td>
+       <td>{{orderAcc.bookingDate | date : 'dd-MM-yyyy'}}</td>
+      <td>{{orderAcc.totalMoney | number}}VND</td>
+      <td>hủy</td>
+    </tr>
+
+<!--  </tbody>
+  <tfoot>
+    <tr>
+      <th>Name
+      </th>
+      <th>Position
+      </th>
+      <th>Office
+      </th>
+      <th>Age
+      </th>
+      <th>Start date
+      </th>
+      <th>Salary
+      </th>
+    </tr>
+  </tfoot>-->
+</table>
+</main>

@@ -1,5 +1,6 @@
-var app = angular.module("appDonhang", []);
-app.controller("ctrl-donhang", function($scope, $http) {
+app.controller("orderAcc", function($scope, $http) {
+  $scope.hihi="haha";
+  console.log($scope.hihi);
   $scope.orders =[];
   $scope.initial = function() {
     $http.get(`/rest/order/getAllOrder`).then(resp =>{
@@ -15,5 +16,5 @@ app.controller("ctrl-donhang", function($scope, $http) {
       $scope.orderitem = resp.data;
     });
   }
-})
+});
   console.log("hihi");

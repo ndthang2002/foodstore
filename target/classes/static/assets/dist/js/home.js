@@ -19,4 +19,15 @@ app.controller("ctrl-home", function($scope, $http) {
     $scope.sanpham = resp.data;
      console.log(resp.data);
   })
+  
+    $scope.initial = function() {
+    $http.get(`/rest/order/getAllOrder`).then(resp =>{
+      console.log("hihi");
+      $scope.orders = resp.data;
+      console.log($scope.orders);
+    })
+  }
+
+  $scope.initial();
+  
   });

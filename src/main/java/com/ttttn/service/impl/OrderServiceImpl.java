@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ttttn.dto.OrderAccDto;
 import com.ttttn.entity.Order;
 import com.ttttn.repository.OrderJparepository;
 import com.ttttn.service.OrderService;
@@ -35,6 +36,12 @@ public class OrderServiceImpl implements OrderService{
   public List<Order> findAll() {
     // TODO Auto-generated method stub
     return orderJparepository.findAll();
+  }
+
+  @Override
+  public Order findById(Integer id) {
+    // TODO Auto-generated method stub
+    return orderJparepository.getById(id);
   }
 
 }

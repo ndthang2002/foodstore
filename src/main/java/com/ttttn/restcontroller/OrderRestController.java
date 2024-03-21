@@ -1,5 +1,12 @@
 package com.ttttn.restcontroller;
 
+
+import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -9,6 +16,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.logging.log4j.message.ReusableMessage;
+import org.apache.xmlbeans.impl.common.ResolverUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysql.cj.protocol.Resultset;
 import com.ttttn.SecurityConfig;
+import com.ttttn.dto.OrderAccDto;
 import com.ttttn.entity.Account;
 import com.ttttn.entity.Address;
 import com.ttttn.entity.Cart;
@@ -169,7 +180,6 @@ public class OrderRestController {
         payment.setOrder(order);
         payService.insert(payment); 
     }
-
     return order;
   }
   
@@ -184,9 +194,34 @@ public class OrderRestController {
   public OrderItems getdetail(@PathVariable("id") Integer id) {
     OrderItems orderitem = new OrderItems();
     orderitem = orderItemService.findOrderItemsbyOrder(id);
-
     System.out.println(id);
     return orderitem;
   }
-
+  
+  @GetMapping("/orderAcc")
+  public List<OrderAccDto> getOrderAcc() throws SQLException{
+    List<OrderAccDto> listOrderAcc = new ArrayList<>();
+    String query =" select * from order_items inner join orders on orders.orderid = order_items.order_id WHERE  user_id="+config.accountLogedIn.getUserid();
+   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/foodshop", "root","");
+   PreparedStatement statement = connection.prepareStatement(query);
+   ResultSet resultSet = statement.executeQuery();
+   while(resultSet.next()){
+    OrderAccDto orderAccDto = new OrderAccDto();
+    // lay quantity sanpham mua 
+    orderAccDto.setQuantityProduct(resultSet.getInt("quantityproduct"));
+    //get product
+    Product product = productService.findById(resultSet.getInt("product_id"));
+    orderAccDto.setProduct(product);
+    // lay ngay dat
+    orderAccDto.setBookingDate(resultSet.getDate("bookingdate"));
+    orderAccDto.setDeliveryDate(resultSet.getDate("deliverydate"));
+    orderAccDto.setOrderStatus(resultSet.getString("orderstatus"));
+    orderAccDto.setTotalMoney(resultSet.getDouble("totalmoney"));
+    Account account = accountService.findbyid(resultSet.getInt("user_id"));
+    orderAccDto.setUser(account);
+    listOrderAcc.add(orderAccDto);
+//     
+   }
+  return listOrderAcc;
+  }
 }

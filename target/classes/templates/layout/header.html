@@ -73,6 +73,7 @@
               <div class="dropdown-menu form_login" style="margin-top: 20px;">
                 <a ng-hide="ischeckLoged" class="dropdown-item text-dark" th:href="@{/login}" >Đăng Nhập</a>
                  <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/editaccount}" >Tài Khoản</a>
+               <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/orderAccount}" >Đơn hàng của tôi</a>
                 <a ng-show="ischeckLoged" class="dropdown-item text-dark" th:href="@{/security/logoff}">Đăng Xuất</a>
               </div>
               

@@ -15,5 +15,5 @@ app.controller("ctrl-donhang", function($scope, $http) {
       $scope.orderitem = resp.data;
     });
   }
-  
-});
+})
+  console.log("hihi");

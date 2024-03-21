@@ -254,8 +254,20 @@ app.controller("myCtrl", function($scope, $http, $route, $window, $location) {
     $http.delete(`/rest/deletecomment/${id}`);
     $scope.comments.splice(index, 1);
   }
+  // hien thi don hang theo tung nguoi dung
+  
+    $scope.initial = function() {
+    $http.get(`/rest/order/orderAcc`).then(resp =>{
+      $scope.orderByAcc = resp.data;
+      console.log($scope.orderByAcc);
+    })
+  }
+
+  $scope.initial();
 
 });
+
+
 
 // toast hien thi xoa thanh cong 
 function showSuccessToast(titles, messages, types) {
